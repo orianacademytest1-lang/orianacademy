@@ -1,0 +1,29 @@
+# Ignore virtual environments
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE files
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+error.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Development scripts (not needed in production)
+test_*.html
+test_*.py
+*.sql

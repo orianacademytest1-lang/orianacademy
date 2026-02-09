@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Oriana Academy - IT Training Institute</title>
+    <meta name="description"
+        content="Get in touch with Oriana Academy for course inquiries, enrollment, and career guidance.">
+    <link rel="stylesheet" href="css/main.css?v=28.0">
+</head>
+
+<body>
+
+    <!-- PAGE LOADER -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p class="loader-text">Oriana Academy</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container"><a href="index.html" class="logo">
+                <img src="assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+                            <li><a href="courses/data-science.html">Data Science</a></li>
+                            <li><a href="courses/generative-ai.html">Generative AI</a></li>
+                            <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+                            <li><a href="courses/java.html">Full Stack Java Development</a></li>
+                            <li><a href="courses/python.html">Full Stack Python Development</a></li>
+                            <li><a href="courses/hr-training.html">HR Training</a></li>
+                            <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="pet-program.html">PET</a></li>
+                    <li><a href="career-guidance.html">Career Guidance</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="login-link">Sign In</a>
+                <a href="contact.html" class="cta-btn">Enroll Now</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+
+
+    <!-- PREMIUM HERO -->
+    <section class="hero">
+        <div class="hero-blob-3"></div>
+        <div class="container"
+            style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center;">
+            <div class="hero-content reveal">
+                <span class="benefit-tag" style="background: var(--primary-50); color: var(--primary);">Get in
+                    Touch</span>
+                <h1 class="text-gradient" style="font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 1.5rem;">Let's
+                    Build Your <br>Digital Future</h1>
+                <p
+                    style="color: var(--gray-600); font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 600px; line-height: 1.6;">
+                    Have questions about our programs or career guidance? Our team of experts is here to help you
+                    navigate your learning journey.</p>
+                <div class="hero-buttons">
+                    <a href="#contactForm" class="btn btn-primary btn-lg" style="padding: 1.2rem 3rem;">Send Message
+                        →</a>
+                    <a href="tel:+919876543210" class="btn btn-outline btn-lg"
+                        style="margin-left: 1rem; padding: 1.2rem 3rem;">Call Us Now</a>
+                </div>
+            </div>
+
+            <div class="hero-image reveal">
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/learner-community.png" alt="Contact Oriana Academy"
+                        style="width: 100%; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.15));">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- CONTACT INFO BAR - Dark Blue -->
+    <section class="section-dark-blue" style="padding: 4rem 0;">
+        <!-- Floating elements -->
+        <div class="float-circle blue size-lg float-top-left delay-1"></div>
+        <div class="float-circle green size-md float-bottom-right delay-2"></div>
+
+        <div class="container">
+            <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="stat-item reveal stagger-1"
+                    style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem;">
+                    <div class="stat-icon" style="background: none; width: 60px; height: 60px;"><img
+                            src="assets/images/icons/icon-location.png" alt="Location" style="width: 100%;"></div>
+                    <span class="stat-number" style="font-size: 1.25rem; color: white;">Our Location</span>
+                    <span class="stat-label" style="color: rgba(255,255,255,0.7);">123 Tech Park, Bangalore,
+                        India</span>
+                </div>
+                <div class="stat-item reveal stagger-2"
+                    style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem;">
+                    <div class="stat-icon" style="background: none; width: 60px; height: 60px;"><img
+                            src="assets/images/icons/icon-phone.png" alt="Phone" style="width: 100%;"></div>
+                    <span class="stat-number" style="font-size: 1.25rem; color: white;">Phone</span>
+                    <span class="stat-label" style="color: rgba(255,255,255,0.7);">+91 98765 43210</span>
+                </div>
+                <div class="stat-item reveal stagger-3"
+                    style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem;">
+                    <div class="stat-icon" style="background: none; width: 60px; height: 60px;"><img
+                            src="assets/images/icons/icon-email.png" alt="Email" style="width: 100%;"></div>
+                    <span class="stat-number" style="font-size: 1.25rem; color: white;">Email</span>
+                    <span class="stat-label" style="color: rgba(255,255,255,0.7);">info@orianaacademy.com</span>
+                </div>
+                <div class="stat-item reveal stagger-4"
+                    style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 1.5rem; padding: 2rem;">
+                    <div class="stat-icon" style="background: none; width: 60px; height: 60px;"><img
+                            src="assets/images/icons/icon-case-study.png" alt="Working Hours" style="width: 100%;">
+                    </div>
+                    <span class="stat-number" style="font-size: 1.25rem; color: white;">Working Hours</span>
+                    <span class="stat-label" style="color: rgba(255,255,255,0.7);">Mon - Sat: 9AM - 7PM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM SECTION -->
+    <section class="section section-mesh" id="contact-form-section">
+        <div class="container">
+            <div class="grid-2" style="gap: 4rem; align-items: start;">
+                <div class="reveal-left">
+                    <h2 class="text-gradient">Send Us a Message</h2>
+                    <p style="color: var(--gray-600); margin-bottom: 2rem; font-size: 1.1rem;">Fill out the form below
+                        and our counselors will get back to you within 24 hours.</p>
+
+                    <form id="contactForm" class="application-form"
+                        style="padding: 0; background: none; box-shadow: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" placeholder="John"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Doe"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-input"
+                                placeholder="john@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" placeholder="+91 98765 43210"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="course">Course Interested In</label>
+                            <select id="course" name="course" class="form-input">
+                                <option value="">Select a course</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="data-science">Data Science</option>
+                                <option value="machine-learning">Machine Learning</option>
+                                <option value="data-analytics">Data Analytics</option>
+                                <option value="python">Python Programming</option>
+                                <option value="java">Java Training</option>
+                                <option value="generative-ai">Generative AI</option>
+                                <option value="hr-training">HR Training</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Your Message *</label>
+                            <textarea id="message" name="message" class="form-textarea"
+                                placeholder="Tell us about your learning goals..." required rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 1rem;">Send
+                            Message</button>
+                    </form>
+                </div>
+
+                <div class="reveal-right">
+                    <div class="hero-image-wrapper" style="height: auto; padding: 0; margin-bottom: 2rem;">
+                        <img src="assets/images/classroom.png" alt="Contact Oriana Academy"
+                            style="border-radius: 2rem; box-shadow: var(--shadow-2xl); width: 100%;">
+                    </div>
+
+                    <div class="career-card"
+                        style="background: var(--white); box-shadow: var(--shadow-xl); border-top: 5px solid var(--primary);">
+                        <h3 style="margin-bottom: 1.5rem; color: var(--gray-900);">Quick Connect</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+                            <a href="tel:+919876543210"
+                                style="display: flex; align-items: center; gap: 1rem; color: var(--gray-700); text-decoration: none; font-weight: 500;">
+                                <div class="feature-icon"
+                                    style="width: 45px; height: 45px; min-width: 45px; margin: 0;"><img
+                                        src="assets/images/icons/icon-phone.png" alt="Phone" style="width: 100%;"></div>
+                                Call us directly
+                            </a>
+                            <a href="https://wa.me/919876543210"
+                                style="display: flex; align-items: center; gap: 1rem; color: var(--gray-700); text-decoration: none; font-weight: 500;">
+                                <div class="feature-icon"
+                                    style="width: 45px; height: 45px; min-width: 45px; margin: 0;"><img
+                                        src="assets/images/icons/icon-partners.png" alt="WhatsApp" style="width: 100%;">
+                                </div>
+                                Chat on WhatsApp
+                            </a>
+                            <a href="mailto:info@orianaacademy.com"
+                                style="display: flex; align-items: center; gap: 1rem; color: var(--gray-700); text-decoration: none; font-weight: 500;">
+                                <div class="feature-icon"
+                                    style="width: 45px; height: 45px; min-width: 45px; margin: 0;"><img
+                                        src="assets/images/icons/icon-email.png" alt="Email" style="width: 100%;"></div>
+                                Email us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP SECTION - Mesh Gradient -->
+    <section class="section section-mesh">
+        <!-- Floating elements -->
+        <div class="float-circle blue size-md float-top-left delay-1"></div>
+        <div class="float-dots float-bottom-right delay-2"></div>
+        <div class="float-icon float-top-right delay-3"><img src="assets/images/icons/icon-rocket.png"
+                alt="Decorative Icon"></div>
+
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Visit Our Campus</h2>
+                <p>Experience our world-class training facilities</p>
+            </div>
+
+            <div style="border-radius: var(--radius-2xl); overflow: hidden; box-shadow: var(--shadow-xl);"
+                class="reveal">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0012345678!2d77.5945627!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzE3LjgiTiA3N8KwMzUnNDAuNCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section section-mesh">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="text-gradient">Frequently Asked Questions</h2>
+                <p>Quick answers to common queries about our courses and enrollment.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="feature-card reveal stagger-1"
+                    style="background: var(--white); box-shadow: var(--shadow-lg);">
+                    <div class="feature-icon" style="background: var(--primary-50); color: var(--primary);">🎓</div>
+                    <h3>Do you provide certificates?</h3>
+                    <p>Yes! Upon successful completion of any course, you receive an industry-recognized certificate
+                        that validates your skills and expertise.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-2"
+                    style="background: var(--white); box-shadow: var(--shadow-lg);">
+                    <div class="feature-icon" style="background: #FAF5FF; color: #9333EA;">💻</div>
+                    <h3>Are classes online or offline?</h3>
+                    <p>We offer both! Choose from live online classes, self-paced recorded sessions, or in-person
+                        training at our Bangalore campus.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-3"
+                    style="background: var(--white); box-shadow: var(--shadow-lg);">
+                    <div class="feature-icon" style="background: #FFF7ED; color: #F97316;">💳</div>
+                    <h3>Are there EMI options?</h3>
+                    <p>Yes, we offer flexible payment plans including 0% EMI options for all our long-term certification
+                        programs. Contact our counselors for more details.</p>
+                </div>
+
+                <div class="feature-card reveal stagger-4"
+                    style="background: var(--white); box-shadow: var(--shadow-lg);">
+                    <div class="feature-icon" style="background: #F0FFF4; color: #22C55E;">🚀</div>
+                    <h3>Is placement guaranteed?</h3>
+                    <p>While we don't guarantee placement, we offer 100% placement assistance. Our 95% success rate and
+                        partners like TCS, Google, and Amazon speak for themselves!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Book a free demo class and experience our teaching methodology</p>
+                <a href="#" class="btn btn-primary btn-lg"
+                    onclick="document.querySelector('#contactForm').scrollIntoView({behavior: 'smooth'}); return false;">Book
+                    Free Demo <svg viewBox="0 0 24 24"
+                        style="width: 1.2em; height: 1.2em; vertical-align: middle; display: inline-block; margin-left: 0.3em;">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+                    </a>
+                    <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+                        Science,
+                        Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+                        <li><a href="courses/data-science.html">Data Science</a></li>
+                        <li><a href="courses/generative-ai.html">Generative AI</a></li>
+                        <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+                        <li><a href="courses/java.html">Full Stack Java Development</a></li>
+                        <li><a href="courses/python.html">Full Stack Python Development</a></li>
+                        <li><a href="courses/hr-training.html">HR Training</a></li>
+                        <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="pet-program.html">PET Program</a></li>
+                        <li><a href="career-guidance.html">Career Guidance</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>📍 123 Tech Park, Bangalore, India</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>📧 info@orianaacademy.com</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit">→</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a>
+                    | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/auth-state.js"></script>
+
+    <!-- Contact Form Handler - MUST come before main.js to prevent form reset issues -->
+    <script>
+        // This script runs immediately, but the form exists by now
+        (function () {
+            const contactForm = document.getElementById('contactForm');
+            if (!contactForm) return; // Safety check
+
+            const courseSelect = document.getElementById('course');
+            const messageOutput = document.createElement('div');
+            messageOutput.style.marginTop = '1rem';
+            messageOutput.style.padding = '1rem';
+            messageOutput.style.borderRadius = '0.5rem';
+            messageOutput.style.display = 'none';
+            contactForm.appendChild(messageOutput);
+
+            // Handle URL parameters for pre-filling
+            const urlParams = new URLSearchParams(window.location.search);
+            const subjectParam = urlParams.get('subject');
+            const typeParam = urlParams.get('type');
+
+            if (subjectParam) {
+                // If subject is related to a course, try to select it
+                const subjectLower = subjectParam.toLowerCase();
+                for (let i = 0; i < courseSelect.options.length; i++) {
+                    const optionText = courseSelect.options[i].text.toLowerCase();
+                    if (subjectLower.includes(optionText) || optionText.includes(subjectLower)) {
+                        courseSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+
+            if (typeParam === 'career-call') {
+                // Pre-fill message for career call
+                document.getElementById('message').value = "I'm interested in a free career guidance call.";
+            } else if (typeParam === 'mentor') {
+                document.getElementById('message').value = "I'd like to speak with a mentor.";
+            }
+
+            // Form Submission Handler - Registered FIRST so it runs before main.js handler
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                console.log("DEBUG: Form submission started");
+
+                const submitBtn = contactForm.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn ? submitBtn.textContent : 'Send Message';
+
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
+                }
+
+                if (typeof messageOutput !== 'undefined') {
+                    messageOutput.style.display = 'none';
+                }
+
+                try {
+                    // ROBUST DATA CAPTURE: Using querySelector on the form element itself
+                    // fallback to getElementById if querySelector fails for some reason
+                    const firstNameEl = contactForm.querySelector('#firstName') || document.getElementById('firstName');
+                    const lastNameEl = contactForm.querySelector('#lastName') || document.getElementById('lastName');
+                    const emailEl = contactForm.querySelector('#email') || document.getElementById('email');
+                    const phoneEl = contactForm.querySelector('#phone') || document.getElementById('phone');
+                    const messageEl = contactForm.querySelector('#message') || document.getElementById('message');
+                    const courseSelectEl = contactForm.querySelector('#course') || document.getElementById('course');
+
+                    const firstName = firstNameEl ? firstNameEl.value.trim() : '';
+                    const lastName = lastNameEl ? lastNameEl.value.trim() : '';
+                    const email = emailEl ? emailEl.value.trim() : '';
+                    const phone = phoneEl ? phoneEl.value.trim() : '';
+                    const message = messageEl ? messageEl.value.trim() : '';
+
+                    console.log("DEBUG: Element detection -", {
+                        firstName: !!firstNameEl,
+                        lastName: !!lastNameEl,
+                        email: !!emailEl,
+                        phone: !!phoneEl,
+                        message: !!messageEl,
+                        courseSelect: !!courseSelectEl
+                    });
+
+                    const formData = {
+                        name: `${firstName} ${lastName}`.trim() || "No Name Provided",
+                        email: email || "no-email@provided.com",
+                        phone: phone || "Not Provided",
+                        subject: (courseSelectEl && courseSelectEl.value) ? `Inquiry about ${courseSelectEl.options[courseSelectEl.selectedIndex].text}` : 'General Inquiry',
+                        message: message || "No message content."
+                    };
+
+                    console.log("DEBUG: Final payload to API:", formData);
+
+                    const response = await fetch('/api/contact/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    console.log("DEBUG: API Response status:", response.status);
+                    const result = await response.json();
+                    console.log("DEBUG: API Response data:", result);
+
+                    if (response.ok) {
+                        if (typeof messageOutput !== 'undefined') {
+                            messageOutput.textContent = 'Message sent successfully! We will contact you soon.';
+                            messageOutput.style.backgroundColor = '#d1fae5'; // Green-100
+                            messageOutput.style.color = '#065f46'; // Green-800
+                            messageOutput.style.display = 'block';
+                        } else {
+                            alert('Message sent successfully!');
+                        }
+                        contactForm.reset();
+                    } else {
+                        throw new Error(result.message || 'Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('DEBUG: Form submission error:', error);
+                    if (typeof messageOutput !== 'undefined') {
+                        messageOutput.textContent = 'Error sending message: ' + error.message;
+                        messageOutput.style.backgroundColor = '#fee2e2'; // Red-100
+                        messageOutput.style.color = '#991b1b'; // Red-800
+                        messageOutput.style.display = 'block';
+                    } else {
+                        alert('Error: ' + error.message);
+                    }
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    }
+                }
+            });
+        })();
+    </script>
+
+    <script src="js/main.js?v=2.1"></script>
+    <!-- AI Chatbot -->
+    <link rel="stylesheet" href="css/chatbot.css">
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>

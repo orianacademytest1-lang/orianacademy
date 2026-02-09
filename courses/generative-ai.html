@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI Course in Chennai | Online AI Training | Oriana Academy</title>
+    <meta name="description"
+        content="Learn Generative AI at Oriana Academy. Master ChatGPT, prompt engineering, AI tools, and automation with real-world projects, expert mentors, and online training in English and Tamil.">
+    <meta name="keywords"
+        content="generative ai course, ai course in chennai, chatgpt course, prompt engineering training, artificial intelligence course, gen ai training, ai automation course, online ai course, tamil ai course">
+    <link rel="stylesheet" href="../css/main.css?v=32.0">
+    <style>
+        /* Premium Text Gradient */
+        .text-gradient {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-2xl);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl), var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Hero Image Parallax & Glow */
+        .hero-main-img {
+            filter: drop-shadow(0 20px 40px rgba(16, 185, 129, 0.3));
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        /* Floating Assets in Hero */
+        .floating-ai-asset {
+            position: absolute;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+        }
+
+        @keyframes assetFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0);
+            }
+
+            25% {
+                transform: translate(10px, -15px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(-5px, -25px) rotate(-3deg);
+            }
+
+            75% {
+                transform: translate(-15px, -10px) rotate(3deg);
+            }
+        }
+
+        .ai-asset-1 {
+            top: 10%;
+            left: -5%;
+            width: 80px;
+            animation-delay: 0s;
+        }
+
+        .ai-asset-2 {
+            bottom: 15%;
+            right: -5%;
+            width: 90px;
+            animation-delay: 2s;
+        }
+
+        .ai-asset-3 {
+            top: 40%;
+            right: 10%;
+            width: 60px;
+            animation-delay: 4s;
+        }
+
+        /* Grid Pattern Background */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            background: var(--gradient-subtle);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+        }
+
+        .faq-answer-content {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .curriculum-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 3px solid #10B981;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .curriculum-list li:hover {
+            transform: translateX(5px);
+            background: var(--primary-50);
+        }
+
+        .curriculum-list li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0 !important;
+            }
+
+            .glass-card {
+                padding: 1.5rem !important;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem 0 !important;
+                text-align: center;
+            }
+
+            .hero .container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                gap: 1.25rem;
+                align-items: center !important;
+            }
+
+            .hero-actions .btn,
+            .hero-actions .cta-btn {
+                margin: 0 !important;
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: flex !important;
+                justify-content: center !important;
+                width: 100% !important;
+            }
+
+            .hero-image-wrapper {
+                max-width: 450px !important;
+                width: 100% !important;
+                display: block !important;
+            }
+
+            .floating-ai-asset,
+            .float-circle,
+            .float-dots,
+            .float-icon,
+            .hero-image,
+            .hero-float-1,
+            .hero-float-2,
+            .hero-float-3 {
+                display: block !important;
+            }
+
+            .section-header h2 {
+                font-size: 2rem !important;
+            }
+
+            /* Grid Overrides */
+            .row-grid,
+            .stats-grid,
+            .curriculum-grid,
+            .audience-grid,
+            .enquiry-grid,
+            .advantage-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .glass-card-stats {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .faq-card-content {
+                padding: 1.5rem !important;
+            }
+
+            .enquiry-form-card {
+                padding: 1.5rem !important;
+                border-radius: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .glass-card-stats {
+                grid-template-columns: 1fr !important;
+            }
+
+            .trust-avatars {
+                justify-content: center;
+            }
+        }
+
+        .section-header span {
+            display: table !important;
+            margin: 0 auto 1rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container"><a href="../index.html" class="logo">
+                <img src="../assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="machine-learning.html">Machine Learning</a></li>
+                            <li><a href="data-science.html">Data Science</a></li>
+                            <li><a href="generative-ai.html">Generative AI</a></li>
+                            <li><a href="data-analytics.html">Data Analyst</a></li>
+                            <li><a href="java.html">Full Stack Java Development</a></li>
+                            <li><a href="python.html">Full Stack Python Development</a></li>
+                            <li><a href="hr-training.html">HR Training</a></li>
+                            <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../pet-program.html">PET</a></li>
+                    <li><a href="../career-guidance.html">Career Guidance</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="../login.html" class="login-link">Sign In</a>
+                <a href="../contact.html" class="cta-btn">Enroll Now</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- PREMIUM HERO - Generative AI -->
+    <section class="hero">
+        <div class="bg-grid"></div>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="hero-blob-3"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <span class="tagline reveal delay-1">GENERATIVE AI TRAINING COURSE</span>
+                <h1 class="reveal delay-1">Master <span class="text-gradient">Next-Generation</span> AI Technologies and
+                    Tools</h1>
+                <p class="description reveal delay-2" style="font-weight: 600; color: var(--gray-700);">Hands-on
+                    Projects
+                    • AI Tools & Automation • Expert Mentors • Online Training • English & Tamil Classes</p>
+
+                <div class="hero-actions reveal delay-2">
+                    <a href="../contact.html?type=enroll&course=generative-ai" class="cta-btn btn-lg">Enroll Now
+                        →</a>
+                    <a href="../contact.html?type=demo&course=generative-ai" class="btn btn-outline btn-lg"
+                        style="margin-left: 1rem; border-color: var(--primary); color: var(--primary); background: rgba(16, 185, 129, 0.05);">Book
+                        Free Demo →</a>
+                    <a href="#" class="btn btn-outline btn-lg"
+                        style="margin-left: 1rem; border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">Download
+                        Syllabus →</a>
+                </div>
+
+                <div class="hero-trust reveal delay-2"
+                    style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+                    <div class="trust-avatars" style="display: flex;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; background: #ddd; margin-right: -15px;">
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; background: #ccc; margin-right: -15px;">
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; background: #bbb;">
+                        </div>
+                    </div>
+                    <span style="font-size: 0.9rem; color: var(--gray-500); font-weight: 500;">Trusted by 2,000+
+                        Students</span>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal delay-3"
+                style="display: flex; justify-content: flex-end; align-items: center;">
+                <div class="hero-image-wrapper" style="position: relative; max-width: 600px; width: 100%;">
+                    <!-- Main Image -->
+                    <img src="../assets/images/generative-ai-3d.png" alt="Generative AI Training" class="hero-main-img"
+                        style="width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1));">
+
+                    <!-- Floating Decorative Assets -->
+                    <img src="../assets/images/icons/icon-rocket.png" class="floating-ai-asset ai-asset-1" alt="Growth">
+                    <img src="../assets/images/icons/icon-growth.png" class="floating-ai-asset ai-asset-2" alt="Scale">
+                    <img src="../assets/images/icons/icon-puzzle.png" class="floating-ai-asset ai-asset-3"
+                        alt="AI Puzzle">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section" style="padding: 6rem 0; position: relative; overflow: hidden; background: white;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--primary-50); color: var(--primary); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">ABOUT
+                    THIS COURSE</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Course Overview</h2>
+            </div>
+
+            <div class="row-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto;">
+                <!-- Left: Key Stats -->
+                <div class="reveal">
+                    <div class="glass-card-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div
+                                style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
+                                2+</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Months Duration
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div
+                                style="font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.5rem;">
+                                10+</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">AI Projects
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: #E1306C; margin-bottom: 0.5rem;">
+                                100%</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Practical Training
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: #F59E0B; margin-bottom: 0.5rem;">
+                                24/7</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Expert Support
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Description -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 3rem; border-left: 4px solid var(--primary);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--gray-800); font-weight: 700;">
+                            Shape the Future with Generative AI</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: var(--gray-600); margin-bottom: 1.5rem;">
+                            Generative AI is transforming industries by enabling machines to create content, automate
+                            tasks, and improve decision-making. From ChatGPT to AI-driven applications, Generative AI is
+                            shaping the future of technology.</p>
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: var(--gray-600);">The Generative AI course
+                            at Oriana Academy is designed to help learners understand AI fundamentals, master modern AI
+                            tools, and build real-world AI solutions. Ideal for students, professionals, and
+                            entrepreneurs who want to stay ahead.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY GEN AI -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, white 0%, var(--gray-50) 100%); position: relative; overflow: hidden;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">WHY
+                    CHOOSE THIS FIELD</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Why Generative AI?</h2>
+                <p style="font-size: 1.15rem; color: var(--gray-600);">Master skills that are redefining the
+                    technological landscape
+                </p>
+            </div>
+
+            <div class="advantage-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;">
+                <div class="glass-card reveal stagger-1"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.15) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-growth.png" alt="Adoption"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Rapid
+                        Industry Adoption</h3>
+                </div>
+                <div class="glass-card reveal stagger-2"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-trainers.png" alt="Demand"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">High Demand
+                        for Professionals</h3>
+                </div>
+                <div class="glass-card reveal stagger-3"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(225, 48, 108, 0.1) 0%, rgba(225, 48, 108, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-rocket.png" alt="Automation"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Automation
+                        of Businesses</h3>
+                </div>
+                <div class="glass-card reveal stagger-4"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-document.png" alt="Innovation"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Innovation
+                        in Content Creation</h3>
+                </div>
+                <div class="glass-card reveal stagger-5"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-location.png" alt="Global"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Future
+                        Career Opportunities</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section class="section" id="curriculum"
+        style="padding: 6rem 0; background: white; position: relative; overflow: hidden;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--primary-50); color: var(--primary); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">LEARNING
+                    PATH</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">What You Will Master</h2>
+                <p style="font-size: 1.15rem; color: var(--gray-600);">A comprehensive curriculum covering everything
+                    from AI basics to advanced automation
+                </p>
+            </div>
+
+            <div class="curriculum-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; margin-top: 3rem;">
+                <!-- Module 1 -->
+                <div class="glass-card reveal stagger-1"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--primary) 0%, #10B981 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-document.png" alt="Fundamentals"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: var(--primary); font-weight: 700;">
+                        1. AI Fundamentals</h3>
+                    <ul class="curriculum-list">
+                        <li>Introduction to AI</li>
+                        <li>Generative AI Ecosystem</li>
+                        <li>Basics of LLMs</li>
+                    </ul>
+                </div>
+
+                <!-- Module 2 -->
+                <div class="glass-card reveal stagger-2"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent-blue) 0%, #3B82F6 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-puzzle.png" alt="Tools"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: var(--accent-blue); font-weight: 700;">
+                        2. Generative AI Tools</h3>
+                    <ul class="curriculum-list">
+                        <li>ChatGPT & Prompt Eng.</li>
+                        <li>DALL-E & Midjourney</li>
+                        <li>Creative Output Design</li>
+                    </ul>
+                </div>
+
+                <!-- Module 3 -->
+                <div class="glass-card reveal stagger-3"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-trainers.png" alt="Apps"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #F59E0B; font-weight: 700;">
+                        3. Practical Apps</h3>
+                    <ul class="curriculum-list">
+                        <li>AI in Marketing & Biz</li>
+                        <li>Task Automation</li>
+                        <li>Workflow Optimization</li>
+                    </ul>
+                </div>
+
+                <!-- Module 4 -->
+                <div class="glass-card reveal stagger-4"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #E1306C 0%, #F43F5E 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(225, 48, 108, 0.1) 0%, rgba(225, 48, 108, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-rocket.png" alt="Projects"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #E1306C; font-weight: 700;">
+                        4. Projects & Practice</h3>
+                    <ul class="curriculum-list">
+                        <li>Real-world AI Solutions</li>
+                        <li>Hands-on Case Studies</li>
+                        <li>Final Capstone Project</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIENCE & CAREERS -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, white 0%, var(--gray-50) 100%); position: relative; overflow: hidden;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="row-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; align-items: stretch; max-width: 1100px; margin: 0 auto;">
+
+                <!-- Who Should Join -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 1.5rem; height: 100%;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <img src="../assets/images/icons/icon-trainers.png" alt="Audience"
+                                    style="width: 28px; height: 28px;">
+                            </div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--gray-800);">Who Should Join?
+                            </h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(139, 92, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem; color: var(--gray-700);">
+                                <span style="color: #8B5CF6; font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Marketing & Content professionals
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(139, 92, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem; color: var(--gray-700);">
+                                <span style="color: #8B5CF6; font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Designers & Visual artists
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(139, 92, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem; color: var(--gray-700);">
+                                <span style="color: #8B5CF6; font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Business analysts & Strategists
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(139, 92, 246, 0.05); border-radius: 0.75rem; color: var(--gray-700);">
+                                <span style="color: #8B5CF6; font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Entrepreneurs & Tech enthusiasts
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Career Opportunities -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 1.5rem; height: 100%;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <img src="../assets/images/icons/icon-rocket.png" alt="Careers"
+                                    style="width: 28px; height: 28px;">
+                            </div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--gray-800);">Career Outlook</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem; color: var(--gray-700);">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">→</span>
+                                AI Content Specialist
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem; color: var(--gray-700);">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">→</span>
+                                Prompt Engineer
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem; color: var(--gray-700);">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">→</span>
+                                AI Marketing Analyst
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; color: var(--gray-700);">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">→</span>
+                                AI Product Manager
+                            </li>
+                        </ul>
+                        <p
+                            style="margin-top: 2rem; color: var(--gray-500); font-size: 0.9rem; font-weight: 600; text-align: center; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem;">
+                            Expected Salary: <span style="color: var(--primary);">₹6L - ₹12L PA</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section" style="padding: 6rem 0; background: white; position: relative; overflow: hidden;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 5rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">COMMON
+                    QUERIES</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Frequently Asked Questions
+                </h2>
+                <p style="font-size: 1.15rem; color: var(--gray-600);">Everything you need to know about the Generative
+                    AI course</p>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; display: grid; gap: 1.5rem;">
+                <!-- FAQ 1 -->
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%); border-left: 4px solid #10B981;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #10B981 0%, #34D399 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            1</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Do I need
+                                coding skills for this course?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Not always. Many tools have
+                                user-friendly interfaces, though advanced integration may require some code. We cover
+                                both no-code and code-based approaches.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%); border-left: 4px solid #3B82F6;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            2</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Can Generative
+                                AI replace humans?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">It is a powerful tool for creativity
+                                and automation but cannot replace human intuition, emotional intelligence, and strategic
+                                thinking. It augments human capabilities rather than replacing them.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(225, 48, 108, 0.05) 0%, transparent 100%); border-left: 4px solid #E1306C;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #E1306C 0%, #F43F5E 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            3</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">What tools are
+                                covered in this course?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">ChatGPT, DALL·E, MidJourney, Runway,
+                                AIVA, and other cutting-edge generative AI platforms across text, image, and multimedia
+                                generation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%); border-left: 4px solid #F59E0B;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            4</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Who is eligible
+                                for this course?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">This course is open to students,
+                                professionals, entrepreneurs, and anyone interested in AI. No specific technical
+                                background is mandatory as we start from the basics.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%); border-left: 4px solid #10B981;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #10B981 0%, #34D399 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            5</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Is there
+                                placement assistance after the course?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Yes, we offer career guidance, resume
+                                building, and placement assistance to help you secure roles in the rapidly growing field
+                                of Generative AI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENQUIRY SECTION -->
+    <section class="section section-mesh" id="enroll" style="padding: 6rem 0; overflow: hidden; position: relative;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="glass-card reveal enquiry-grid"
+                style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 4rem; align-items: start; padding: 4rem; border-radius: 2.5rem;">
+
+                <!-- CTA Side -->
+                <div style="text-align: left;">
+                    <span
+                        style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(16, 185, 129, 0.1); color: #10B981; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1.5rem; letter-spacing: 1px;">ENROLL
+                        TODAY</span>
+                    <h2 class="text-gradient" style="font-size: 2.8rem; line-height: 1.1; margin-bottom: 1.5rem;">Start
+                        Your Generative AI Career Today</h2>
+                    <p style="color: var(--gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2.5rem;">Join
+                        the AI revolution and master tools like ChatGPT, Midjourney, and LLM automation with hands-on
+                        projects.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <button class="cta-btn btn-lg"
+                            style="width: 100%; text-align: center; border: none; cursor: pointer;">🚀 Enroll Now
+                            →</button>
+                        <a href="../contact.html?type=demo&course=generative-ai" class="btn btn-outline btn-lg"
+                            style="width: 100%; text-align: center; border-color: var(--primary); color: var(--primary); background: rgba(16, 185, 129, 0.05); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            🎓 Book Free Demo →
+                        </a>
+                        <a href="tel:+919876543210" class="btn btn-outline btn-lg"
+                            style="width: 100%; text-align: center; border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.05); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            📞 Talk to an Expert →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="enquiry-form-card"
+                    style="background: white; padding: 3rem; border-radius: 2rem; box-shadow: var(--shadow-2xl); border: 1px solid rgba(0,0,0,0.05);">
+                    <form id="genaiEnquiryForm" class="grid-1" style="gap: 1.5rem;">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Mobile Number" required
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <select
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); color: var(--gray-700); font-size: 1rem; cursor: pointer;">
+                                <option value="generative-ai" selected>Generative AI Course</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); color: var(--gray-700); font-size: 1rem; cursor: pointer;">
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="online">Online Training</option>
+                                <option value="offline">Offline (Chennai)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="cta-btn"
+                            style="width: 100%; padding: 1.1rem; border-radius: 0.75rem; font-weight: 700; border: none; cursor: pointer;">Send
+                            Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <img src="../assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+                    </a>
+                    <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+                        Science,
+                        Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="machine-learning.html">Machine Learning</a></li>
+                        <li><a href="data-science.html">Data Science</a></li>
+                        <li><a href="generative-ai.html">Generative AI</a></li>
+                        <li><a href="data-analytics.html">Data Analyst</a></li>
+                        <li><a href="java.html">Full Stack Java Development</a></li>
+                        <li><a href="python.html">Full Stack Python Development</a></li>
+                        <li><a href="hr-training.html">HR Training</a></li>
+                        <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../pet-program.html">PET Program</a></li>
+                        <li><a href="../career-guidance.html">Career Guidance</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="../careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>📍 123 Tech Park, Bangalore, India</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>📧 info@orianaacademy.com</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit">→</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a>
+                    | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/auth-state.js"></script>
+
+    <script src="../js/main.js"></script>
+    <!-- AI Chatbot -->
+    <link rel="stylesheet" href="../css/chatbot.css">
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>

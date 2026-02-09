@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Training Course | Oriana Academy</title>
+    <meta name="description"
+        content="Build a Successful Career in Human Resource Management. Learn recruitment, payroll, performance management at Oriana Academy.">
+    <link rel="stylesheet" href="../css/main.css?v=28.0">
+    <style>
+        .faq-item {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+            transition: all var(--transition-normal)
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all var(--transition-fast)
+        }
+
+        .faq-question:hover {
+            background: var(--gradient-subtle)
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform var(--transition-fast)
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg)
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal)
+        }
+
+        .faq-answer-content {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            color: var(--text-secondary)
+        }
+
+        .curriculum-list {
+            list-style: none;
+            padding: 0
+        }
+
+        .curriculum-list li {
+            padding: var(--spacing-sm);
+            margin-bottom: var(--spacing-xs);
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 3px solid var(--primary-orange);
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast)
+        }
+
+        .curriculum-list li:hover {
+            background: var(--gradient-subtle);
+            transform: translateX(5px)
+        }
+
+        .curriculum-list li::before {
+            content: '✓';
+            color: var(--primary-green);
+            font-weight: bold;
+            margin-right: var(--spacing-sm)
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container"><a href="../index.html" class="logo">
+                <img src="../assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="machine-learning.html">Machine Learning</a></li>
+                            <li><a href="data-science.html">Data Science</a></li>
+                            <li><a href="generative-ai.html">Generative AI</a></li>
+                            <li><a href="data-analytics.html">Data Analyst</a></li>
+                            <li><a href="java.html">Full Stack Java Development</a></li>
+                            <li><a href="python.html">Full Stack Python Development</a></li>
+                            <li><a href="hr-training.html">HR Training</a></li>
+                            <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../pet-program.html">PET</a></li>
+                    <li><a href="../career-guidance.html">Career Guidance</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="../login.html" class="login-link">Sign In</a>
+                <a href="../contact.html" class="cta-btn">Enroll Now</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- MODERN HERO -->
+    <section class="hero">
+        <div class="hero-blob-3"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="tagline reveal delay-1">HUMAN RESOURCE MANAGEMENT</span>
+                <h1 class="reveal delay-1">Build Your Career in HR Management</h1>
+                <p class="description reveal delay-2">Master recruitment, payroll, performance management, and
+                    compliance to become an HR professional.</p>
+                <div class="hero-actions reveal delay-2">
+                    <a href="../contact.html" class="btn-enroll">Enroll Now <span>→</span></a>
+                    <a href="#curriculum" class="btn-learn-more">View Curriculum →</a>
+                </div>
+
+            </div>
+            <div class="hero-visual reveal delay-3">
+                <div class="hero-image-wrapper">
+                    <img src="../assets/images/hr-training-3d.png" alt="HR Training" class="hero-main-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section section-mesh">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="text-gradient">Course Overview</h2>
+            </div>
+            <div style="max-width:900px;margin:0 auto">
+                <div class="card reveal">
+                    <p style="font-size:var(--font-size-lg);line-height:1.8">
+                        Covers the complete HR lifecycle—recruitment, payroll, performance management, and compliance.
+                        Designed for practical, industry-ready skills that prepare you for leadership and operational
+                        roles in human resources.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section achievement-tabs" id="curriculum"
+        style="background: linear-gradient(180deg, #f9fafb 0%, #f0f9ff 100%);">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 style="font-size: 2.5rem; font-weight: 800;">What You Will Master</h2>
+                <p>Complete HR management from basics to advanced</p>
+            </div>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div class="reveal stagger-1"
+                    style="background: white; padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 4px solid var(--gt-primary);">
+                    <div
+                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(96, 165, 250, 0.15)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg style="width: 34px; height: 34px; fill: var(--gt-primary);" viewBox="0 0 24 24">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+                            <path d="M20 8v6M23 11h-6" />
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--gt-primary); font-weight: 700;">
+                        Recruitment</h3>
+                    <ul style="list-style: none; padding: 0; color: var(--gray-600); line-height: 2.2;">
+                        <li>✓ Talent Acquisition</li>
+                        <li>✓ Recruitment Strategies</li>
+                        <li>✓ Selection Process</li>
+                    </ul>
+                </div>
+                <div class="reveal stagger-2"
+                    style="background: white; padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 4px solid #E1306C;">
+                    <div
+                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(225, 48, 108, 0.15), rgba(253, 29, 29, 0.15)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg style="width: 34px; height: 34px; fill: #E1306C;" viewBox="0 0 24 24">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #E1306C; font-weight: 700;">HR Operations
+                    </h3>
+                    <ul style="list-style: none; padding: 0; color: var(--gray-600); line-height: 2.2;">
+                        <li>✓ Payroll Management</li>
+                        <li>✓ Performance Management</li>
+                        <li>✓ Employee Engagement</li>
+                    </ul>
+                </div>
+                <div class="reveal stagger-3"
+                    style="background: white; padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 4px solid #4285F4;">
+                    <div
+                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(66, 133, 244, 0.15), rgba(52, 168, 83, 0.15)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg style="width: 34px; height: 34px; fill: #4285F4;" viewBox="0 0 24 24">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
+                            <path d="M14 2v6h6" />
+                            <path d="M16 13H8m8 4H8m2-8H8" />
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: #4285F4; font-weight: 700;">Compliance
+                    </h3>
+                    <ul style="list-style: none; padding: 0; color: var(--gray-600); line-height: 2.2;">
+                        <li>✓ Labour Laws</li>
+                        <li>✓ HR Policies</li>
+                        <li>✓ Statutory Compliance</li>
+                    </ul>
+                </div>
+                <div class="reveal stagger-4"
+                    style="background: white; padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.08); border-top: 4px solid var(--gt-secondary);">
+                    <div
+                        style="width: 64px; height: 64px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(52, 211, 153, 0.15)); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                        <svg style="width: 34px; height: 34px; fill: var(--gt-secondary);" viewBox="0 0 24 24">
+                            <path d="M3 3v18h18M7 16l4-4 4 4 6-6" />
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1rem; color: var(--gt-secondary); font-weight: 700;">HR
+                        Analytics</h3>
+                    <ul style="list-style: none; padding: 0; color: var(--gray-600); line-height: 2.2;">
+                        <li>✓ HR Reporting</li>
+                        <li>✓ Data-Driven Decisions</li>
+                        <li>✓ Retention Strategies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mesh">
+        <div class="container">
+            <div class="grid-2">
+                <div class="reveal">
+                    <h2 class="text-gradient">Who Can Enroll?</h2>
+                    <div class="card">
+                        <ul class="curriculum-list">
+                            <li>HR professionals wanting to upskill</li>
+                            <li>Team Leaders & Managers</li>
+                            <li>Business Owners</li>
+                            <li>Fresh graduates interested in HR</li>
+                            <li>Career changers into HR field</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h2 class="text-gradient">Career Opportunities</h2>
+                    <div class="card">
+                        <ul class="curriculum-list">
+                            <li>HR Executive</li>
+                            <li>HR Generalist</li>
+                            <li>Recruiter / Talent Acquisition</li>
+                            <li>Payroll Executive</li>
+                            <li>HR Manager</li>
+                            <li>HR Business Partner</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-dark-secondary)">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="text-gradient">Frequently Asked Questions</h2>
+            </div>
+            <div style="max-width:900px;margin:0 auto">
+                <div class="faq-item reveal">
+                    <div class="faq-question"><span>Who should attend this course?</span></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">HR professionals, Team Leaders, Business Owners, and fresh
+                            graduates interested in building a career in human resources.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question"><span>Can this help with career advancement?</span></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">Absolutely! It equips you with advanced skills for promotions
+                            and leadership roles in HR departments across industries.</div>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <div class="faq-question"><span>Will I learn about HR software?</span></div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">Yes, you'll be introduced to popular HR management systems
+                            (HRMS) and payroll software used in the industry.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-mesh">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="text-gradient">Ready to Build Your HR Career?</h2>
+                <p>Master human resource management with expert training</p>
+                <div style="margin-top:2rem">
+                    <a href="../contact.html" class="btn btn-primary btn-large">Enroll in This Course</a>
+                    <a href="../career-guidance.html" class="btn btn-secondary btn-large" style="margin-left:1rem">Talk
+                        to Career Expert</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <img src="../assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+                    </a>
+                    <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+                        Science,
+                        Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="machine-learning.html">Machine Learning</a></li>
+                        <li><a href="data-science.html">Data Science</a></li>
+                        <li><a href="generative-ai.html">Generative AI</a></li>
+                        <li><a href="data-analytics.html">Data Analyst</a></li>
+                        <li><a href="java.html">Full Stack Java Development</a></li>
+                        <li><a href="python.html">Full Stack Python Development</a></li>
+                        <li><a href="hr-training.html">HR Training</a></li>
+                        <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../pet-program.html">PET Program</a></li>
+                        <li><a href="../career-guidance.html">Career Guidance</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="../careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>📍 123 Tech Park, Bangalore, India</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>📧 info@orianaacademy.com</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit">→</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a>
+                    | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/auth-state.js"></script>
+
+    <script src="../js/main.js"></script>
+    <!-- AI Chatbot -->
+    <link rel="stylesheet" href="../css/chatbot.css">
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>

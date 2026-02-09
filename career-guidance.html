@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Oriana Academy - Join Our Team</title>
+    <meta name="description"
+        content="Join Oriana Academy and help shape the future of IT education. Applications open for Mentors and Career Counselors.">
+    <link rel="stylesheet" href="css/main.css?v=28.0">
+    <style>
+        .career-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            transition: all var(--transition-normal);
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+        }
+
+        .form-section {
+            background: var(--bg-dark-secondary);
+            padding: 5rem 0;
+        }
+
+        .application-form {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 4rem;
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-md);
+            font-family: inherit;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .benefit-tag {
+            background: var(--primary-50);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container"><a href="index.html" class="logo">
+                <img src="assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+                            <li><a href="courses/data-science.html">Data Science</a></li>
+                            <li><a href="courses/generative-ai.html">Generative AI</a></li>
+                            <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+                            <li><a href="courses/java.html">Full Stack Java Development</a></li>
+                            <li><a href="courses/python.html">Full Stack Python Development</a></li>
+                            <li><a href="courses/hr-training.html">HR Training</a></li>
+                            <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="pet-program.html">PET</a></li>
+                    <li><a href="career-guidance.html">Career Guidance</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="login-link">Sign In</a>
+                <a href="contact.html" class="cta-btn">Enroll Now</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- PREMIUM HERO -->
+    <section class="hero">
+        <div class="hero-blob-3"></div>
+        <div class="container">
+            <div class="hero-content">
+                <span class="tagline reveal delay-1">Professional Excellence</span>
+                <h1 class="reveal delay-1" style="color: #1a1a1a;">Oriana Academy</h1>
+                <p class="description reveal delay-2"
+                    style="color: var(--gray-600); font-size: 1.1rem; line-height: 1.6;">
+                    Join India's leading IT training institute. Our dedicated platform for mentors and counselors helps
+                    shape the future of technology education together.
+                </p>
+                <div class="hero-actions reveal delay-2">
+                    <a href="#application-form" class="btn btn-primary btn-lg">Apply Now →</a>
+                    <a href="contact.html?type=expert" class="btn btn-outline btn-lg"
+                        style="margin-left: 1rem; border-color: var(--primary); color: var(--primary);">Talk to HR</a>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal delay-3">
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/career-support.png" alt="Career Support Oriana Academy" class="main-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY WORK WITH US -->
+    <section class="section section-mesh">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="text-gradient">Why Work With Us</h2>
+                <p>Grow Your Career While Empowering Others</p>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; margin-bottom: 4rem;">
+                <p style="font-size: 1.2rem; color: var(--gray-600); line-height: 1.7;">
+                    At Oriana Academy, we believe in creating meaningful careers for educators, mentors, and
+                    professionals who want to make a real impact.
+                </p>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-card reveal stagger-1">
+                    <div class="feature-icon"><img src="assets/images/icons/icon-rocket.png" alt="Impact"></div>
+                    <h3>Impactful Work</h3>
+                    <p>Inspire and shape future professionals through your expertise.</p>
+                </div>
+                <div class="feature-card reveal stagger-2">
+                    <div class="feature-icon"><img src="assets/images/icons/icon-growth.png" alt="Growth"></div>
+                    <h3>Fast Growth</h3>
+                    <p>Work with a fast-growing EdTech brand at the forefront of innovation.</p>
+                </div>
+                <div class="feature-card reveal stagger-3">
+                    <div class="feature-icon"><img src="assets/images/icons/icon-trainers.png" alt="Collaboration">
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>Thrive in a supportive and collaborative work culture.</p>
+                </div>
+                <div class="feature-card reveal stagger-4">
+                    <div class="feature-icon"><img src="assets/images/icons/icon-portfolio.png" alt="Recognition"></div>
+                    <h3>Recognition</h3>
+                    <p>Competitive compensation and recognition for your contributions.</p>
+                </div>
+                <div class="feature-card reveal stagger-5">
+                    <div class="feature-icon"><img src="assets/images/icons/icon-case-study.png" alt="Development">
+                    </div>
+                    <h3>Development</h3>
+                    <p>Continuous learning and development programs for your growth.</p>
+                </div>
+                <div class="feature-card reveal stagger-6">
+                    <div class="feature-icon"><img src="assets/images/icons/icon-partners.png" alt="Leadership"></div>
+                    <h3>Leadership</h3>
+                    <p>Exciting career growth and leadership opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLY AS MENTOR -->
+    <section class="section section-green-dark" id="apply-mentor">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="reveal-left">
+                    <span class="benefit-tag" style="background: rgba(255, 255, 255, 0.1); color: white;">Mentor
+                        Role</span>
+                    <h2 style="color: white; font-size: 2.5rem; margin-bottom: 1.5rem;">Empower Learners With
+                        Industry-Relevant Skills</h2>
+                    <p style="color: rgba(255,255,255,0.8); margin-bottom: 2rem; font-size: 1.1rem;">
+                        Join as a Mentor and help students master in-demand technologies through hands-on training and
+                        real-world guidance.
+                    </p>
+
+                    <div
+                        style="background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 1.5rem; margin-bottom: 2rem; border: 1px solid rgba(255,255,255,0.1);">
+                        <h4 style="color: white; margin-bottom: 1rem;">Role Overview</h4>
+                        <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">
+                            As a Mentor at Oriana Academy, you will deliver practical training, support project-based
+                            learning, and guide learners toward professional success.
+                        </p>
+                    </div>
+
+                    <h4 style="color: white; margin-bottom: 1.5rem;">Responsibilities</h4>
+                    <ul class="curriculum-list" style="color: rgba(255,255,255,0.8);">
+                        <li
+                            style="color: white; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                            Deliver industry-focused training programs</li>
+                        <li
+                            style="color: white; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                            Conduct live online / offline sessions</li>
+                        <li
+                            style="color: white; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                            Guide students through real-time projects</li>
+                        <li
+                            style="color: white; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+                            Provide continuous feedback and mentoring</li>
+                    </ul>
+                </div>
+
+                <div class="career-card reveal-right"
+                    style="border-top: 5px solid var(--primary); background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                    <h3 style="color: white; margin-bottom: 1.5rem;">Who Can Apply</h3>
+                    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem;">
+                        <li style="display: flex; gap: 1rem; align-items: center; color: white;">✅ Industry
+                            professionals</li>
+                        <li style="display: flex; gap: 1rem; align-items: center; color: white;">✅ Experienced trainers
+                        </li>
+                        <li style="display: flex; gap: 1rem; align-items: center; color: white;">✅ Subject matter
+                            experts</li>
+                        <li style="display: flex; gap: 1rem; align-items: center; color: white;">✅ Corporate pros
+                            transitioning to teaching</li>
+                        <li style="display: flex; gap: 1rem; align-items: center; color: white;">✅ Passionate educators
+                        </li>
+                    </ul>
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <a href="#application-form" class="btn btn-primary btn-block">Apply for Mentor Role</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLY AS COUNSELOR -->
+    <section class="section section-mesh" id="apply-counselor">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="reveal-left">
+                    <span class="benefit-tag">Counselor Role</span>
+                    <h2 class="text-gradient" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Guide Learners Toward
+                        the Right Career Path</h2>
+                    <p style="color: var(--gray-600); margin-bottom: 2rem; font-size: 1.1rem;">
+                        Join as a Career Counselor and help students make informed career decisions, build confidence,
+                        and achieve long-term success.
+                    </p>
+
+                    <div
+                        style="background: var(--gray-50); padding: 2rem; border-radius: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--gray-200);">
+                        <h4 style="margin-bottom: 1rem; color: var(--gray-900);">Role Overview</h4>
+                        <p style="color: var(--gray-600); line-height: 1.6;">
+                            As a Career Counselor, you will support learners in identifying their strengths, choosing
+                            suitable career paths, and preparing for professional opportunities.
+                        </p>
+                    </div>
+
+                    <h4 style="margin-bottom: 1.5rem;">Responsibilities</h4>
+                    <ul class="curriculum-list">
+                        <li>Provide personalized career counseling sessions</li>
+                        <li>Help learners set career goals and plans</li>
+                        <li>Conduct one-on-one mentorship meetings</li>
+                        <li>Assist with placement and job readiness</li>
+                    </ul>
+                </div>
+
+                <div class="career-card reveal-right"
+                    style="border-top: 5px solid #9333EA; background: var(--white); box-shadow: var(--shadow-xl);">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--gray-900);">Who Can Apply</h3>
+                    <ul
+                        style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1rem; color: var(--gray-600);">
+                        <li style="display: flex; gap: 1rem; align-items: center;">✅ Career advisors</li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">✅ HR professionals</li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">✅ Education counselors</li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">✅ Placement officers</li>
+                        <li style="display: flex; gap: 1rem; align-items: center;">✅ Counseling graduates</li>
+                    </ul>
+                    <hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--gray-100);">
+                    <a href="#application-form" class="btn btn-outline btn-block"
+                        style="border-color: #9333EA; color: #9333EA;">Apply for Counselor Role</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPLICATION FORM SECTION -->
+    <section class="form-section" id="application-form">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="text-gradient">Ready to Join Us?</h2>
+                <p>Fill out the form below and we'll get back to you shortly.</p>
+            </div>
+
+            <div class="application-form reveal">
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="+91 98765 43210" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" placeholder="City, State" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Role Applying For</label>
+                            <select id="roleSelect" required>
+                                <option value="">Select a role</option>
+                                <option value="mentor">Mentor</option>
+                                <option value="counselor">Career Counselor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Years of Experience</label>
+                            <input type="number" placeholder="5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>LinkedIn Profile (Optional)</label>
+                        <input type="url" placeholder="https://linkedin.com/in/username">
+                    </div>
+
+                    <!-- Mentor Specific Fields -->
+                    <div id="mentorFields" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Subject / Course Expertise</label>
+                                <input type="text" placeholder="e.g. Python, Data Science">
+                            </div>
+                            <div class="form-group">
+                                <label>Portfolio / Sample Work URL</label>
+                                <input type="url" placeholder="https://github.com/username">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Counselor Specific Fields -->
+                    <div id="counselorFields" style="display: none;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Counseling Experience (Years)</label>
+                                <input type="number" placeholder="3">
+                            </div>
+                            <div class="form-group">
+                                <label>Career Guidance Expertise</label>
+                                <input type="text" placeholder="e.g. IT, Management">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Why Do You Want to Join Oriana Academy?</label>
+                        <textarea rows="4" placeholder="Tell us about your passion for education..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Resume Upload (PDF / DOC)</label>
+                        <input type="file" accept=".pdf,.doc,.docx" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">Submit
+                        Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIFE AT ORIANA -->
+    <section class="section section-mesh">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div class="reveal-left">
+                    <h2 class="text-gradient">Life at Oriana Academy</h2>
+                    <p style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--primary);">Work.
+                        Learn. Grow. Lead.</p>
+                    <p style="color: var(--gray-600); margin-bottom: 2rem; line-height: 1.7;">
+                        At Oriana Academy, we promote a culture of innovation, collaboration, and continuous learning.
+                        Our team members are encouraged to share ideas, develop new skills, and grow into leadership
+                        roles.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; color: var(--gray-600);">
+                        <div style="display: flex; gap: 0.5rem; align-items: center;"><span
+                                style="color: var(--primary);">✅</span> Flexible schedules</div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;"><span
+                                style="color: var(--primary);">✅</span> Performance incentives</div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;"><span
+                                style="color: var(--primary);">✅</span> Positive environment</div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;"><span
+                                style="color: var(--primary);">✅</span> Career advancement</div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;"><span
+                                style="color: var(--primary);">✅</span> Training & Support</div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center;"><span
+                                style="color: var(--primary);">✅</span> Inclusive culture</div>
+                    </div>
+                </div>
+                <div class="reveal-right">
+                    <div class="hero-image-wrapper" style="height: auto; padding: 0;">
+                        <img src="assets/images/about-team.png" alt="Life at Oriana"
+                            style="border-radius: 2rem; box-shadow: var(--shadow-2xl); width: 100%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section-dark-blue" style="text-align: center; padding: 6rem 0;">
+        <div class="container">
+            <div class="reveal">
+                <h2 style="color: white; font-size: 3rem; margin-bottom: 1.5rem; font-family: var(--font-heading);">
+                    Ready to Build Careers and Change Lives?</h2>
+                <p
+                    style="color: rgba(255,255,255,0.8); font-size: 1.25rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6;">
+                    Join Oriana Academy and become part of a mission-driven organization shaping the future of
+                    technology education across the globe.
+                </p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="#apply-mentor" class="btn btn-primary btn-lg">Apply as Mentor →</a>
+                    <a href="#apply-counselor" class="btn btn-outline btn-lg"
+                        style="border-color: rgba(255,255,255,0.4); color: white;">Apply as Counselor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+                    </a>
+                    <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+                        Science,
+                        Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+                        <li><a href="courses/data-science.html">Data Science</a></li>
+                        <li><a href="courses/generative-ai.html">Generative AI</a></li>
+                        <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+                        <li><a href="courses/java.html">Full Stack Java Development</a></li>
+                        <li><a href="courses/python.html">Full Stack Python Development</a></li>
+                        <li><a href="courses/hr-training.html">HR Training</a></li>
+                        <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="pet-program.html">PET Program</a></li>
+                        <li><a href="career-guidance.html">Career Guidance</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>📍 123 Tech Park, Bangalore, India</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>📧 info@orianaacademy.com</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit">→</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a>
+                    | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/auth-state.js"></script>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Form field toggle logic
+        const roleSelect = document.getElementById('roleSelect');
+        const mentorFields = document.getElementById('mentorFields');
+        const counselorFields = document.getElementById('counselorFields');
+
+        roleSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'mentor') {
+                mentorFields.style.display = 'block';
+                counselorFields.style.display = 'none';
+            } else if (e.target.value === 'counselor') {
+                mentorFields.style.display = 'none';
+                counselorFields.style.display = 'block';
+            } else {
+                mentorFields.style.display = 'none';
+                counselorFields.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

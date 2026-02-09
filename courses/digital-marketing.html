@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Course in Chennai | SEO, SMM, PPC Training | Oriana Academy</title>
+    <meta name="description"
+        content="Learn Digital Marketing at Oriana Academy. Master SEO, Google Ads, Social Media Marketing, Analytics, and real-time campaigns with expert mentors in English & Tamil.">
+    <meta name="keywords"
+        content="digital marketing course, seo training, social media marketing course, google ads training, online marketing course, digital marketing in chennai, tamil digital marketing">
+    <link rel="stylesheet" href="../css/main.css?v=28.0">
+    <style>
+        /* Premium Text Gradient */
+        .text-gradient {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-2xl);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-xl);
+            transition: all var(--transition-normal);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-2xl), var(--shadow-glow);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Hero Image Parallax & Glow */
+        .hero-main-img {
+            filter: drop-shadow(0 20px 40px rgba(16, 185, 129, 0.3));
+        }
+
+        @keyframes heroFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        /* Floating Assets in Hero */
+        .floating-dm-asset {
+            position: absolute;
+            z-index: 2;
+            pointer-events: none;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+        }
+
+        @keyframes assetFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) rotate(0);
+            }
+
+            25% {
+                transform: translate(10px, -15px) rotate(5deg);
+            }
+
+            50% {
+                transform: translate(-5px, -25px) rotate(-3deg);
+            }
+
+            75% {
+                transform: translate(-15px, -10px) rotate(3deg);
+            }
+        }
+
+        .dm-asset-1 {
+            top: 10%;
+            left: -5%;
+            width: 80px;
+            animation-delay: 0s;
+        }
+
+        .dm-asset-2 {
+            bottom: 15%;
+            right: -5%;
+            width: 90px;
+            animation-delay: 2s;
+        }
+
+        .dm-asset-3 {
+            top: 40%;
+            right: 10%;
+            width: 60px;
+            animation-delay: 4s;
+        }
+
+        /* Grid Pattern Background */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-sm);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+        }
+
+        .faq-question {
+            padding: var(--spacing-md);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-question:hover {
+            background: var(--gradient-subtle);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height var(--transition-normal);
+        }
+
+        .faq-answer-content {
+            padding: 0 var(--spacing-md) var(--spacing-md);
+            color: var(--text-secondary);
+        }
+
+        .curriculum-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .curriculum-list li {
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 3px solid #10B981;
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-fast);
+        }
+
+        .curriculum-list li:hover {
+            transform: translateX(5px);
+            background: var(--primary-50);
+        }
+
+        .curriculum-list li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* Responsive Overrides */
+        @media (max-width: 768px) {
+            .section {
+                padding: 4rem 0 !important;
+            }
+
+            .glass-card {
+                padding: 1.5rem !important;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem 0 !important;
+                text-align: center;
+            }
+
+            .hero .container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                gap: 1.25rem;
+                align-items: center !important;
+            }
+
+            .hero-actions .btn,
+            .hero-actions .cta-btn {
+                margin: 0 !important;
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: flex !important;
+                justify-content: center !important;
+                width: 100% !important;
+            }
+
+            .hero-image-wrapper {
+                max-width: 450px !important;
+                width: 100% !important;
+                display: block !important;
+            }
+
+            .floating-dm-asset,
+            .float-circle,
+            .float-dots,
+            .float-icon,
+            .hero-image,
+            .hero-float-1,
+            .hero-float-2,
+            .hero-float-3 {
+                display: block !important;
+            }
+
+            .section-header h2 {
+                font-size: 2rem !important;
+            }
+
+            /* Grid Overrides */
+            .row-grid,
+            .stats-grid,
+            .curriculum-grid,
+            .audience-grid,
+            .enquiry-grid,
+            .advantage-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+
+            .glass-card-stats {
+                grid-template-columns: 1fr 1fr !important;
+            }
+
+            .faq-card-content {
+                padding: 1.5rem !important;
+            }
+
+            .enquiry-form-card {
+                padding: 1.5rem !important;
+                border-radius: 1.5rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem !important;
+            }
+
+            .glass-card-stats {
+                grid-template-columns: 1fr !important;
+            }
+
+            .trust-avatars {
+                justify-content: center;
+            }
+        }
+
+        .section-header span {
+            display: table !important;
+            margin: 0 auto 1rem !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container"><a href="../index.html" class="logo">
+                <img src="../assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="machine-learning.html">Machine Learning</a></li>
+                            <li><a href="data-science.html">Data Science</a></li>
+                            <li><a href="generative-ai.html">Generative AI</a></li>
+                            <li><a href="data-analytics.html">Data Analyst</a></li>
+                            <li><a href="java.html">Full Stack Java Development</a></li>
+                            <li><a href="python.html">Full Stack Python Development</a></li>
+                            <li><a href="hr-training.html">HR Training</a></li>
+                            <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="../pet-program.html">PET</a></li>
+                    <li><a href="../career-guidance.html">Career Guidance</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="../login.html" class="login-link">Sign In</a>
+                <a href="../contact.html" class="cta-btn">Enroll Now</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+
+    <!-- PREMIUM HERO - Digital Marketing -->
+    <section class="hero">
+        <div class="bg-grid"></div>
+        <div class="hero-blob-1"></div>
+        <div class="hero-blob-2"></div>
+        <div class="hero-blob-3"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <span class="tagline reveal delay-1">DIGITAL MARKETING TRAINING COURSE</span>
+                <h1 class="reveal delay-1">Become a <span class="text-gradient">Certified</span> Digital Marketing
+                    Professional</h1>
+                <p class="description reveal delay-2" style="font-weight: 600; color: var(--gray-700);">SEO • Google Ads
+                    • Social Media • Real Campaigns • Live Projects • Online & Offline • English & Tamil</p>
+
+                <div class="hero-actions reveal delay-2">
+                    <a href="../contact.html?type=enroll&course=digital-marketing" class="cta-btn btn-lg">Enroll Now
+                        →</a>
+                    <a href="../contact.html?type=demo&course=digital-marketing" class="btn btn-outline btn-lg"
+                        style="margin-left: 1rem; border-color: var(--primary); color: var(--primary); background: rgba(16, 185, 129, 0.05);">Book
+                        Free Demo →</a>
+                    <a href="#" class="btn btn-outline btn-lg"
+                        style="margin-left: 1rem; border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.05);">Download
+                        Syllabus →</a>
+                </div>
+
+                <div class="hero-trust reveal delay-2"
+                    style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+                    <div class="trust-avatars" style="display: flex;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; background: #ddd; margin-right: -15px;">
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; background: #ccc; margin-right: -15px;">
+                        </div>
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid white; background: #bbb;">
+                        </div>
+                    </div>
+                    <span style="font-size: 0.9rem; color: var(--gray-500); font-weight: 500;">Trusted by 2,000+
+                        Students</span>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal delay-3"
+                style="display: flex; justify-content: flex-end; align-items: center;">
+                <div class="hero-image-wrapper" style="position: relative; max-width: 600px; width: 100%;">
+                    <!-- Main Image -->
+                    <img src="../assets/images/digital-marketing-3d.png" alt="Digital Marketing Training"
+                        class="hero-main-img"
+                        style="width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.1));">
+
+                    <!-- Floating Decorative Assets -->
+                    <img src="../assets/images/icons/icon-rocket.png" class="floating-dm-asset dm-asset-1" alt="Growth">
+                    <img src="../assets/images/icons/icon-growth.png" class="floating-dm-asset dm-asset-2" alt="Scale">
+                    <img src="../assets/images/icons/icon-email.png" class="floating-dm-asset dm-asset-3"
+                        alt="Email Marketing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- OVERVIEW -->
+    <section class="section" style="padding: 6rem 0; position: relative; overflow: hidden;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--primary-50); color: var(--primary); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">ABOUT
+                    THIS COURSE</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Course Overview</h2>
+            </div>
+
+            <div class="row-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto;">
+                <!-- Left: Key Stats -->
+                <div class="reveal">
+                    <div class="glass-card-stats" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div
+                                style="font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 0.5rem;">
+                                3+</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Months Duration
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div
+                                style="font-size: 2.5rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.5rem;">
+                                15+</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Live Projects
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: #E1306C; margin-bottom: 0.5rem;">
+                                100%</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Practical Training
+                            </div>
+                        </div>
+                        <div class="glass-card" style="padding: 2rem; text-align: center;">
+                            <div style="font-size: 2.5rem; font-weight: 800; color: #F59E0B; margin-bottom: 0.5rem;">
+                                24/7</div>
+                            <div style="font-size: 0.9rem; color: var(--gray-600); font-weight: 600;">Mentor Support
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Description -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 3rem; border-left: 4px solid var(--primary);">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--gray-800); font-weight: 700;">
+                            Master the Art of Digital Marketing</h3>
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: var(--gray-600); margin-bottom: 1.5rem;">
+                            Digital Marketing is the backbone of modern business growth. Companies use online platforms
+                            to promote products, generate leads, and build brands.</p>
+                        <p style="font-size: 1.1rem; line-height: 1.9; color: var(--gray-600);">Our hands-on training
+                            covers real campaigns, live analytics, and portfolio projects that prepare you for agencies,
+                            startups, and corporate roles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY DM -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, var(--gray-50) 0%, white 100%);">
+        <div class="container">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">WHY
+                    CHOOSE THIS FIELD</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Why Digital Marketing?</h2>
+                <p style="font-size: 1.15rem; color: var(--gray-600);">Master skills that are in high demand globally
+                </p>
+            </div>
+
+            <div class="advantage-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;">
+                <div class="glass-card reveal stagger-1"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.15) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-growth.png" alt="Growth"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">High Demand
+                        Across Industries</h3>
+                </div>
+                <div class="glass-card reveal stagger-2"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-laptop.png" alt="Freelance"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Freelancing
+                        Opportunities</h3>
+                </div>
+                <div class="glass-card reveal stagger-3"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(225, 48, 108, 0.1) 0%, rgba(225, 48, 108, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-document.png" alt="WFH"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Work From
+                        Home Careers</h3>
+                </div>
+                <div class="glass-card reveal stagger-4"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-rocket.png" alt="Business"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Business
+                        Growth Skills</h3>
+                </div>
+                <div class="glass-card reveal stagger-5"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-location.png" alt="Global"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4;">Global Job
+                        Market</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRICULUM - Modern Design -->
+    <section class="section" id="curriculum"
+        style="padding: 6rem 0; background: linear-gradient(180deg, white 0%, var(--gray-50) 100%); position: relative;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(225, 48, 108, 0.1); color: #E1306C; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">COMPREHENSIVE
+                    CURRICULUM</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">What You Will Master</h2>
+                <p style="font-size: 1.15rem; color: var(--gray-600);">Industry-leading curriculum for career success
+                </p>
+            </div>
+
+            <div class="curriculum-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 4rem; margin-top: 3rem;">
+
+                <!-- SEO Module -->
+                <div class="glass-card reveal stagger-1"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent-blue) 0%, #3B82F6 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-puzzle.png" alt="SEO"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: var(--accent-blue); font-weight: 700;">
+                        Search Engine Optimization</h3>
+                    <ul class="curriculum-list">
+                        <li>On-page & Off-page SEO</li>
+                        <li>Keyword Research & Strategy</li>
+                        <li>Technical SEO Audits</li>
+                        <li>Link Building Techniques</li>
+                    </ul>
+                </div>
+
+                <!-- Paid Ads Module -->
+                <div class="glass-card reveal stagger-2"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #4285F4 0%, #34A853 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(66, 133, 244, 0.1) 0%, rgba(66, 133, 244, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-rocket.png" alt="Ads"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #4285F4; font-weight: 700;">Paid
+                        Advertising</h3>
+                    <ul class="curriculum-list">
+                        <li>Google Ads (Search, Display, Video)</li>
+                        <li>Meta Ads (Facebook & Instagram)</li>
+                        <li>Campaign Optimization & ROAS</li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Module -->
+                <div class="glass-card reveal stagger-3"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #E1306C 0%, #833AB4 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(225, 48, 108, 0.1) 0%, rgba(225, 48, 108, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-email.png" alt="Social"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #E1306C; font-weight: 700;">Social
+                        Media Marketing</h3>
+                    <ul class="curriculum-list">
+                        <li>Instagram, Facebook, LinkedIn</li>
+                        <li>Content Planning & Calendars</li>
+                        <li>Community & Brand Building</li>
+                    </ul>
+                </div>
+
+                <!-- Analytics Module -->
+                <div class="glass-card reveal stagger-4"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #F59E0B 0%, #EF4444 100%);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-growth.png" alt="Analytics"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: #F59E0B; font-weight: 700;">Analytics &
+                        Tools</h3>
+                    <ul class="curriculum-list">
+                        <li>Google Analytics 4 Mastery</li>
+                        <li>Search Console & Tag Manager</li>
+                        <li>Email Marketing & Automation</li>
+                        <li>CRM & Marketing Tools</li>
+                    </ul>
+                </div>
+
+                <!-- Practical Training Module -->
+                <div class="glass-card reveal stagger-5"
+                    style="padding: 2.5rem; border-radius: 1.5rem; position: relative; overflow: hidden;">
+                    <div
+                        style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-primary);">
+                    </div>
+                    <div
+                        style="width: 70px; height: 70px; margin-bottom: 1.5rem; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-portfolio.png" alt="Practical"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3 style="font-size: 1.4rem; margin-bottom: 1.25rem; color: var(--primary); font-weight: 700;">
+                        Practical Training</h3>
+                    <ul class="curriculum-list">
+                        <li>Live Ad Campaigns</li>
+                        <li>Website SEO Optimization</li>
+                        <li>Portfolio Projects</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS & CAREER SCOPE -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, var(--gray-50) 0%, white 100%);">
+        <div class="container">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: var(--primary-50); color: var(--primary); border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">TARGET
+                    AUDIENCE</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Who Is This Course For?</h2>
+            </div>
+            <div class="audience-grid"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto;">
+                <!-- Who Should Join -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 1.5rem; height: 100%;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <img src="../assets/images/icons/icon-students.png" alt="Students"
+                                    style="width: 28px; height: 28px;">
+                            </div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--gray-800);">Who Should Join
+                            </h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Students & Fresh Graduates
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Entrepreneurs & Business Owners
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span> Job
+                                Seekers & Career Changers
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Freelancers & Content Creators
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(16, 185, 129, 0.03); border-radius: 0.75rem; border-left: 3px solid var(--primary); margin-top: 1rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">★</span>
+                                <span style="color: var(--gray-600); font-weight: 600;">No prior experience
+                                    required!</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Career Opportunities -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 2.5rem; border-radius: 1.5rem; height: 100%;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                            <div
+                                style="width: 50px; height: 50px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <img src="../assets/images/icons/icon-rocket.png" alt="Careers"
+                                    style="width: 28px; height: 28px;">
+                            </div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--gray-800);">Career
+                                Opportunities</h3>
+                        </div>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(59, 130, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--accent-blue); font-weight: 700; font-size: 1.25rem;">→</span>
+                                Digital Marketing Manager
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(59, 130, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--accent-blue); font-weight: 700; font-size: 1.25rem;">→</span>
+                                SEO Specialist / Executive
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(59, 130, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--accent-blue); font-weight: 700; font-size: 1.25rem;">→</span>
+                                PPC & Paid Ads Expert
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(59, 130, 246, 0.05); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--accent-blue); font-weight: 700; font-size: 1.25rem;">→</span>
+                                Social Media Manager
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: rgba(59, 130, 246, 0.05); border-radius: 0.75rem;">
+                                <span style="color: var(--accent-blue); font-weight: 700; font-size: 1.25rem;">→</span>
+                                Marketing Analyst
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY ORIANA -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, white 0%, var(--gray-50) 100%); position: relative; overflow: hidden;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(245, 158, 11, 0.1); color: #F59E0B; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">OUR
+                    ADVANTAGE</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Why Choose Oriana Academy?
+                </h2>
+                <p style="font-size: 1.15rem; color: var(--gray-600);">Experience a learning journey designed for
+                    excellence</p>
+            </div>
+
+            <div class="advantage-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem;">
+                <div class="glass-card reveal stagger-1"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.15) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-trainers.png" alt="Trainers"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3
+                        style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4; margin-bottom: 0.75rem;">
+                        Industry Trainers</h3>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); line-height: 1.5;">Learn from experts with
+                        real-world experience</p>
+                </div>
+                <div class="glass-card reveal stagger-2"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-rocket.png" alt="Campaigns"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3
+                        style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4; margin-bottom: 0.75rem;">
+                        Live Campaigns</h3>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); line-height: 1.5;">Work on real ad campaigns &
+                        strategies</p>
+                </div>
+                <div class="glass-card reveal stagger-3"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(225, 48, 108, 0.1) 0%, rgba(225, 48, 108, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-phone.png" alt="Language"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3
+                        style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4; margin-bottom: 0.75rem;">
+                        English & Tamil</h3>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); line-height: 1.5;">Personalized training in
+                        your language</p>
+                </div>
+                <div class="glass-card reveal stagger-4"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-laptop.png" alt="Portfolio"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3
+                        style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4; margin-bottom: 0.75rem;">
+                        Portfolio Building</h3>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); line-height: 1.5;">Showcase your practical
+                        work</p>
+                </div>
+                <div class="glass-card reveal stagger-5"
+                    style="padding: 2rem 1.5rem; text-align: center; border-radius: 1.5rem;">
+                    <div
+                        style="width: 70px; height: 70px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0.2) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                        <img src="../assets/images/icons/icon-growth.png" alt="Placement"
+                            style="width: 40px; height: 40px; object-fit: contain;">
+                    </div>
+                    <h3
+                        style="font-size: 1rem; font-weight: 700; color: var(--gray-800); line-height: 1.4; margin-bottom: 0.75rem;">
+                        Placement Guidance</h3>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); line-height: 1.5;">Dedicated support to get
+                        you hired</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEARNING MODEL & SALARY -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, var(--gray-50) 0%, white 100%);">
+        <div class="container">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(139, 92, 246, 0.1); color: #8B5CF6; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">YOUR
+                    JOURNEY</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Learning Path & Career Outlook
+                </h2>
+            </div>
+            <div class="row-grid"
+                style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; max-width: 1100px; margin: 0 auto;">
+                <!-- Learning Model -->
+                <div class="reveal">
+                    <div class="glass-card" style="padding: 3rem; border-radius: 1.5rem; height: 100%;">
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--gray-800); margin-bottom: 2rem;">
+                            Our 5-Step Learning Model</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div
+                                style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: rgba(16, 185, 129, 0.05); border-radius: 0.75rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: var(--gradient-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;">
+                                    1</div>
+                                <div style="font-weight: 600; font-size: 1.1rem; color: var(--gray-800);">Learn Concepts
+                                </div>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: rgba(59, 130, 246, 0.05); border-radius: 0.75rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;">
+                                    2</div>
+                                <div style="font-weight: 600; font-size: 1.1rem; color: var(--gray-800);">Implement
+                                    Strategies</div>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: rgba(225, 48, 108, 0.05); border-radius: 0.75rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: linear-gradient(135deg, #E1306C 0%, #F56040 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;">
+                                    3</div>
+                                <div style="font-weight: 600; font-size: 1.1rem; color: var(--gray-800);">Optimize
+                                    Campaigns</div>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: rgba(245, 158, 11, 0.05); border-radius: 0.75rem;">
+                                <div
+                                    style="width: 45px; height: 45px; background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;">
+                                    4</div>
+                                <div style="font-weight: 600; font-size: 1.1rem; color: var(--gray-800);">Scale Results
+                                </div>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; gap: 1.25rem; padding: 1.25rem; background: linear-gradient(90deg, var(--primary-50) 0%, rgba(16, 185, 129, 0.1) 100%); border-radius: 0.75rem; border: 2px solid var(--primary);">
+                                <div
+                                    style="width: 45px; height: 45px; background: var(--gradient-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem; flex-shrink: 0;">
+                                    ✓</div>
+                                <div style="font-weight: 700; font-size: 1.1rem; color: var(--primary);">Get Hired!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Salary Card -->
+                <div class="reveal">
+                    <div class="glass-card"
+                        style="padding: 3rem; border-radius: 1.5rem; text-align: center; height: 100%; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, rgba(16, 185, 129, 0.08) 100%);">
+                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--gray-800); margin-bottom: 2rem;">
+                            Job Market & Salary</h3>
+                        <div
+                            style="font-size: 3.5rem; font-weight: 800; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; letter-spacing: -2px;">
+                            ₹3 – 10 LPA</div>
+                        <p
+                            style="font-weight: 700; color: var(--gray-500); margin-bottom: 2.5rem; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">
+                            Average Salary Range</p>
+                        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: rgba(16, 185, 129, 0.08); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Freelance income potential
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: rgba(16, 185, 129, 0.08); border-radius: 0.75rem; margin-bottom: 1.25rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Agency & corporate jobs
+                            </li>
+                            <li
+                                style="display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; background: rgba(16, 185, 129, 0.08); border-radius: 0.75rem;">
+                                <span style="color: var(--primary); font-weight: 700; font-size: 1.25rem;">✓</span>
+                                Placement guidance provided
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ SECTION -->
+    <section class="section"
+        style="padding: 6rem 0; background: linear-gradient(180deg, white 0%, var(--gray-50) 100%);">
+        <div class="container">
+            <div class="section-header reveal" style="margin-bottom: 4rem;">
+                <span
+                    style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(59, 130, 246, 0.1); color: #3B82F6; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 1px;">GOT
+                    QUESTIONS?</span>
+                <h2 class="text-gradient" style="font-size: 2.8rem; margin-bottom: 1rem;">Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.25rem;">
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div class="faq-card-content"
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(16, 185, 129, 0.05) 0%, transparent 100%); border-left: 4px solid var(--primary);">
+                        <div
+                            style="width: 35px; height: 35px; background: var(--gradient-primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            1</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Is this course
+                                practical?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Absolutely! You'll work on live
+                                campaigns, real ad strategies, and build an actual portfolio during training.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%); border-left: 4px solid #3B82F6;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            2</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Will I get
+                                certificates?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Yes, you'll receive an official
+                                course completion certificate from Oriana Academy upon successful completion.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(225, 48, 108, 0.05) 0%, transparent 100%); border-left: 4px solid #E1306C;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #E1306C 0%, #F56040 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            3</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Can I do
+                                freelancing after this course?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Yes! We provide dedicated freelancing
+                                guidance to help you start earning as a digital marketing freelancer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(245, 158, 11, 0.05) 0%, transparent 100%); border-left: 4px solid #F59E0B;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            4</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">What languages
+                                are used for training?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Training is available in both English
+                                and Tamil, tailored to your preference.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card reveal" style="padding: 0; border-radius: 1rem; overflow: hidden;">
+                    <div
+                        style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem 2rem; background: linear-gradient(90deg, rgba(139, 92, 246, 0.05) 0%, transparent 100%); border-left: 4px solid #8B5CF6;">
+                        <div
+                            style="width: 35px; height: 35px; background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0;">
+                            5</div>
+                        <div style="flex: 1;">
+                            <h4 style="font-weight: 700; color: var(--gray-800); margin-bottom: 0.5rem;">Is job support
+                                available?</h4>
+                            <p style="color: var(--gray-600); font-size: 0.95rem;">Yes! We offer career mentoring,
+                                resume building, and placement guidance to help you land your dream job.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ENQUIRY SECTION -->
+    <section class="section section-mesh" id="enroll" style="padding: 6rem 0; overflow: hidden; position: relative;">
+        <div class="bg-grid"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <div class="glass-card reveal enquiry-grid"
+                style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 4rem; align-items: start; padding: 4rem; border-radius: 2.5rem;">
+
+                <!-- CTA Side -->
+                <div>
+                    <span
+                        style="display: inline-block; padding: 0.5rem 1.5rem; background: rgba(16, 185, 129, 0.1); color: #10B981; border-radius: 50px; font-weight: 600; font-size: 0.85rem; margin-bottom: 1.5rem; letter-spacing: 1px;">ENROLL
+                        TODAY</span>
+                    <h2 class="text-gradient" style="font-size: 2.8rem; line-height: 1.1; margin-bottom: 1.5rem;">Start
+                        Your Digital Marketing Career Today</h2>
+                    <p style="color: var(--gray-600); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2.5rem;">Join
+                        Chennai's most practical training program and build your actual portfolio with live projects.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <button class="cta-btn btn-lg"
+                            style="width: 100%; text-align: center; border: none; cursor: pointer;">🚀 Enroll Now
+                            →</button>
+                        <a href="../contact.html?type=demo" class="btn btn-outline btn-lg"
+                            style="width: 100%; text-align: center; border-color: var(--primary); color: var(--primary); background: rgba(16, 185, 129, 0.05); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            🎓 Book Free Demo →
+                        </a>
+                        <a href="tel:+919876543210" class="btn btn-outline btn-lg"
+                            style="width: 100%; text-align: center; border-color: var(--accent-blue); color: var(--accent-blue); background: rgba(59, 130, 246, 0.05); display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            📞 Talk to an Expert →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Form Side -->
+                <div class="enquiry-form-card"
+                    style="background: white; padding: 3rem; border-radius: 2rem; box-shadow: var(--shadow-2xl); border: 1px solid rgba(0,0,0,0.05);">
+                    <form id="dmEnquiryForm" class="grid-1" style="gap: 1.5rem;">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Mobile Number" required
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); font-size: 1rem;">
+                        </div>
+                        <div class="form-group">
+                            <select
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); color: var(--gray-700); font-size: 1rem; cursor: pointer;">
+                                <option value="digital-marketing" selected>Digital Marketing Course</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select
+                                style="width: 100%; padding: 1.1rem; border: 1px solid var(--gray-200); border-radius: 0.75rem; outline: none; transition: all 0.3s; background: var(--gray-50); color: var(--gray-700); font-size: 1rem; cursor: pointer;">
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="online">Online Training</option>
+                                <option value="offline">Offline (Chennai)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="cta-btn"
+                            style="width: 100%; padding: 1.25rem; font-weight: 700; font-size: 1.1rem; border: none; cursor: pointer; border-radius: 0.75rem; transition: transform 0.2s;">
+                            Submit Enquiry
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="../index.html" class="logo">
+                        <img src="../assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+                    </a>
+                    <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+                        Science,
+                        Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">X</a>
+                        <a href="#" class="social-icon">▶</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="machine-learning.html">Machine Learning</a></li>
+                        <li><a href="data-science.html">Data Science</a></li>
+                        <li><a href="generative-ai.html">Generative AI</a></li>
+                        <li><a href="data-analytics.html">Data Analyst</a></li>
+                        <li><a href="java.html">Full Stack Java Development</a></li>
+                        <li><a href="python.html">Full Stack Python Development</a></li>
+                        <li><a href="hr-training.html">HR Training</a></li>
+                        <li><a href="digital-marketing.html">Digital Marketing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="../pet-program.html">PET Program</a></li>
+                        <li><a href="../career-guidance.html">Career Guidance</a></li>
+                        <li><a href="#">Partnerships</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="../careers.html">Careers</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact">
+                        <li>📍 123 Tech Park, Bangalore, India</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>📧 info@orianaacademy.com</li>
+                    </ul>
+                    <div class="footer-newsletter">
+                        <h4>Newsletter</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Your email address">
+                            <button type="submit">→</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a>
+                    | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/auth-state.js"></script>
+
+    <script src="../js/main.js"></script>
+    <!-- AI Chatbot -->
+    <link rel="stylesheet" href="../css/chatbot.css">
+    <script src="../js/chatbot.js"></script>
+</body>
+
+</html>

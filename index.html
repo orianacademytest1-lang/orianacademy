@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oriana Academy | IT Training Institute</title>
+  <meta name="description"
+    content="Oriana Academy offers industry-relevant training in Digital Marketing, Data Science, Machine Learning, and more.">
+  <link rel="stylesheet" href="css/main.css?v=32.0">
+</head>
+
+<body>
+
+  <!-- PAGE LOADER -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <p class="loader-text">Oriana Academy</p>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Programs</a>
+            <ul class="dropdown-menu">
+              <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+              <li><a href="courses/data-science.html">Data Science</a></li>
+              <li><a href="courses/generative-ai.html">Generative AI</a></li>
+              <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+              <li><a href="courses/java.html">Full Stack Java Development</a></li>
+              <li><a href="courses/python.html">Full Stack Python Development</a></li>
+              <li><a href="courses/hr-training.html">HR Training</a></li>
+              <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+            </ul>
+          </li>
+          <li><a href="pet-program.html">PET</a></li>
+          <li><a href="career-guidance.html">Career Guidance</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="login.html" class="login-link">Sign In</a>
+        <a href="contact.html" class="cta-btn">Enroll Now</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- PREMIUM HERO SECTION -->
+  <section class="hero">
+    <div class="hero-blob-3"></div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="tagline reveal delay-1">EMPOWERING FUTURE TECH LEADERS</span>
+        <h1 class="reveal delay-1">Build High Growth Careers in <br>Data, AI & Full Stack</h1>
+        <p class="description reveal delay-2">
+          Oriana Academy is a next-generation tech training institute that helps students and professionals master
+          <strong>in-demand skills</strong> with real-world projects, expert mentorship, and flexible online learning.
+          <br><strong>Learn faster. Build smarter. Grow stronger.</strong>
+        </p>
+
+        <div class="hero-info-grid reveal delay-2">
+          <div class="hero-info-item">
+
+          </div>
+          <div class="hero-info-item">
+            <span class="info-label">Global Expertise in:</span>
+            <div class="program-mini-tags">
+              <span>Data & AI</span>
+              <span>Full Stack</span>
+              <span>QA</span>
+              <span>Digital Marketing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions reveal delay-2">
+          <a href="#courses" class="btn-compact primary">Explore Curriculum →</a>
+          <a href="contact.html?type=demo" class="btn-compact secondary">Free Demo</a>
+          <a href="contact.html?type=expert" class="btn-compact outline">Talk to Expert</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal delay-3">
+        <div class="hero-image-wrapper">
+          <img src="assets/images/hero-boy.png" alt="Student Reading" class="main-img">
+
+          <!-- Floating Elements -->
+          <div class="floating-asset asset-joystick">
+            <img src="assets/images/hero-joystick.png" alt="Gaming Gear">
+          </div>
+          <div class="floating-asset asset-plant">
+            <img src="assets/images/hero-plant.png" alt="Decorative Plant">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR - Achievement section -->
+  <section class="section achievement-tabs reveal" id="achievements">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal stagger-1 students">
+          <div class="stat-icon white-bg"><img src="assets/images/icons/icon-students.png" alt="Students"></div>
+          <span class="stat-number" data-count="2000">2,000+</span>
+          <span class="stat-label">Happy Students</span>
+        </div>
+        <div class="stat-item reveal stagger-2 trainers">
+          <div class="stat-icon white-bg"><img src="assets/images/icons/icon-trainers.png" alt="Trainers"></div>
+          <span class="stat-number" data-count="10">10+</span>
+          <span class="stat-label">Industry Expert Trainers</span>
+        </div>
+        <div class="stat-item reveal stagger-3 placement">
+          <div class="stat-icon white-bg"><img src="assets/images/icons/icon-growth.png" alt="Placement"></div>
+          <span class="stat-number" data-count="1000">1,000+</span>
+          <span class="stat-label">Successful Career Transitions</span>
+        </div>
+        <div class="stat-item reveal stagger-4 partners">
+          <div class="stat-icon white-bg"><img src="assets/images/icons/icon-partners.png" alt="Partners"></div>
+          <span class="stat-number" data-count="2">2+</span>
+          <span class="stat-label">Years of Experience</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION - Light Purple Gradient -->
+  <section class="section section-purple-light">
+    <!-- Floating elements -->
+    <div class="float-circle blue size-md float-top-right delay-1"></div>
+    <div class="float-dots float-bottom-left delay-2"></div>
+    <div class="float-icon float-center-right delay-3">💡</div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Trusted Learning Platform</h2>
+        <p>Empowering the Next Generation of Tech Professionals.</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-image reveal-left">
+          <img src="assets/images/about-team.png" alt="About Oriana Academy">
+        </div>
+        <div class="about-text reveal-right">
+          <p>Oriana Academy is built for learners who want practical knowledge, real project experience, and
+            career-focused training.</p>
+          <p>We combine industry-relevant curriculum, expert mentors, and hands-on learning to help you succeed in the
+            competitive tech world.</p>
+          <p>Whether you are a student, working professional, or career switcher, Oriana Academy gives you the right
+            learning path to achieve your career goals.</p>
+          <div class="about-actions" style="margin-top: 2rem;">
+            <a href="about.html" class="btn-compact primary">Know More About Us →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US - Mesh Gradient -->
+  <section class="section section-mesh">
+    <!-- Floating elements -->
+    <div class="float-circle purple size-lg float-top-left delay-2"></div>
+    <div class="float-circle green size-sm float-bottom-right delay-1"></div>
+    <div class="float-icon float-top-right delay-3">🚀</div>
+    <div class="float-icon float-bottom-left delay-4">🎯</div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Why Choose Oriana Academy</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal stagger-1">
+          <div class="feature-icon students"><img src="assets/images/icons/icon-rocket.png" alt="Curriculum"></div>
+          <h3>Industry-Driven Curriculum</h3>
+          <p>Courses aligned with real-world industry requirements.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-2">
+          <div class="feature-icon trainers"><img src="assets/images/icons/icon-trainers.png" alt="Mentors"></div>
+          <h3>Expert Mentors</h3>
+          <p>Learn from professionals with real industry experience.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-3">
+          <div class="feature-icon placement"><img src="assets/images/icons/icon-laptop.png" alt="Languages"></div>
+          <h3>Learn in English & Tamil</h3>
+          <p>Classes available in both English and Tamil for better understanding.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-4">
+          <div class="feature-icon partners"><img src="assets/images/icons/icon-growth.png" alt="Projects"></div>
+          <h3>Project-Based Learning</h3>
+          <p>Work on real-world projects and build a strong portfolio.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-1">
+          <div class="feature-icon blue"><img src="assets/images/icons/icon-students.png" alt="Online"></div>
+          <h3>Flexible Online Learning</h3>
+          <p>Attend live online classes from anywhere with recorded sessions.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-2">
+          <div class="feature-icon purple"><img src="assets/images/icons/icon-growth.png" alt="Career"></div>
+          <h3>Career-Focused Training</h3>
+          <p>Get guidance for resumes, interviews, and career planning.</p>
+        </div>
+
+        <div class="feature-card reveal stagger-3">
+          <div class="feature-icon green"><img src="assets/images/icons/icon-partners.png" alt="Premium"></div>
+          <h3>Affordable & Premium Training</h3>
+          <p>High-quality education at accessible fees.</p>
+        </div>
+      </div>
+
+      <div class="section-actions reveal" style="text-align: center; margin-top: 4rem;">
+        <a href="#courses" class="btn-compact primary">Join Oriana Academy →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES SECTION - Blue Gradient -->
+  <section class="section section-blue-gradient" id="courses">
+    <!-- Floating elements -->
+    <div class="float-circle blue size-xl float-top-left delay-1"></div>
+    <div class="float-circle purple size-md float-center-right delay-2"></div>
+    <div class="float-dots float-bottom-right delay-3"></div>
+    <div class="float-icon float-top-right delay-2">📚</div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Industry Focused Training Programs</h2>
+        <p>Future-Ready Courses Designed for Real Careers.</p>
+        <p style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; color: var(--gray-400);">
+          Our programs are designed based on current industry trends and future technology demands. Each course includes
+          structured learning, live sessions, practical assignments, and real-world projects.
+        </p>
+      </div>
+
+      <div class="courses-grid">
+        <!-- Data Science -->
+        <div class="course-card gradient-blue reveal stagger-1">
+          <div class="course-image">
+            <img src="assets/images/data-science.png?v=4" alt="Data Science">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Data Science</h3>
+            <p>Learn data analysis, machine learning, and AI concepts with hands-on projects.</p>
+            <div class="course-footer">
+              <span class="course-badge">Online</span>
+              <a href="courses/data-science.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Generative AI -->
+        <div class="course-card gradient-purple reveal stagger-2">
+          <div class="course-image">
+            <img src="assets/images/generative-ai.png?v=4" alt="Generative AI">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Generative AI</h3>
+            <p>Master AI tools, prompt engineering, and automation for modern industries.</p>
+            <div class="course-footer">
+              <span class="course-badge">Online</span>
+              <a href="courses/generative-ai.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Machine Learning -->
+        <div class="course-card gradient-orange reveal stagger-3">
+          <div class="course-image">
+            <img src="assets/images/machine-learning.png?v=4" alt="Machine Learning">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Machine Learning</h3>
+            <p>From algorithms to deep learning - become an ML expert with real AI projects.</p>
+            <div class="course-footer">
+              <span class="course-badge offline">Offline</span>
+              <a href="courses/machine-learning.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Analyst -->
+        <div class="course-card gradient-green reveal stagger-4">
+          <div class="course-image">
+            <img src="assets/images/data-analytics.png?v=4" alt="Data Analyst">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Data Analyst</h3>
+            <p>Build skills in Excel, SQL, Python, and data visualization tools.</p>
+            <div class="course-footer">
+              <span class="course-badge">Online</span>
+              <a href="courses/data-analytics.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Stack Java -->
+        <div class="course-card gradient-dark reveal stagger-5">
+          <div class="course-image">
+            <img src="assets/images/java.png?v=4" alt="Full Stack Java Development">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Full Stack Java Development</h3>
+            <p>Learn frontend and backend development with Java technologies.</p>
+            <div class="course-footer">
+              <span class="course-badge offline">Offline</span>
+              <a href="courses/java.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full Stack Python -->
+        <div class="course-card gradient-pink reveal stagger-6">
+          <div class="course-image">
+            <img src="assets/images/python.png?v=4" alt="Full Stack Python Development">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Full Stack Python Development</h3>
+            <p>Develop modern web applications using Python frameworks.</p>
+            <div class="course-footer">
+              <span class="course-badge">Online</span>
+              <a href="courses/python.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Software Testing -->
+        <div class="course-card gradient-orange reveal stagger-7">
+          <div class="course-image">
+            <img src="assets/images/coding-training-3d.png?v=4" alt="Software Testing">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Software Testing</h3>
+            <p>Learn manual and automation testing with industry tools.</p>
+            <div class="course-footer">
+              <span class="course-badge offline">Offline</span>
+              <a href="courses/software-testing.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Digital Marketing -->
+        <div class="course-card gradient-purple reveal stagger-8">
+          <div class="course-image">
+            <img src="assets/images/digital-marketing.png?v=4" alt="Digital Marketing">
+            <div class="course-overlay"></div>
+          </div>
+          <div class="course-content">
+            <h3>Digital Marketing</h3>
+            <p>Master SEO, social media marketing, paid ads, and analytics.</p>
+            <div class="course-footer">
+              <span class="course-badge">Online</span>
+              <a href="courses/digital-marketing.html" class="course-link">View Details →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- OUR LEARNING MODEL - Structured Approach -->
+  <section class="section section-white">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Our Learning Model</h2>
+        <p>A Smarter Way to Learn Technology.</p>
+      </div>
+
+      <div class="about-content learning-content">
+        <div class="about-image reveal-left" style="box-shadow: none; background: transparent;">
+          <img src="assets/images/learning-model.png" alt="Oriana Learning Model"
+            style="width: 100%; filter: drop-shadow(0 20px 40px rgba(16, 185, 129, 0.15));">
+        </div>
+        <div class="about-text reveal-right">
+          <p>At Oriana Academy, we follow a structured learning approach that ensures real skill development. Our
+            methodology is designed to take you from a beginner to a job-ready professional through a proven 4-step
+            process:</p>
+
+          <div class="learning-steps" style="margin: 2rem 0;">
+            <div class="learning-step">
+              <div class="step-number">01</div>
+              <div class="step-info">
+                <h4>Learn Concepts</h4>
+                <p>Master the fundamentals through expert-led interactive sessions.</p>
+              </div>
+            </div>
+            <div class="learning-step">
+              <div class="step-number">02</div>
+              <div class="step-info">
+                <h4>Practice with Assignments</h4>
+                <p>Apply what you've learned with hands-on daily assignments.</p>
+              </div>
+            </div>
+            <div class="learning-step">
+              <div class="step-number">03</div>
+              <div class="step-info">
+                <h4>Build Real Projects</h4>
+                <p>Gain industrial experience by working on real-world portfolios.</p>
+              </div>
+            </div>
+            <div class="learning-step">
+              <div class="step-number">04</div>
+              <div class="step-info">
+                <h4>Launch Your Career</h4>
+                <p>Get placed in top companies with our placement support.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>We focus on concept clarity, practical application, and continuous mentorship to help learners gain
+            confidence and professional expertise.</p>
+
+          <div class="learning-actions" style="margin-top: 2rem;">
+            <a href="contact.html" class="btn-compact primary">Start Learning Today →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER SUPPORT - Light Cyan/Blue Gradient -->
+  <section class="section section-cyan-light">
+    <!-- Floating elements -->
+    <div class="float-circle blue size-md float-top-right delay-1"></div>
+    <div class="float-dots float-bottom-left delay-2"></div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Career Support & Growth</h2>
+        <p>From Learning to Career Success.</p>
+      </div>
+
+      <div class="about-content career-content">
+        <div class="about-text reveal-left">
+          <p>Oriana Academy provides complete career support to help learners achieve their professional goals. We guide
+            students in building resumes, preparing for interviews, creating portfolios, and exploring career
+            opportunities in tech and digital fields. Our goal is not just to teach but to transform learners into
+            industry-ready professionals.</p>
+          <div class="about-actions" style="margin-top: 2rem;">
+            <a href="career-guidance.html" class="btn-compact primary">Get Career Guidance →</a>
+          </div>
+        </div>
+        <div class="about-image reveal-right" style="box-shadow: none; background: transparent;">
+          <img src="assets/images/career-support.png" alt="Career Support & Growth"
+            style="width: 100%; border-radius: 0; filter: drop-shadow(0 20px 40px rgba(49, 134, 147, 0.2));">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS - Warm Gradient -->
+  <section class="section section-warm">
+    <!-- Floating elements -->
+    <div class="float-circle pink size-lg float-top-right delay-1"></div>
+    <div class="float-circle purple size-sm float-bottom-left delay-2"></div>
+    <div class="float-icon float-top-left delay-3">⭐</div>
+    <div class="float-icon float-center-right delay-4">💬</div>
+
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Learner Community & Success Stories</h2>
+        <h3>Every Success Story Starts with Learning.</h3>
+        <p style="max-width: 800px; margin: 1.5rem auto;">
+          Thousands of learners trust Oriana Academy to upgrade their skills and build meaningful careers.
+          Our growing community of students, mentors, and industry professionals creates a supportive and inspiring
+          learning environment.
+          <br><strong>Your journey starts here.</strong>
+        </p>
+      </div>
+
+      <!-- Community Illustration -->
+      <div class="about-content" style="margin-bottom: 4rem; align-items: center;">
+        <div class="about-image reveal-left" style="box-shadow: none; background: transparent;">
+          <img src="assets/images/learner-community.png" alt="Oriana Academy Community"
+            style="width: 100%; border-radius: 0; filter: drop-shadow(0 20px 40px rgba(49, 134, 147, 0.15));">
+        </div>
+        <div class="about-text reveal-right">
+          <p>Being part of Oriana Academy means more than just attending classes. It's about joining a
+            <strong>dynamic ecosystem</strong> where knowledge is shared, and growth is celebrated together.
+          </p>
+          <p>Our community-driven approach ensures you are never alone in your learning journey, providing the
+            <strong>peer support</strong> and <strong>professional networking</strong> needed to excel in today's tech
+            world.
+          </p>
+          <div class="community-actions" style="margin-top: 2rem;">
+            <a href="contact.html" class="btn-compact primary">Join Our Community →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal stagger-1">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">PS</div>
+            <div class="testimonial-info">
+              <h4>Priya Sharma</h4>
+              <p>Digital Marketing Manager @ Google</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"The Digital Marketing course completely transformed my career. The practical
+            approach, live projects, and expert mentorship helped me land my dream job at Google within 3 months of
+            completing the course."</p>
+        </div>
+
+        <div class="testimonial-card reveal stagger-2">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">RV</div>
+            <div class="testimonial-info">
+              <h4>Rahul Verma</h4>
+              <p>Senior Data Scientist @ Amazon</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"The Data Science bootcamp was intense but worth every minute. The hands-on
+            projects and mock interviews prepared me for technical rounds. Now I'm leading ML projects at Amazon!"</p>
+        </div>
+
+        <div class="testimonial-card reveal stagger-3">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">AR</div>
+            <div class="testimonial-info">
+              <h4>Anjali Reddy</h4>
+              <p>Full Stack Developer @ Microsoft</p>
+            </div>
+          </div>
+          <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          <p class="testimonial-text">"From zero coding experience to Microsoft - that's my journey with Oriana Academy.
+            The Python and Java courses gave me the confidence and skills to crack top tech company interviews."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="logos-section">
+    <h3
+      style="font-size: 0.85rem; color: var(--gray-400); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0;">
+      Learn From the Best Alumni of</h3>
+    <div class="logo-marquee">
+      <div class="logo-track">
+        <!-- Original set (10 brands) -->
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png"
+          alt="Google" class="logo-std">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/204px-Microsoft_logo.svg.png"
+          alt="Microsoft" class="logo-std">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png"
+          alt="Amazon" class="logo-std">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png"
+          alt="IBM" class="logo-std">
+        <img src="assets/images/tcs-logo.png" alt="TCS" class="logo-tcs">
+        <img src="assets/images/hcl-logo.png" alt="HCL" class="logo-hcl">
+        <img src="assets/images/wipro-logo.png" alt="Wipro" class="logo-wipro">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/200px-Cognizant_logo_2022.svg.png"
+          alt="Cognizant">
+        <img src="assets/images/accenture-logo.png" alt="Accenture" class="logo-accenture">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/200px-PayPal.svg.png"
+          alt="PayPal">
+
+        <!-- Duplicated for seamless loop (repeat 10 brands) -->
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png"
+          alt="Google" class="logo-std">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/204px-Microsoft_logo.svg.png"
+          alt="Microsoft" class="logo-std">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png"
+          alt="Amazon" class="logo-std">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png"
+          alt="IBM" class="logo-std">
+        <img src="assets/images/tcs-logo.png" alt="TCS" class="logo-tcs">
+        <img src="assets/images/hcl-logo.png" alt="HCL" class="logo-hcl">
+        <img src="assets/images/wipro-logo.png" alt="Wipro" class="logo-wipro">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cognizant_logo_2022.svg/200px-Cognizant_logo_2022.svg.png"
+          alt="Cognizant">
+        <img src="assets/images/accenture-logo.png" alt="Accenture" class="logo-accenture">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/200px-PayPal.svg.png"
+          alt="PayPal">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION - Gradient -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content reveal">
+        <h2>Ready to Transform Your Career?</h2>
+        <p>Join 5,000+ successful graduates who have transformed their careers with Oriana Academy. Start your journey
+          today!</p>
+        <div class="flex-center gap-1 flex-wrap">
+          <a href="contact.html" class="btn btn-primary btn-lg">Get Started Today →</a>
+          <a href="#courses" class="btn btn-outline btn-lg border-white-30 text-white">View Courses</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img src="assets/images/oriana-logo-cropped.png" alt="Oriana Academy" class="logo-img">
+          </a>
+          <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+            Science,
+            Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+          <div class="footer-social">
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">X</a>
+            <a href="#" class="social-icon">▶</a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Programs</h4>
+          <ul>
+            <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+            <li><a href="courses/data-science.html">Data Science</a></li>
+            <li><a href="courses/generative-ai.html">Generative AI</a></li>
+            <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+            <li><a href="courses/java.html">Full Stack Java Development</a></li>
+            <li><a href="courses/python.html">Full Stack Python Development</a></li>
+            <li><a href="courses/hr-training.html">HR Training</a></li>
+            <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="pet-program.html">PET Program</a></li>
+            <li><a href="career-guidance.html">Career Guidance</a></li>
+            <li><a href="#">Partnerships</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Us</h4>
+          <ul class="footer-contact">
+            <li>📍 123 Tech Park, Bangalore, India</li>
+            <li>📞 +91 98765 43210</li>
+            <li>📧 info@orianaacademy.com</li>
+          </ul>
+          <div class="footer-newsletter">
+            <h4>Newsletter</h4>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email address">
+              <button type="submit">→</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a>
+          | <a href="#">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/auth-state.js"></script>
+  <script src="js/main.js"></script>
+  <!-- AI Chatbot -->
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/chatbot.js"></script>
+</body>
+
+</html>
