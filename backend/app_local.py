@@ -106,7 +106,7 @@ async def submit_contact(contact: ContactSubmission):
     # Send Notification Email
     try:
         from email_utils import send_notification_email
-        send_notification_email(
+        success, info = send_notification_email(
             subject=f"New Contact: {subject}",
             data={
                 "name": name,
@@ -117,8 +117,10 @@ async def submit_contact(contact: ContactSubmission):
             },
             type='contact'
         )
+        if not success:
+            print(f"⚠️ Email notification skipped/failed: {info}")
     except Exception as e:
-        print(f"⚠️ Email notification failed: {e}")
+        print(f"⚠️ Email notification system error: {e}")
 
     return {"message": "Contact form submitted successfully", "id": submission_id}
 
@@ -146,7 +148,7 @@ async def submit_enrollment(enrollment: EnrollmentSubmission):
     # Send Notification Email
     try:
         from email_utils import send_notification_email
-        send_notification_email(
+        success, info = send_notification_email(
             subject=f"New Enrollment: {enrollment.course}",
             data={
                 "name": name,
@@ -157,8 +159,10 @@ async def submit_enrollment(enrollment: EnrollmentSubmission):
             },
             type='enrollment'
         )
+        if not success:
+            print(f"⚠️ Email notification skipped/failed: {info}")
     except Exception as e:
-        print(f"⚠️ Email notification failed: {e}")
+        print(f"⚠️ Email notification system error: {e}")
 
     return {"message": "Enrollment submitted successfully", "id": enrollment_id}
 
@@ -267,6 +271,28 @@ async def update_admin_settings_endpoint(settings: SMTPSettings):
         return {"message": "Settings updated successfully"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/admin/test-email")
+async def test_email_endpoint():
+    try:
+        from email_utils import send_notification_email
+        success, info = send_notification_email(
+            subject="Test Integration Email",
+            data={
+                "name": "Admin Tester",
+                "email": "test@oriana.com",
+                "phone": "000-000-0000",
+                "subject": "Testing SMTP Connection",
+                "message": "This is a test email from your Oriana Academy Admin Dashboard."
+            },
+            type='contact'
+        )
+        if success:
+            return {"message": "Test email sent successfully", "details": info}
+        else:
+            return {"message": "Failed to send test email", "error": info}
+    except Exception as e:
+        return {"message": "System error", "error": str(e)}
 
 @app.get("/index.html")
 @app.get("/")

@@ -581,6 +581,8 @@
                     </div>
                     <button type="submit" class="export-btn" style="width: 100%; margin-top: 1rem;">Save
                         Settings</button>
+                    <button type="button" onclick="testEmailConfig()" class="export-btn"
+                        style="width: 100%; margin-top: 0.5rem; background: #6366f1;">Test Connection</button>
                 </form>
             </div>
         </div>
@@ -904,6 +906,29 @@
                 submitBtn.disabled = false;
             }
         });
+
+        async function testEmailConfig() {
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Testing...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch('/api/admin/test-email', { method: 'POST' });
+                const result = await res.json();
+                if (res.ok && !result.error) {
+                    alert('Integration Success! ' + result.message);
+                } else {
+                    alert('Integration Failed: ' + (result.error || result.message));
+                }
+            } catch (error) {
+                console.error('Test error:', error);
+                alert('Connection error while testing. Check server logs.');
+            } finally {
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        }
 
         function closeModal() {
             modal.style.display = 'none';
