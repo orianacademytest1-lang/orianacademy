@@ -27,3 +27,9 @@ error.log
 test_*.html
 test_*.py
 *.sql
+
+# Database files (prevent local data from being baked in)
+backend/*.db
+backend/*.db.bak
+chroma_db/
+backend/chroma_db/

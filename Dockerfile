@@ -21,9 +21,9 @@ RUN pip install --no-cache-dir gunicorn uvicorn
 # Copy the rest of the application code
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 5000
+# Set working directory to backend for execution
+WORKDIR /app/backend
 
 # Command to run the application
 # We use app_local:app because it serves the static files too
-CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:5000", "backend.app_local:app"]
+CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:5000", "app_local:app"]
