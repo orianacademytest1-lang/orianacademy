@@ -477,6 +477,24 @@ async def chat_stream(request: ChatRequest):
 init_db()  # Initialize users database
 init_data_db()  # Initialize contact and enrollment tables
 
+# Auto-seed Vector Store if empty
+def auto_seed():
+    try:
+        from vector_store import get_vector_store
+        vs = get_vector_store()
+        if vs.get_collection_count() == 0:
+            print("🚀 Vector store is empty. Starting automatic seeding...")
+            from seed_vector_store import seed_data
+            seed_data()
+        else:
+            print(f"📊 Vector store indexed with {vs.get_collection_count()} documents.")
+    except Exception as e:
+        print(f"⚠️ Auto-seeding failed: {e}")
+
+# Run in background to not block startup
+import threading
+threading.Thread(target=auto_seed, daemon=True).start()
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv('PORT', 5000))

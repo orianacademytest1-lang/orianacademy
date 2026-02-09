@@ -26,4 +26,5 @@ WORKDIR /app/backend
 
 # Command to run the application
 # We use app_local:app because it serves the static files too
-CMD gunicorn -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT app_local:app
+# Using -w 1 for SQLite stability (prevents "database is locked" errors)
+CMD gunicorn -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT app_local:app

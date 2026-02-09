@@ -12,9 +12,10 @@ load_dotenv()
 
 class DataProcessor:
     def __init__(self):
-        """Initialize data processor with Gemini API"""
-        genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-        self.embedding_model = os.getenv('EMBEDDING_MODEL', 'models/embedding-001')
+        """Initialize data processor with local embedding model"""
+        from sentence_transformers import SentenceTransformer
+        print("📥 Loading local embedding model (all-MiniLM-L6-v2)...")
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
     
     def extract_course_content(self, html_path: str) -> Dict[str, str]:
         """Extract structured content from course HTML file"""
@@ -138,22 +139,12 @@ class DataProcessor:
         return chunks
     
     def generate_embedding(self, text: str) -> List[float]:
-        """Generate embedding for text using Gemini API"""
-        result = genai.embed_content(
-            model=self.embedding_model,
-            content=text,
-            task_type="retrieval_document"
-        )
-        return result['embedding']
+        """Generate embedding for text using local model"""
+        return self.model.encode(text).tolist()
     
     def generate_query_embedding(self, query: str) -> List[float]:
         """Generate embedding for search query"""
-        result = genai.embed_content(
-            model=self.embedding_model,
-            content=query,
-            task_type="retrieval_query"
-        )
-        return result['embedding']
+        return self.model.encode(query).tolist()
     
     def process_all_courses(self, courses_dir: str = None) -> Tuple[List, List, List, List]:
         """Process all HTML course files and return chunks with embeddings"""

@@ -14,46 +14,55 @@ def get_db_connection():
 
 def init_data_db():
     """Initialize database tables for contact submissions and enrollments"""
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-    
-    # Contact submissions table
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS contact_submissions (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            phone TEXT,
-            subject TEXT,
-            message TEXT NOT NULL,
-            submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    # Enrollments table
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS enrollments (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT NOT NULL,
-            phone TEXT,
-            course TEXT NOT NULL,
-            message TEXT,
-            submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    
-    # Settings table for SMTP configuration
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS settings (
-            key TEXT PRIMARY KEY,
-            value TEXT NOT NULL
-        )
-    ''')
-    
-    conn.commit()
-    conn.close()
-    print("✅ Data tables initialized successfully")
+    try:
+        conn = sqlite3.connect(DB_PATH, timeout=20.0) # Higher timeout for concurrent init
+        cursor = conn.cursor()
+        
+        # Contact submissions table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS contact_submissions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT,
+                subject TEXT,
+                message TEXT NOT NULL,
+                submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # Enrollments table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS enrollments (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT,
+                course TEXT NOT NULL,
+                message TEXT,
+                submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # Settings table for SMTP configuration
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS settings (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                key TEXT UNIQUE,
+                value TEXT NOT NULL
+            )
+        ''')
+        
+        conn.commit()
+        conn.close()
+        print("✅ Data tables initialized successfully")
+    except sqlite3.OperationalError as e:
+        if "locked" in str(e).lower():
+            print("ℹ️ Database locked during initialization, skipping as it's likely being handled by another worker.")
+        else:
+            print(f"❌ Database initialization error: {e}")
+    except Exception as e:
+        print(f"❌ Unexpected database error: {e}")
 
 # Contact submission functions
 def save_contact_submission(name: str, email: str, phone: str, subject: str, message: str) -> int:
