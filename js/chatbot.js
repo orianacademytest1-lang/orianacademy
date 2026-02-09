@@ -26,7 +26,7 @@ class OrianaChatbot {
     }
 
     createChatWidget() {
-        const avatarPath = this.getAssetPath('assets/images/chatbot-avatar.png');
+        const avatarPath = this.getAssetPath('assets/images/chatbot-avatar.webp');
 
         const chatHTML = `
             <!-- Chatbot Toggle Button -->
@@ -123,7 +123,7 @@ class OrianaChatbot {
     addMessage(text, sender = 'user') {
         const messagesContainer = document.getElementById('oriana-chat-messages');
         const messageDiv = document.createElement('div');
-        const avatarPath = this.getAssetPath('assets/images/chatbot-avatar.png');
+        const avatarPath = this.getAssetPath('assets/images/chatbot-avatar.webp');
         messageDiv.className = `chat-message ${sender}-message`;
 
         if (sender === 'bot') {
@@ -181,7 +181,7 @@ class OrianaChatbot {
     addTypingIndicator() {
         const messagesContainer = document.getElementById('oriana-chat-messages');
         const typingDiv = document.createElement('div');
-        const avatarPath = this.getAssetPath('assets/images/chatbot-avatar.png');
+        const avatarPath = this.getAssetPath('assets/images/chatbot-avatar.webp');
         typingDiv.className = 'chat-message bot-message typing-indicator';
         typingDiv.id = 'typing-indicator';
         typingDiv.innerHTML = `
