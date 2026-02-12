@@ -1,28 +1,85 @@
-// ============================================
+﻿// ============================================
 // ORIANA ACADEMY - ENHANCED JAVASCRIPT
 // Dynamic Animations & Interactions
 // ============================================
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('Oriana Academy: DOM Content Loaded. Script initializing...');
 
   // ============================================
-  // PAGE LOADER
+  // MOTIVATIONAL QUOTE POPUP LOGIC (Trigger Early)
+  // ============================================
+  const quotes = [
+    { text: "The best way to predict the future is to create it.", author: "Peter Drucker" },
+    { text: "Your career is your business. It's time for you to manage it.", author: "Dorit Sher" },
+    { text: "Learning is the only thing the mind never exhausts.", author: "Leonardo da Vinci" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+    { text: "Direct your passion toward your career success.", author: "Oriana Academy" },
+    { text: "Master the skills that the future demands today.", author: "Oriana Academy" }
+  ];
+
+  function showQuotePopup() {
+    console.warn('Oriana Academy: Attempting to show Quote Popup...');
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    const popup = document.createElement('div');
+    popup.className = 'quote-popup';
+
+    const isInCourseFolder = window.location.pathname.includes('/courses/');
+    const contactPath = isInCourseFolder ? '../contact.html' : 'contact.html';
+
+    popup.innerHTML = `
+      <div class="quote-close" aria-label="Close">&times;</div>
+      <div class="quote-content">
+        <p class="quote-text">"${randomQuote.text}"</p>
+        <p class="quote-author">— ${randomQuote.author}</p>
+      </div>
+    `;
+
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+      popup.classList.add('active');
+      console.log('Oriana Academy: Motivational Popup should now be visible.');
+    }, 100);
+
+    popup.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('quote-close')) {
+        window.location.href = contactPath;
+      }
+    });
+
+    popup.querySelector('.quote-close').addEventListener('click', (e) => {
+      e.stopPropagation();
+      popup.classList.remove('active');
+      setTimeout(() => popup.remove(), 600);
+    });
+  }
+
+  console.log('Oriana Academy: Popup scheduled for 4s delay');
+  setTimeout(showQuotePopup, 4000);
+
+
+  // ============================================
+  // PAGE LOADER (Resilient Hiding)
   // ============================================
   const pageLoader = document.getElementById('pageLoader');
 
   if (pageLoader) {
-    window.addEventListener('load', function () {
-      setTimeout(function () {
+    const hideLoader = () => {
+      setTimeout(() => {
         pageLoader.classList.add('hidden');
-      }, 500);
-    });
+        console.log('Oriana Academy: Page Loader hidden.');
+      }, 300);
+    };
 
-    // Fallback - hide loader after 3 seconds regardless
-    setTimeout(function () {
-      if (pageLoader) {
-        pageLoader.classList.add('hidden');
-      }
-    }, 3000);
+    if (document.readyState === 'complete') {
+      hideLoader();
+    } else {
+      window.addEventListener('load', hideLoader);
+      // Fallback: Force hide after 1.5s as script is already at bottom
+      setTimeout(hideLoader, 1500);
+    }
   }
 
   // ============================================
@@ -191,77 +248,78 @@ document.addEventListener('DOMContentLoaded', function () {
       if (error) error.remove();
     });
   });
-});
 
-// ============================================
-// CARD TILT EFFECT
-// ============================================
-const tiltCards = document.querySelectorAll('.course-card, .feature-card');
 
-tiltCards.forEach(card => {
-  card.addEventListener('mousemove', function (e) {
-    const rect = this.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+  // ============================================
+  // CARD TILT EFFECT
+  // ============================================
+  const tiltCards = document.querySelectorAll('.course-card, .feature-card');
 
-    const rotateX = (y - centerY) / 30;
-    const rotateY = (centerX - x) / 30;
+  tiltCards.forEach(card => {
+    card.addEventListener('mousemove', function (e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 30;
+      const rotateY = (centerX - x) / 30;
+
+      this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+    });
+
+    card.addEventListener('mouseleave', function () {
+      this.style.transform = '';
+    });
   });
 
-  card.addEventListener('mouseleave', function () {
-    this.style.transform = '';
-  });
-});
+  // ============================================
+  // ACTIVE NAV LINK
+  // ============================================
+  const currentPath = window.location.pathname.toLowerCase();
+  const navLinks = document.querySelectorAll('.nav-menu > li > a');
 
-// ============================================
-// ACTIVE NAV LINK
-// ============================================
-const currentPath = window.location.pathname.toLowerCase();
-const navLinks = document.querySelectorAll('.nav-menu > li > a');
+  // 1. Clear all existing active classes first
+  navLinks.forEach(link => link.classList.remove('active'));
 
-// 1. Clear all existing active classes first
-navLinks.forEach(link => link.classList.remove('active'));
+  // 2. Normalize and check each link
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href === '#' || href === 'javascript:void(0)') return;
 
-// 2. Normalize and check each link
-navLinks.forEach(link => {
-  const href = link.getAttribute('href');
-  if (!href || href === '#' || href === 'javascript:void(0)') return;
+    try {
+      const linkPath = new URL(link.href).pathname.toLowerCase();
 
-  try {
-    const linkPath = new URL(link.href).pathname.toLowerCase();
+      // Normalize: remove index.html and trailing slashes for stable comparison
+      const normalizeP = (p) => p.replace(/\/index\.html$/, '/').replace(/\/$/, '') || '/';
 
-    // Normalize: remove index.html and trailing slashes for stable comparison
-    const normalizeP = (p) => p.replace(/\/index\.html$/, '/').replace(/\/$/, '') || '/';
+      const normLink = normalizeP(linkPath);
+      const normPage = normalizeP(currentPath);
 
-    const normLink = normalizeP(linkPath);
-    const normPage = normalizeP(currentPath);
-
-    if (normLink === normPage) {
-      link.classList.add('active');
+      if (normLink === normPage) {
+        link.classList.add('active');
+      }
+    } catch (e) {
+      // Ignore invalid URLs
     }
-  } catch (e) {
-    // Ignore invalid URLs
-  }
-});
+  });
 
-// 3. Special case for hierarchy (e.g., any page inside /courses/ should highlight Courses)
-if (currentPath.includes('/courses/')) {
-  const coursesToggle = Array.from(navLinks).find(l => l.textContent.toLowerCase().includes('courses'));
-  if (coursesToggle) {
-    coursesToggle.classList.add('active');
+  // 3. Special case for hierarchy (e.g., any page inside /courses/ should highlight Courses)
+  if (currentPath.includes('/courses/')) {
+    const coursesToggle = Array.from(navLinks).find(l => l.textContent.toLowerCase().includes('courses'));
+    if (coursesToggle) {
+      coursesToggle.classList.add('active');
+    }
   }
-}
 
-// ============================================
-// SCROLL PROGRESS BAR
-// ============================================
-const progressBar = document.createElement('div');
-progressBar.style.cssText = `
+  // ============================================
+  // SCROLL PROGRESS BAR
+  // ============================================
+  const progressBar = document.createElement('div');
+  progressBar.style.cssText = `
     position: fixed;
     top: 0;
     left: 0;
@@ -271,165 +329,167 @@ progressBar.style.cssText = `
     transition: width 0.1s linear;
     width: 0%;
   `;
-document.body.appendChild(progressBar);
+  document.body.appendChild(progressBar);
 
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrollPercent = (scrollTop / docHeight) * 100;
-  progressBar.style.width = scrollPercent + '%';
-});
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+  });
 
-// ============================================
-// LAZY LOADING IMAGES
-// ============================================
-if ('IntersectionObserver' in window) {
-  const imageObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
+  // ============================================
+  // LAZY LOADING IMAGES
+  // ============================================
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+          }
+          img.style.opacity = '1';
+          imageObserver.unobserve(img);
         }
-        img.style.opacity = '1';
-        imageObserver.unobserve(img);
-      }
-    });
-  }, { rootMargin: '50px' });
-
-  document.querySelectorAll('img[data-src]').forEach(img => {
-    img.style.opacity = '0';
-    img.style.transition = 'opacity 0.5s ease';
-    imageObserver.observe(img);
-  });
-}
-
-// ============================================
-// TYPING EFFECT (Optional)
-// ============================================
-const typingElement = document.querySelector('.typing-text');
-
-if (typingElement) {
-  const words = ['Future', 'Career', 'Skills', 'Success'];
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-
-  function type() {
-    const currentWord = words[wordIndex];
-
-    if (isDeleting) {
-      typingElement.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-    } else {
-      typingElement.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-    }
-
-    let delay = isDeleting ? 50 : 100;
-
-    if (!isDeleting && charIndex === currentWord.length) {
-      delay = 2000;
-      isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % words.length;
-      delay = 500;
-    }
-
-    setTimeout(type, delay);
-  }
-
-  type();
-}
-
-// ============================================
-// AUTHENTICATION STATE HANDLING
-// ============================================
-const loginLink = document.querySelector('.login-link');
-const user = JSON.parse(localStorage.getItem('user') || 'null');
-
-if (loginLink && user) {
-  loginLink.textContent = 'Sign Out';
-  loginLink.href = '#';
-  loginLink.classList.add('logout-link');
-
-  loginLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    localStorage.removeItem('user');
-    window.location.reload();
-  });
-}
-
-// ============================================
-// CONSOLE BRANDING
-// ============================================
-console.log('%c<svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Oriana Academy', 'color: #10B981; font-size: 24px; font-weight: bold;');
-console.log('%cTransforming Careers Through Education', 'color: #3B82F6; font-size: 14px;');
-
-// ============================================
-// DROPDOWN HOVER (Desktop)
-// ============================================
-document.querySelectorAll('.dropdown').forEach(dropdown => {
-  const toggle = dropdown.querySelector('.dropdown-toggle');
-
-  if (toggle && window.innerWidth > 768) {
-    toggle.addEventListener('click', function (e) {
-      e.preventDefault();
-    });
-  }
-});
-
-// ============================================
-// NEWSLETTER SUBSCRIPTION
-// ============================================
-const newsletterForms = document.querySelectorAll('.newsletter-form');
-
-newsletterForms.forEach(form => {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const input = form.querySelector('input[type="email"]');
-    const email = input.value;
-    const btn = form.querySelector('button');
-    const originalText = btn.textContent;
-
-    if (!email) return;
-
-    try {
-      btn.textContent = '...';
-      btn.disabled = true;
-
-      const response = await fetch('/api/contact/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: 'Subscriber',
-          email: email,
-          phone: '',
-          subject: 'Newsletter Subscription',
-          message: 'New subscription from website footer'
-        })
       });
+    }, { rootMargin: '50px' });
 
-      if (response.ok) {
-        input.value = '';
-        btn.textContent = '';
+    document.querySelectorAll('img[data-src]').forEach(img => {
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.5s ease';
+      imageObserver.observe(img);
+    });
+  }
+
+  // ============================================
+  // TYPING EFFECT (Optional)
+  // ============================================
+  const typingElement = document.querySelector('.typing-text');
+
+  if (typingElement) {
+    const words = ['Future', 'Career', 'Skills', 'Success'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function type() {
+      const currentWord = words[wordIndex];
+
+      if (isDeleting) {
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      let delay = isDeleting ? 50 : 100;
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        delay = 2000;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = 500;
+      }
+
+      setTimeout(type, delay);
+    }
+
+    type();
+  }
+
+  // ============================================
+  // AUTHENTICATION STATE HANDLING
+  // ============================================
+  const loginLink = document.querySelector('.login-link');
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+
+  if (loginLink && user) {
+    loginLink.textContent = 'Sign Out';
+    loginLink.href = '#';
+    loginLink.classList.add('logout-link');
+
+    loginLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('user');
+      window.location.reload();
+    });
+  }
+
+  // ============================================
+  // CONSOLE BRANDING
+  // ============================================
+  console.log('%c<svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Oriana Academy', 'color: #10B981; font-size: 24px; font-weight: bold;');
+  console.log('%cTransforming Careers Through Education', 'color: #3B82F6; font-size: 14px;');
+
+  // ============================================
+  // DROPDOWN HOVER (Desktop)
+  // ============================================
+  document.querySelectorAll('.dropdown').forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+
+    if (toggle && window.innerWidth > 768) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+      });
+    }
+  });
+
+  // ============================================
+  // NEWSLETTER SUBSCRIPTION
+  // ============================================
+  const newsletterForms = document.querySelectorAll('.newsletter-form');
+
+  newsletterForms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input[type="email"]');
+      const email = input.value;
+      const btn = form.querySelector('button');
+      const originalText = btn.textContent;
+
+      if (!email) return;
+
+      try {
+        btn.textContent = '...';
+        btn.disabled = true;
+
+        const response = await fetch('/api/contact/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Subscriber',
+            email: email,
+            phone: '',
+            subject: 'Newsletter Subscription',
+            message: 'New subscription from website footer'
+          })
+        });
+
+        if (response.ok) {
+          input.value = '';
+          btn.textContent = '';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 3000);
+          alert('Thanks for subscribing!');
+        } else {
+          throw new Error('Failed');
+        }
+      } catch (err) {
+        console.error(err);
+        btn.textContent = 'Error';
         setTimeout(() => {
           btn.textContent = originalText;
           btn.disabled = false;
         }, 3000);
-        alert('Thanks for subscribing!');
-      } else {
-        throw new Error('Failed');
       }
-    } catch (err) {
-      console.error(err);
-      btn.textContent = 'Error';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 3000);
-    }
+    });
   });
 });
+

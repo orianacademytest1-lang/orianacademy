@@ -56,8 +56,8 @@ class ChatResponse(BaseModel):
     answer: str
     sources: list = []
 
-@app.get("/")
-async def root():
+@app.get("/api/info")
+async def api_info():
     """API info endpoint"""
     return {
         "message": "Oriana Academy RAG API",
@@ -137,6 +137,17 @@ async def chat(request: ChatRequest):
 
 if __name__ == "__main__":
     import uvicorn
+    # Mount static files (Frontend)
+    from fastapi.staticfiles import StaticFiles
+    
+    # Mount root directory to serve index.html and other static assets
+    # Check if ../index.html exists to confirm we are in the right place
+    if os.path.exists("../index.html"):
+        app.mount("/", StaticFiles(directory="../", html=True), name="static")
+        print("🌍 Serving frontend from ../")
+    else:
+        print("⚠️  Frontend files not found in ../")
+
     port = int(os.getenv('PORT', 5000))
     print(f"🚀 Starting RAG API on http://localhost:{port}")
     print(f"📊 Vector store has {vector_store.get_collection_count()} documents")

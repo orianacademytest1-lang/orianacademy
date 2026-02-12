@@ -20,7 +20,7 @@ def setup_database():
     current_count = vector_store.get_collection_count()
     if current_count > 0:
         print(f"\n⚠️  Vector store already has {current_count} documents")
-        response = input("Do you want to reset and reload? (yes/no): ")
+        response = "yes" # input("Do you want to reset and reload? (yes/no): ")
         if response.lower() == 'yes':
             print("🗑️  Resetting vector store...")
             vector_store.reset()
