@@ -58,7 +58,10 @@ def setup_with_local_embeddings():
             print("Keeping existing data. Exiting.")
             return
         vector_store.reset()
+        from vector_store import reset_vector_store
+        reset_vector_store()
         vector_store = get_vector_store()
+
     
     # Process files
     documents = []

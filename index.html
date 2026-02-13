@@ -8,6 +8,8 @@
   <meta name="description"
     content="Oriana Academy offers industry-relevant training in Digital Marketing, Data Science, Machine Learning, and more.">
   <link rel="stylesheet" href="css/main.css?v=49.0">
+  <link rel="stylesheet" href="css/popup.css?v=3.0">
+  <link rel="stylesheet" href="css/chatbot.css">
   <style>
     /* Community section - balanced spacing to match other sections */
     .section-warm {
@@ -43,10 +45,44 @@
   <!-- PAGE LOADER -->
   <div class="page-loader" id="pageLoader">
     <div class="loader-content">
-      <div class="loader-spinner"></div>
+      <div class="newtons-cradle">
+        <!-- Frame -->
+        <div class="cradle-frame"></div>
+        <!-- Balls -->
+        <div class="cradle-balls">
+          <div class="cradle-ball">
+            <div class="string"></div>
+            <div class="ball"></div>
+          </div>
+          <div class="cradle-ball">
+            <div class="string"></div>
+            <div class="ball"></div>
+          </div>
+          <div class="cradle-ball">
+            <div class="string"></div>
+            <div class="ball"></div>
+          </div>
+          <div class="cradle-ball">
+            <div class="string"></div>
+            <div class="ball"></div>
+          </div>
+          <div class="cradle-ball">
+            <div class="string"></div>
+            <div class="ball"></div>
+          </div>
+        </div>
+        <!-- Shadow -->
+        <div class="cradle-shadow"></div>
+        <!-- Base -->
+        <div class="cradle-base"></div>
+      </div>
       <p class="loader-text">Oriana Academy</p>
+      <div class="loader-progress">
+        <div class="loader-progress-bar"></div>
+      </div>
     </div>
   </div>
+
 
   <!-- HEADER -->
   <header class="header" id="header">
@@ -727,11 +763,56 @@
     </div>
   </footer>
 
+  <!-- Registration Pop-up Banner -->
+  <div class="popup-overlay" id="newsletterPopup">
+    <div class="popup-content">
+      <button class="popup-close" aria-label="Close">&times;</button>
+      <div class="popup-inner">
+        <div class="popup-header">
+          <div class="popup-icon">🚀</div>
+          <h2 class="popup-title">Start Your Journey Today</h2>
+          <p class="popup-quote">"The future belongs to those who learn more skills and combine them in creative ways."
+          </p>
+        </div>
+        <div class="popup-divider"></div>
+        <form class="popup-form" id="newsletterForm">
+          <div class="popup-input-group">
+            <input type="text" class="popup-input" id="regName" placeholder="Full Name" required>
+          </div>
+          <div class="popup-input-group">
+            <input type="email" class="popup-input" id="regEmail" placeholder="Email Address" required>
+          </div>
+          <div class="popup-input-group">
+            <input type="tel" class="popup-input" id="regPhone" placeholder="Phone Number" pattern="[0-9]{10}" required>
+          </div>
+          <div class="popup-input-group">
+            <select class="popup-input popup-select" id="regCourse" required>
+              <option value="" disabled selected>Select Interested Course</option>
+              <option value="Data Science">Data Science</option>
+              <option value="Data Analytics">Data Analytics</option>
+              <option value="Machine Learning">Machine Learning</option>
+              <option value="Generative AI">Generative AI</option>
+              <option value="Digital Marketing">Digital Marketing</option>
+              <option value="Full Stack Python">Full Stack Python</option>
+              <option value="Full Stack Java">Full Stack Java</option>
+              <option value="HR Training">HR Training</option>
+            </select>
+          </div>
+          <div class="popup-actions">
+            <button type="submit" class="btn-popup primary">Register Now</button>
+            <button type="button" class="btn-popup secondary" id="cancelSubscription">Maybe Later</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <script src="js/auth-state.js"></script>
-  <script src="js/main.js?v=2.4"></script>
+  <script src="js/main.js?v=3.0"></script>
   <!-- AI Chatbot -->
-  <link rel="stylesheet" href="css/chatbot.css">
   <script src="js/chatbot.js"></script>
+  <!-- Newsletter Popup -->
+  <script src="js/popup.js?v=3.0"></script>
 </body>
 
 </html>

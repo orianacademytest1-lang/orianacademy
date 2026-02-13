@@ -56,8 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  console.log('Oriana Academy: Popup scheduled for 4s delay');
-  setTimeout(showQuotePopup, 4000);
+  // Popup will be triggered AFTER the loader hides (see loader section below)
 
 
   // ============================================
@@ -66,19 +65,27 @@ document.addEventListener('DOMContentLoaded', function () {
   const pageLoader = document.getElementById('pageLoader');
 
   if (pageLoader) {
+    const loaderStart = Date.now();
+    const MIN_DISPLAY_MS = 2500; // Show loader for 2.5 seconds
+
     const hideLoader = () => {
+      const elapsed = Date.now() - loaderStart;
+      const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed);
       setTimeout(() => {
         pageLoader.classList.add('hidden');
         console.log('Oriana Academy: Page Loader hidden.');
-      }, 300);
+        // Show popup 4 seconds AFTER the loading screen completes
+        console.log('Oriana Academy: Popup scheduled for 4s after page visible');
+        setTimeout(showQuotePopup, 4000);
+      }, remaining);
     };
 
     if (document.readyState === 'complete') {
       hideLoader();
     } else {
       window.addEventListener('load', hideLoader);
-      // Fallback: Force hide after 1.5s as script is already at bottom
-      setTimeout(hideLoader, 1500);
+      // Fallback: Force hide after 5s
+      setTimeout(hideLoader, 5000);
     }
   }
 

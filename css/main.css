@@ -96,12 +96,40 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--white);
+  background: linear-gradient(145deg, #0f172a 0%, #1e293b 40%, #0f172a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+  overflow: hidden;
+}
+
+/* Subtle ambient particles */
+.page-loader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(1.5px 1.5px at 10% 20%, rgba(255, 255, 255, 0.12) 50%, transparent 50%),
+    radial-gradient(1px 1px at 30% 65%, rgba(255, 255, 255, 0.08) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 55% 15%, rgba(255, 255, 255, 0.1) 50%, transparent 50%),
+    radial-gradient(1px 1px at 75% 80%, rgba(255, 255, 255, 0.06) 50%, transparent 50%),
+    radial-gradient(1px 1px at 90% 40%, rgba(255, 255, 255, 0.09) 50%, transparent 50%);
+  animation: particleDrift 8s ease-in-out infinite alternate;
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    transform: translateY(-15px) translateX(10px);
+  }
 }
 
 .page-loader.hidden {
@@ -116,24 +144,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.loader-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid var(--gray-200);
-  border-top-color: var(--primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-  display: block;
-}
-
-.loader-text {
-  margin-top: 1.5rem;
-  font-weight: 600;
-  color: var(--primary);
-  animation: pulse 1.5s ease-in-out infinite;
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes spin {
@@ -142,17 +155,308 @@
   }
 }
 
-@keyframes pulse {
+/* ============================================
+   NEWTON'S CRADLE — PREMIUM REALISTIC
+   ============================================ */
+.newtons-cradle {
+  --cradle-width: 220px;
+  --cradle-height: 180px;
+  --ball-size: 28px;
+  --string-length: 100px;
+  --swing-speed: 1.8s;
+  position: relative;
+  width: var(--cradle-width);
+  height: var(--cradle-height);
+}
 
-  0%,
+/* ---- TOP BAR (Frame) ---- */
+.cradle-frame {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--ball-size) * 5 + 32px);
+  height: 6px;
+  background: linear-gradient(180deg, #e5e7eb 0%, #9ca3af 40%, #6b7280 100%);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ---- SIDE LEGS ---- */
+.cradle-frame::before,
+.cradle-frame::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(180deg, #9ca3af, #6b7280);
+  border-radius: 0 0 2px 2px;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.cradle-frame::before {
+  left: 8px;
+}
+
+.cradle-frame::after {
+  right: 8px;
+}
+
+/* ---- BASE PLATFORM ---- */
+.cradle-base {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--ball-size) * 5 + 48px);
+  height: 5px;
+  background: linear-gradient(180deg, #4b5563, #374151 60%, #1f2937 100%);
+  border-radius: 2.5px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* ---- BALL WRAPPER ---- */
+.cradle-balls {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+}
+
+/* ---- INDIVIDUAL PENDULUM ---- */
+.cradle-ball {
+  width: var(--ball-size);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-origin: top center;
+}
+
+/* ---- STRING ---- */
+.cradle-ball .string {
+  width: 1.5px;
+  height: var(--string-length);
+  background: linear-gradient(to bottom,
+      rgba(156, 163, 175, 0.9) 0%,
+      rgba(107, 114, 128, 0.7) 50%,
+      rgba(75, 85, 99, 0.5) 100%);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- METALLIC BALL ---- */
+.cradle-ball .ball {
+  width: var(--ball-size);
+  height: var(--ball-size);
+  border-radius: 50%;
+  position: relative;
+  /* Multi-layer chrome gradient */
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.95) 0%, transparent 25%),
+    radial-gradient(circle at 35% 35%,
+      #f9fafb 0%,
+      #e5e7eb 15%,
+      #c0c5ce 30%,
+      #8b95a5 55%,
+      #4b5563 80%,
+      #1f2937 100%);
+  box-shadow:
+    inset -3px -4px 8px rgba(0, 0, 0, 0.45),
+    inset 2px 3px 6px rgba(255, 255, 255, 0.5),
+    0 8px 16px -4px rgba(0, 0, 0, 0.5),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Specular highlight on ball */
+.cradle-ball .ball::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 8px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  filter: blur(1.5px);
+}
+
+/* Reflection ring */
+.cradle-ball .ball::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---- SWING ANIMATIONS ---- */
+.cradle-ball:first-child {
+  animation: swingLeft var(--swing-speed) ease-in-out infinite;
+}
+
+.cradle-ball:last-child {
+  animation: swingRight var(--swing-speed) ease-in-out infinite;
+}
+
+@keyframes swingLeft {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  12% {
+    transform: rotate(42deg);
+  }
+
+  25% {
+    transform: rotate(0deg);
+  }
+
   100% {
-    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes swingRight {
+  0% {
+    transform: rotate(0deg);
   }
 
   50% {
-    opacity: 0.5;
+    transform: rotate(0deg);
+  }
+
+  62% {
+    transform: rotate(-42deg);
+  }
+
+  75% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
   }
 }
+
+/* ---- FLOOR SHADOW (moves with swing) ---- */
+.cradle-shadow {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(var(--ball-size) * 5 + 20px);
+  height: 8px;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(3px);
+  animation: shadowPulse var(--swing-speed) ease-in-out infinite;
+}
+
+@keyframes shadowPulse {
+
+  0%,
+  25%,
+  75%,
+  100% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 0.6;
+  }
+
+  12% {
+    transform: translateX(-42%) scaleX(1.15);
+    opacity: 0.8;
+  }
+
+  62% {
+    transform: translateX(-58%) scaleX(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* ---- LOADING TEXT ---- */
+.loader-text {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  animation: textGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    text-shadow: 0 0 0 transparent;
+  }
+
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+}
+
+/* ---- PROGRESS BAR ---- */
+.loader-progress {
+  width: 180px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: -0.5rem;
+}
+
+.loader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #10B981, #3B82F6, #10B981);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: progressFill 2.5s ease-in-out forwards, progressShimmer 1.5s linear infinite;
+}
+
+@keyframes progressFill {
+  0% {
+    width: 0%;
+  }
+
+  30% {
+    width: 40%;
+  }
+
+  60% {
+    width: 65%;
+  }
+
+  85% {
+    width: 85%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes progressShimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
 
 /* ============================================
    RESET & BASE
