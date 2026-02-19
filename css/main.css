@@ -1866,8 +1866,8 @@ img {
 }
 
 .stat-icon {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   margin: 0 auto 1.5rem;
   background: none;
   border-radius: 0;
@@ -1879,6 +1879,7 @@ img {
   transition: all var(--transition-normal);
   padding: 4px;
   overflow: hidden;
+  filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.4));
 }
 
 .stat-icon img {
@@ -1899,8 +1900,8 @@ img {
 
 .stat-item:hover .stat-icon {
   transform: translateY(-8px) scale(1.05);
-  background: var(--white);
-  box-shadow: var(--shadow-glow);
+  background: none;
+  box-shadow: none;
 }
 
 .stat-number {
@@ -1967,8 +1968,8 @@ img {
 }
 
 .feature-icon {
-  width: 120px;
-  height: 120px;
+  width: 160px;
+  height: 160px;
   margin: 0 auto 1.5rem;
   background: none;
   color: var(--primary);
@@ -1979,6 +1980,7 @@ img {
   transition: all var(--transition-normal);
   padding: 4px;
   overflow: hidden;
+  filter: drop-shadow(0 0 15px rgba(16, 185, 129, 0.4));
 }
 
 /* ============================================
@@ -2086,8 +2088,8 @@ img {
 }
 
 .feature-card:hover .feature-icon {
-  background: var(--white);
-  box-shadow: var(--shadow-md);
+  background: none;
+  box-shadow: none;
   transform: scale(1.1) rotate(5deg);
 }
 
