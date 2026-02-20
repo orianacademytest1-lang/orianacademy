@@ -52,6 +52,41 @@ def init_data_db():
                 value TEXT NOT NULL
             )
         ''')
+
+        # Workshops table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS workshops (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                date TEXT NOT NULL,
+                time TEXT NOT NULL,
+                location TEXT NOT NULL,
+                status TEXT DEFAULT 'Upcoming',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+
+        # Workshop registrations table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS workshop_registrations (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                workshop_id INTEGER NOT NULL,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT,
+                status TEXT NOT NULL, -- Career Break, Working, Student
+                registered_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (workshop_id) REFERENCES workshops (id)
+            )
+        ''')
+
+        # Seed initial workshop if not exists
+        cursor.execute("SELECT COUNT(*) FROM workshops WHERE title = ?", ("Women's Day Special Workshop",))
+        if cursor.fetchone()[0] == 0:
+            cursor.execute('''
+                INSERT INTO workshops (title, date, time, location)
+                VALUES (?, ?, ?, ?)
+            ''', ("Women's Day Special Workshop", "March 8, 2026", "10:30 AM – 1:30 PM (IST)", "Oriana Academy / Online"))
         
         conn.commit()
         conn.close()
@@ -190,11 +225,89 @@ def get_stats() -> Dict:
     cursor.execute('SELECT COUNT(*) as count FROM enrollments')
     total_enrollments = cursor.fetchone()['count']
     
+    cursor.execute('SELECT COUNT(*) as count FROM workshop_registrations')
+    total_workshop_registrations = cursor.fetchone()['count']
+    
     conn.close()
     
     return {
         "total_contacts": total_contacts,
-        "total_enrollments": total_enrollments
+        "total_enrollments": total_enrollments,
+        "total_workshop_registrations": total_workshop_registrations
+    }
+
+# Workshop functions
+def save_workshop_registration(workshop_id: int, name: str, email: str, phone: str, status: str) -> int:
+    """Save a workshop registration"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        INSERT INTO workshop_registrations (workshop_id, name, email, phone, status)
+        VALUES (?, ?, ?, ?, ?)
+    ''', (workshop_id, name, email, phone, status))
+    
+    conn.commit()
+    registration_id = cursor.lastrowid
+    conn.close()
+    
+    return registration_id
+
+def get_all_workshop_registrations() -> List[Dict]:
+    """Get all workshop registrations with workshop titles"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT wr.*, w.title as workshop_title, w.date as workshop_date 
+        FROM workshop_registrations wr
+        JOIN workshops w ON wr.workshop_id = w.id
+        ORDER BY wr.registered_at DESC
+    ''')
+    
+    rows = cursor.fetchall()
+    conn.close()
+    
+    return [dict(row) for row in rows]
+
+def get_all_workshops() -> List[Dict]:
+    """Get all workshops"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT * FROM workshops ORDER BY created_at DESC')
+    
+    rows = cursor.fetchall()
+    conn.close()
+    
+    return [dict(row) for row in rows]
+
+def delete_workshop_registration(reg_id: int) -> bool:
+    """Delete a workshop registration"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM workshop_registrations WHERE id = ?', (reg_id,))
+    conn.commit()
+    deleted = cursor.rowcount > 0
+    conn.close()
+    return deleted
+
+def get_workshop_stats() -> Dict:
+    """Get workshop statistics"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT COUNT(*) as count FROM workshops')
+    total_workshops = cursor.fetchone()['count']
+    
+    cursor.execute('SELECT COUNT(*) as count FROM workshop_registrations')
+    total_registrations = cursor.fetchone()['count']
+    
+    conn.close()
+    
+    return {
+        "total_workshops": total_workshops,
+        "total_registrations": total_registrations
     }
 
 # Settings functions

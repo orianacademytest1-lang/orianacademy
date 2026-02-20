@@ -8,25 +8,25 @@
     <link rel="stylesheet" href="css/main.css?v=49.0">
     <style>
         /* =============================================
-           ADMIN DASHBOARD — Premium Dark Theme
+           ADMIN DASHBOARD — Ultra Professional UI
            ============================================= */
         :root {
-            --admin-bg: #0f1419;
-            --admin-surface: #1a1f2e;
-            --admin-card: #1e2538;
-            --admin-border: rgba(255, 255, 255, 0.06);
-            --admin-text: #e2e8f0;
-            --admin-text-muted: #94a3b8;
+            --sidebar-width: 260px;
+            --topbar-height: 70px;
+            --admin-bg: #fdfdfd;
+            --admin-surface: #ffffff;
+            --admin-card-bg: #ffffff;
+            --admin-border: #eef2f6;
+            --admin-text: #0f172a;
+            --admin-text-muted: #64748b;
             --admin-primary: #10b981;
-            --admin-secondary: #3b82f6;
+            --admin-accent: #3b82f6;
             --admin-danger: #ef4444;
-            --admin-warning: #f59e0b;
-            --admin-success: #10b981;
-            --admin-gradient: linear-gradient(135deg, #059669 0%, #10b981 50%, #3b82f6 100%);
-            --admin-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-            --admin-shadow-glow: 0 0 20px rgba(16, 185, 129, 0.15);
-            --font-main: 'Outfit', sans-serif;
-            --font-secondary: 'Poppins', sans-serif;
+            --admin-glass: rgba(255, 255, 255, 0.9);
+            --sidebar-gradient: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --card-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --font-main: 'Inter', 'Outfit', sans-serif;
         }
 
         body {
@@ -34,169 +34,459 @@
             color: var(--admin-text);
             font-family: var(--font-main);
             margin: 0;
-            padding-top: 0 !important;
+            overflow-x: hidden;
+            display: flex;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .admin-header {
-            background: rgba(26, 31, 46, 0.95);
-            backdrop-filter: blur(16px);
+        /* ---- Sidebar ---- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-gradient);
+            border-right: 1px solid var(--admin-border);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 1001;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-logo {
+            padding: 2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             border-bottom: 1px solid var(--admin-border);
-            padding: 0.85rem 0;
+        }
+
+        .sidebar-logo img {
+            height: 32px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+        }
+
+        .sidebar-logo span {
+            font-weight: 800;
+            font-size: 1.15rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #059669, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .sidebar-nav {
+            padding: 1.5rem 0.75rem;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 0.75rem 1rem;
+            color: var(--admin-text-muted);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: #f8fafc;
+            color: var(--admin-text);
+            padding-left: 1.25rem;
+        }
+
+        .nav-item.active {
+            background: #ffffff;
+            color: var(--admin-primary);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-color: var(--admin-border);
+        }
+
+        .nav-item span {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .sidebar-footer {
+            padding: 1.25rem;
+            border-top: 1px solid var(--admin-border);
+        }
+
+        /* ---- Main Content ---- */
+        .main-wrapper {
+            flex-grow: 1;
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            display: flex;
+            flex-direction: column;
+            background: #fdfdfd;
+        }
+
+        .top-bar {
+            height: var(--topbar-height);
+            background: var(--admin-glass);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--admin-border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        .admin-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .admin-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            text-decoration: none;
-        }
-
-        .admin-logo img {
-            height: 38px;
-        }
-
-        .admin-title {
+        .page-title {
             font-size: 1.15rem;
             font-weight: 700;
             color: var(--admin-text);
-            margin: 0;
-            font-family: var(--font-secondary);
             letter-spacing: -0.3px;
         }
 
-        .logout-btn {
-            background: rgba(239, 68, 68, 0.12);
-            color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            padding: 0.5rem 1.25rem;
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logout-pill {
+            background: transparent;
+            color: var(--admin-danger);
+            border: 1px solid #fee2e2;
+            padding: 0.4rem 1rem;
             border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: all 0.25s ease;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
+            transition: all 0.2s;
         }
 
-        .logout-btn:hover {
-            background: rgba(239, 68, 68, 0.25);
-            border-color: rgba(239, 68, 68, 0.4);
-            transform: translateY(-1px);
+        .logout-pill:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
         }
 
-        /* ---- Stats Cards ---- */
+        .content-body {
+            padding: 2.5rem;
+            max-width: 1400px;
+            width: 100%;
+            box-sizing: border-box;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        /* ---- Tab System ---- */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ---- Components ---- */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.25rem;
-            margin: 1.75rem 0;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .stat-card {
-            background: var(--admin-card);
+            background: var(--admin-card-bg);
             border: 1px solid var(--admin-border);
             border-radius: 16px;
-            padding: 1.5rem 1.75rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background: var(--admin-gradient);
+            padding: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--card-shadow);
         }
 
         .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--admin-shadow-glow);
-            border-color: rgba(16, 185, 129, 0.15);
+            transform: translateY(-4px);
+            box-shadow: var(--card-shadow-hover);
         }
 
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--admin-gradient);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0.15rem 0;
-            line-height: 1.1;
-        }
-
-        .stat-label {
-            color: var(--admin-text-muted);
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-        }
-
-        /* ---- Tabs ---- */
-        .tabs {
+        .stat-header {
             display: flex;
-            gap: 0.25rem;
-            background: var(--admin-card);
-            border-radius: 12px;
-            padding: 4px;
-            margin-bottom: 1.75rem;
-            border: 1px solid var(--admin-border);
-            overflow-x: auto;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.25rem;
         }
 
-        .tab {
-            padding: 0.7rem 1.25rem;
-            background: transparent;
-            border: none;
-            color: var(--admin-text-muted);
-            cursor: pointer;
-            font-weight: 600;
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--admin-text);
+            font-size: 1.35rem;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover .stat-icon {
+            background: var(--admin-primary);
+            color: white;
+            transform: rotate(-5deg) scale(1.1);
+        }
+
+        .stat-info .value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--admin-text);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .stat-info .label {
             font-size: 0.8rem;
-            transition: all 0.25s;
-            border-radius: 8px;
-            white-space: nowrap;
+            font-weight: 600;
+            color: var(--admin-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ---- Tables ---- */
+        .table-container {
+            background: var(--admin-surface);
+            border: 1px solid var(--admin-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .table-header-row {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--admin-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fbfbfb;
+        }
+
+        .table-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--admin-text);
+        }
+
+        .search-box {
             position: relative;
         }
 
-        .tab:hover {
+        .search-box input {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 0.6rem 1rem 0.6rem 2.75rem;
+            border-radius: 8px;
             color: var(--admin-text);
-            background: rgba(255, 255, 255, 0.04);
+            font-size: 0.85rem;
+            width: 260px;
+            outline: none;
+            transition: all 0.2s;
+            font-family: inherit;
         }
 
-        .tab.active {
+        .search-box input:focus {
+            border-color: var(--admin-primary);
+            width: 320px;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .export-btn {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 0.5rem 1.25rem;
+            border-radius: 8px;
+            color: var(--admin-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .export-btn:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--admin-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            border-bottom: 1px solid var(--admin-border);
+            background: #f8fafc;
+        }
+
+        tr {
+            transition: all 0.2s ease;
+        }
+
+        tr:hover td {
+            background: #fbfbfb;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--admin-border);
+            font-size: 0.9rem;
+            color: var(--admin-text);
+            vertical-align: middle;
+        }
+
+        /* ---- Action Pills & Icons ---- */
+        .badge {
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-admin {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .badge-user {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .btn-icon-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+            background: #ffffff;
+        }
+
+        .btn-edit {
+            color: #2563eb;
+        }
+
+        .btn-edit:hover {
+            background: #2563eb;
             color: white;
-            background: var(--admin-primary);
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            border-color: #2563eb;
+            transform: scale(1.05);
         }
 
-        .tab.active::after {
-            display: none;
+        .btn-delete {
+            color: #dc2626;
         }
 
-        .tab-content {
+        .btn-delete:hover {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
+            transform: scale(1.05);
+        }
+
+        /* ---- Modals ---- */
+        .modal {
             display: none;
-            animation: fadeIn 0.3s ease-out;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border: 1px solid #eef2f6;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 520px;
+            padding: 2.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            transform-origin: center;
+            animation: modalSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--admin-text-muted);
+        }
+
+        .form-input {
+            width: 100%;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            color: var(--admin-text);
+            font-family: inherit;
+            margin-bottom: 1.25rem;
+            outline: none;
+            box-sizing: border-box;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--admin-primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        .empty-state {
+            padding: 4rem 1.5rem;
+            text-align: center;
+            color: var(--admin-text-muted);
+            font-style: italic;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(6px);
+                transform: translateY(10px);
             }
 
             to {
@@ -205,177 +495,10 @@
             }
         }
 
-        .tab-content.active {
-            display: block;
-        }
-
-        /* ---- Data Table ---- */
-        .data-table {
-            width: 100%;
-            background: var(--admin-card);
-            border: 1px solid var(--admin-border);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: var(--admin-shadow);
-        }
-
-        .data-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .data-table th {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1rem 1.25rem;
-            text-align: left;
-            font-weight: 700;
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--admin-text-muted);
-            border-bottom: 1px solid var(--admin-border);
-        }
-
-        .data-table td {
-            padding: 0.9rem 1.25rem;
-            border-bottom: 1px solid var(--admin-border);
-            color: var(--admin-text);
-            font-size: 0.825rem;
-        }
-
-        .data-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .data-table tbody tr {
-            transition: background 0.2s;
-        }
-
-        .data-table tbody tr:hover {
-            background: rgba(16, 185, 129, 0.04);
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 3rem;
-            color: var(--admin-text-muted);
-        }
-
-        /* ---- Export Button ---- */
-        .export-btn {
-            background: var(--admin-card);
-            color: var(--admin-primary);
-            padding: 0.6rem 1.25rem;
-            border-radius: 10px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
-            margin-bottom: 1.25rem;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .export-btn:hover {
-            background: rgba(16, 185, 129, 0.1);
-            border-color: var(--admin-primary);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
-        }
-
-        /* ---- Badges ---- */
-        .badge {
-            display: inline-block;
-            padding: 0.3rem 0.75rem;
-            border-radius: 6px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .badge-admin {
-            background: rgba(245, 158, 11, 0.12);
-            color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .badge-user {
-            background: rgba(16, 185, 129, 0.12);
-            color: #34d399;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        /* ---- Action Buttons ---- */
-        .action-btns {
-            display: flex;
-            gap: 0.4rem;
-        }
-
-        .action-btn {
-            padding: 0.3rem 0.7rem;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-size: 0.7rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            letter-spacing: 0.02em;
-        }
-
-        .edit-btn {
-            background: rgba(59, 130, 246, 0.12);
-            color: #60a5fa;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .edit-btn:hover {
-            background: rgba(59, 130, 246, 0.25);
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-
-        .delete-btn {
-            background: rgba(239, 68, 68, 0.12);
-            color: #f87171;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .delete-btn:hover {
-            background: rgba(239, 68, 68, 0.25);
-            border-color: rgba(239, 68, 68, 0.4);
-        }
-
-        /* ---- Modal ---- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10001;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(6px);
-        }
-
-        .modal-content {
-            background: var(--admin-surface);
-            margin: 5% auto;
-            padding: 2rem;
-            border: 1px solid var(--admin-border);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 550px;
-            box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.5);
-            animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes modalIn {
+        @keyframes modalSlide {
             from {
                 opacity: 0;
-                transform: scale(0.95) translateY(-20px);
+                transform: scale(0.95) translateY(20px);
             }
 
             to {
@@ -384,164 +507,46 @@
             }
         }
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
+        /* ---- Responsive Mobile ---- */
+        .mobile-header {
+            display: none;
+            height: 60px;
+            background: var(--admin-surface);
+            padding: 0 1.5rem;
             align-items: center;
-            margin-bottom: 1.5rem;
+            justify-content: space-between;
             border-bottom: 1px solid var(--admin-border);
-            padding-bottom: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1002;
         }
 
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--admin-text);
-            font-family: var(--font-secondary);
-        }
-
-        .close-modal {
-            color: var(--admin-text-muted);
-            font-size: 1.25rem;
+        .menu-toggle {
+            font-size: 1.5rem;
             cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-modal:hover {
-            color: white;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.4rem;
-            font-size: 0.78rem;
-            color: var(--admin-text-muted);
-            font-weight: 600;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.65rem 0.9rem;
-            border: 1px solid var(--admin-border);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.04);
             color: var(--admin-text);
-            font-family: var(--font-main);
-            transition: all 0.2s;
-            box-sizing: border-box;
-            font-size: 0.85rem;
         }
 
-        .form-control:focus {
-            outline: none;
-            border-color: var(--admin-primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-            border-top: 1px solid var(--admin-border);
-            padding-top: 1rem;
-        }
-
-        .btn-cancel {
-            background: rgba(255, 255, 255, 0.06);
-            color: var(--admin-text-muted);
-            padding: 0.5rem 1.25rem;
-            border-radius: 8px;
-            border: 1px solid var(--admin-border);
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-        }
-
-        .btn-cancel:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .btn-save {
-            background: var(--admin-primary);
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 0.8rem;
-            transition: all 0.2s;
-        }
-
-        .btn-save:hover {
-            background: #059669;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        /* ---- Settings Tab ---- */
-        #settings-tab .data-table {
-            background: var(--admin-card);
-        }
-
-        #settings-tab h3 {
-            color: var(--admin-text) !important;
-        }
-
-        #settings-tab input {
-            width: 100%;
-            padding: 0.65rem 0.9rem;
-            border: 1px solid var(--admin-border);
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--admin-text);
-            font-family: var(--font-main);
-            font-size: 0.85rem;
-            box-sizing: border-box;
-            transition: all 0.2s;
-        }
-
-        #settings-tab input:focus {
-            outline: none;
-            border-color: var(--admin-primary);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-        }
-
-        #settings-tab label {
-            color: var(--admin-text-muted) !important;
-        }
-
-        #settings-tab small {
-            color: var(--admin-text-muted) !important;
-        }
-
-        #settings-tab small a {
-            color: var(--admin-primary) !important;
-        }
-
-        /* ---- Responsive ---- */
-        @media (max-width: 768px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
+        @media (max-width: 991px) {
+            .sidebar {
+                transform: translateX(-100%);
             }
 
-            .tabs {
-                overflow-x: auto;
+            .sidebar.open {
+                transform: translateX(0);
             }
 
-            .data-table {
-                overflow-x: auto;
+            .main-wrapper {
+                margin-left: 0;
+                width: 100%;
             }
 
-            .data-table table {
-                min-width: 700px;
+            .mobile-header {
+                display: flex;
+            }
+
+            .top-bar {
+                display: none;
             }
         }
     </style>
@@ -549,206 +554,354 @@
 
 <body>
     <!-- Admin Header -->
-    <header class="admin-header">
-        <div class="container">
-            <a href="index.html" class="admin-logo">
-                <img src="assets/images/oriana-logo-cropped.webp" alt="Oriana Academy">
-                <h1 class="admin-title">Admin Dashboard</h1>
-            </a>
-            <button class="logout-btn" onclick="logout()">Logout</button>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="container" style="padding: 2rem 0;">
-        <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Total Contact Submissions</div>
-                <div class="stat-number" id="totalContacts">0</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total Enrollments</div>
-                <div class="stat-number" id="totalEnrollments">0</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Registered Users</div>
-                <div class="stat-number" id="totalUsers">0</div>
-            </div>
-        </div>
-
-        <!-- Tabs -->
-        <div class="tabs">
-            <button class="tab active" onclick="switchTab('contacts')">Contact Submissions</button>
-            <button class="tab" onclick="switchTab('enrollments')">Enrollments</button>
-            <button class="tab" id="usersTabBtn" onclick="switchTab('users')">Registered Users</button>
-            <button class="tab" id="settingsTabBtn" onclick="switchTab('settings')">⚙️ Settings</button>
-        </div>
-
-        <!-- Contact Submissions Tab -->
-        <div class="tab-content active" id="contacts-tab">
-            <button class="export-btn" onclick="exportCSV('contacts')">📥 Export to CSV</button>
-            <div class="data-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Subject</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="contactsTable">
-                        <tr>
-                            <td colspan="7" class="empty-state">Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Enrollments Tab -->
-        <div class="tab-content" id="enrollments-tab">
-            <button class="export-btn" onclick="exportCSV('enrollments')">📥 Export to CSV</button>
-            <div class="data-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Course</th>
-                            <th>Message</th>
-                            <th>Date</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="enrollmentsTable">
-                        <tr>
-                            <td colspan="7" class="empty-state">Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Registered Users Tab -->
-        <div class="tab-content" id="users-tab">
-            <button class="export-btn" onclick="exportCSV('users')">📥 Export to CSV</button>
-            <div class="data-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Admin?</th>
-                            <th>Joined Date</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usersTable">
-                        <tr>
-                            <td colspan="5" class="empty-state">Loading...</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Settings Tab -->
-        <div class="tab-content" id="settings-tab">
-            <div class="data-table" style="padding: 2rem; max-width: 600px;">
-                <h3 style="margin-bottom: 1.5rem; color: white;">Email Notification Settings</h3>
-                <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 2rem;">
-                    Configure your SMTP settings to receive live email alerts for new submissions.
-                </p>
-                <form id="smtpSettingsForm">
-                    <div class="form-group">
-                        <label>Sender Email (Gmail)</label>
-                        <input type="email" id="smtp_email" placeholder="e.g. yourname@gmail.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Gmail App Password</label>
-                        <input type="password" id="smtp_password" placeholder="••••••••••••••••" required>
-                        <small style="color: #64748b; margin-top: 0.5rem; display: block;">
-                            Use a <a href="https://myaccount.google.com/apppasswords" target="_blank"
-                                style="color: var(--admin-primary);">Google App Password</a>, not your main
-                            password.
-                        </small>
-                    </div>
-                    <div class="form-group">
-                        <label>Receiver Email ID</label>
-                        <input type="email" id="receiver_email" placeholder="notifications@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Resend API Key (for Railway/Cloud)</label>
-                        <input type="text" id="resend_api_key" placeholder="re_...">
-                        <small style="color: #64748b; font-size: 0.8rem;">Use <a href="https://resend.com"
-                                target="_blank" style="color: #6366f1;">Resend</a> to bypass Railway SMTP
-                            blocks.</small>
-                    </div>
-                    <button type="submit" class="export-btn" style="width: 100%; margin-top: 1rem;">Save
-                        Settings</button>
-                    <button type="button" onclick="testEmailConfig()" class="export-btn"
-                        style="width: 100%; margin-top: 0.5rem; background: #6366f1;">Test Connection</button>
-                </form>
-            </div>
-        </div>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <a href="index.html" class="sidebar-logo">
+            <img src="assets/images/oriana-logo-cropped.webp" alt="Oriana Logo">
+            <span>Admin</span>
+        </a>
+        <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
     </div>
 
-    <!-- Edit Modal -->
-    <div id="editModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalTitle">Edit Entry</h3>
-                <span class="close-modal" onclick="closeModal()">&times;</span>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            <img src="assets/images/oriana-logo-cropped.webp" alt="Oriana Academy">
+            <span>Admin Panel</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item active" onclick="switchTab('contacts', this)">
+                <span>📞</span> Contact Submissions
             </div>
+            <div class="nav-item" onclick="switchTab('enrollments', this)">
+                <span>🎓</span> Enrollments
+            </div>
+            <div class="nav-item" onclick="switchTab('workshops', this)">
+                <span>🗓️</span> Workshops
+            </div>
+            <div class="nav-item" id="usersTabBtn" onclick="switchTab('users', this)">
+                <span>👤</span> Registered Users
+            </div>
+            <div class="nav-item" id="settingsTabBtn" onclick="switchTab('settings', this)">
+                <span>⚙️</span> Settings
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="logout-pill" onclick="logout()" style="text-align: center;">LOGOUT</div>
+        </div>
+    </aside>
+
+    <main class="main-wrapper">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <h1 class="page-title" id="pageTitle">Contact Submissions</h1>
+            <div class="user-profile">
+                <span style="font-weight: 600; font-size: 0.9rem;" id="adminName">Admin User</span>
+                <div
+                    style="width: 35px; height: 35px; border-radius: 50%; background: var(--admin-primary); display: flex; align-items: center; justify-content: center; font-weight: 800; color: white;">
+                    A</div>
+            </div>
+        </header>
+
+        <div class="content-body">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">✉️</div>
+                        <div class="badge badge-admin">+Live</div>
+                    </div>
+                    <div class="stat-info">
+                        <div class="value" id="totalContacts">0</div>
+                        <div class="label">Contacts</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🎓</div>
+                    </div>
+                    <div class="stat-info">
+                        <div class="value" id="totalEnrollments">0</div>
+                        <div class="label">Enrollments</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">🗓️</div>
+                    </div>
+                    <div class="stat-info">
+                        <div class="value" id="totalWorkshopRegs">0</div>
+                        <div class="label">Workshops</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon">👤</div>
+                    </div>
+                    <div class="stat-info">
+                        <div class="value" id="totalUsers">0</div>
+                        <div class="label">Active Users</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB CONTENTS -->
+
+            <!-- Contact Submissions Tab -->
+            <div class="tab-content active" id="contacts-tab">
+                <div class="table-container">
+                    <div class="table-header-row">
+                        <h3 class="table-title">Recent Submissions</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div class="search-box">
+                                <span
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--admin-text-muted);">🔍</span>
+                                <input type="text" id="contactSearch" placeholder="Search contacts..."
+                                    onkeyup="filterTable('contactsTable', this.value)">
+                            </div>
+                            <button class="export-btn" onclick="exportCSV('contacts')"
+                                style="margin-bottom: 0;">Download Data</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactsTable">
+                            <tr>
+                                <td colspan="6" class="empty-state">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Enrollments Tab -->
+            <div class="tab-content" id="enrollments-tab">
+                <div class="table-container">
+                    <div class="table-header-row">
+                        <h3 class="table-title">Course Enrollments</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div class="search-box">
+                                <span
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--admin-text-muted);">🔍</span>
+                                <input type="text" id="enrollmentSearch" placeholder="Search enrollments..."
+                                    onkeyup="filterTable('enrollmentsTable', this.value)">
+                            </div>
+                            <button class="export-btn" onclick="exportCSV('enrollments')"
+                                style="margin-bottom: 0;">Download Data</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Course</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="enrollmentsTable">
+                            <tr>
+                                <td colspan="6" class="empty-state">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Workshops Tab -->
+            <div class="tab-content" id="workshops-tab">
+                <div class="table-header-row">
+                    <h4 style="margin: 0; color: var(--admin-primary);">Upcoming Workshops</h4>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <div class="search-box">
+                            <span
+                                style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--admin-text-muted);">🔍</span>
+                            <input type="text" id="workshopListSearch" placeholder="Search workshops..."
+                                onkeyup="filterTable('workshopsListTable', this.value)">
+                        </div>
+                        <button class="export-btn" onclick="exportCSV('workshops')" style="margin-bottom: 0;">Download
+                            Data</button>
+                    </div>
+                </div>
+                <div class="table-container" style="margin-bottom: 2.5rem;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody id="workshopsListTable">
+                            <tr>
+                                <td colspan="5" class="empty-state">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header-row">
+                        <h3 class="table-title">Workshop Registrations</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div class="search-box">
+                                <span
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--admin-text-muted);">🔍</span>
+                                <input type="text" id="registrationSearch" placeholder="Search registrations..."
+                                    onkeyup="filterTable('workshopRegistrationsTable', this.value)">
+                            </div>
+                            <button class="export-btn" onclick="exportCSV('workshop_registrations')"
+                                style="margin-bottom: 0;">Download Data</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Workshop</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="workshopRegistrationsTable">
+                            <tr>
+                                <td colspan="8" class="empty-state">No registrations found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Registered Users Tab -->
+            <div class="tab-content" id="users-tab">
+                <div class="table-container">
+                    <div class="table-header-row">
+                        <h3 class="table-title">Registered Academy Users</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div class="search-box">
+                                <span
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--admin-text-muted);">🔍</span>
+                                <input type="text" id="userSearch" placeholder="Search users..."
+                                    onkeyup="filterTable('usersTable', this.value)">
+                            </div>
+                            <button class="export-btn" onclick="exportCSV('users')" style="margin-bottom: 0;">Download
+                                Data</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Joined</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTable">
+                            <tr>
+                                <td colspan="5" class="empty-state">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div class="tab-content" id="settings-tab">
+                <div class="table-container" style="padding: 2.5rem; max-width: 600px;">
+                    <h3 style="margin-bottom: 0.5rem;">Email & SMTP Configuration</h3>
+                    <p style="color: var(--admin-text-muted); font-size: 0.85rem; margin-bottom: 2rem;">Ensure your
+                        server can send automated alerts to customers and staff.</p>
+
+                    <form id="smtpSettingsForm">
+                        <label class="form-label">Sender Gmail Address</label>
+                        <input type="email" id="smtp_email" class="form-input" placeholder="academy@gmail.com" required>
+
+                        <label class="form-label">Gmail App Password</label>
+                        <input type="password" id="smtp_password" class="form-input" placeholder="••••••••••••••••"
+                            required>
+
+                        <label class="form-label">Notification Recipient</label>
+                        <input type="email" id="receiver_email" class="form-input" placeholder="admin@oriana.com"
+                            required>
+
+                        <label class="form-label">Resend API Key (Cloud Fallback)</label>
+                        <input type="text" id="resend_api_key" class="form-input" placeholder="re_...">
+
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <button type="submit" class="export-btn"
+                                style="flex: 1; justify-content: center; background: var(--admin-primary); color: white; border: none; padding: 0.8rem;">Save
+                                Configuration</button>
+                            <button type="button" onclick="testEmailConfig()" class="export-btn"
+                                style="flex: 1; justify-content: center; background: rgba(59, 130, 246, 0.1); border-color: var(--admin-accent); color: var(--admin-accent); padding: 0.8rem;">Test
+                                System</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal System -->
+    <div id="editModal" class="modal">
+        <div class="modal-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h3 id="modalTitle" style="margin: 0;">Update Entry</h3>
+                <span onclick="closeModal()" style="cursor: pointer; font-size: 1.5rem;">&times;</span>
+            </div>
+
             <form id="editForm">
                 <input type="hidden" id="editId">
                 <input type="hidden" id="editType">
 
-                <div class="form-group">
-                    <label for="editName">Name</label>
-                    <input type="text" id="editName" class="form-control" required>
-                </div>
+                <label class="form-label">Full Name</label>
+                <input type="text" id="editName" class="form-input" required>
 
-                <div class="form-group">
-                    <label for="editEmail">Email</label>
-                    <input type="email" id="editEmail" class="form-control" required>
-                </div>
+                <label class="form-label">Email Address</label>
+                <input type="email" id="editEmail" class="form-input" required>
 
-                <div class="form-group">
-                    <label for="editPhone">Phone</label>
-                    <input type="text" id="editPhone" class="form-control">
-                </div>
+                <label class="form-label">Phone Number</label>
+                <input type="text" id="editPhone" class="form-input">
 
                 <div id="contactSpecificFields">
-                    <div class="form-group">
-                        <label for="editSubject">Subject</label>
-                        <input type="text" id="editSubject" class="form-control">
-                    </div>
+                    <label class="form-label">Subject</label>
+                    <input type="text" id="editSubject" class="form-input">
                 </div>
 
                 <div id="enrollmentSpecificFields" style="display: none;">
-                    <div class="form-group">
-                        <label for="editCourse">Course</label>
-                        <input type="text" id="editCourse" class="form-control">
-                    </div>
+                    <label class="form-label">Selected Course</label>
+                    <input type="text" id="editCourse" class="form-input">
                 </div>
 
-                <div class="form-group">
-                    <label for="editMessage">Message</label>
-                    <textarea id="editMessage" class="form-control" rows="4" required></textarea>
-                </div>
+                <label class="form-label">Personal Message</label>
+                <textarea id="editMessage" class="form-input" rows="4" style="resize: none;" required></textarea>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn-cancel" onclick="closeModal()">Cancel</button>
-                    <button type="submit" class="btn-save">Save Changes</button>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="button" class="btn-cancel" onclick="closeModal()"
+                        style="flex: 1; background: transparent; border: 1px solid var(--admin-border); color: var(--admin-text-muted); padding: 0.8rem; border-radius: 10px; cursor: pointer;">Discard</button>
+                    <button type="submit" class="btn-save"
+                        style="flex: 2; background: var(--admin-primary); border: none; color: white; padding: 0.8rem; border-radius: 10px; cursor: pointer; font-weight: 700;">Update
+                        Records</button>
                 </div>
             </form>
         </div>
@@ -766,91 +919,135 @@
         let contactsData = [];
         let enrollmentsData = [];
         let usersData = [];
+        let workshopsData = [];
+        let workshopRegistrationsData = [];
 
         // Load dashboard data
         async function loadDashboard() {
             try {
                 // Load stats
-                const statsRes = await fetch('/api/admin/stats');
-                const stats = await statsRes.json();
-                document.getElementById('totalContacts').textContent = stats.total_contacts;
-                document.getElementById('totalEnrollments').textContent = stats.total_enrollments;
-                document.getElementById('totalUsers').textContent = stats.total_users || 0;
+                try {
+                    const statsRes = await fetch('/api/admin/stats');
+                    const stats = await statsRes.json();
+                    document.getElementById('totalContacts').textContent = stats.total_contacts || 0;
+                    document.getElementById('totalEnrollments').textContent = stats.total_enrollments || 0;
+                    document.getElementById('totalUsers').textContent = stats.total_users || 0;
+                    document.getElementById('totalWorkshopRegs').textContent = stats.total_workshop_registrations || 0;
+                } catch (e) { console.error('Stats error:', e); }
 
                 // Load contacts
-                const contactsRes = await fetch('/api/admin/contacts');
-                const contactsJson = await contactsRes.json();
-                contactsData = contactsJson.contacts;
-                renderContacts();
+                try {
+                    const contactsRes = await fetch('/api/admin/contacts');
+                    const contactsJson = await contactsRes.json();
+                    contactsData = contactsJson.contacts || [];
+                    renderContacts();
+                } catch (e) {
+                    console.error('Contacts error:', e);
+                    document.getElementById('contactsTable').innerHTML = '<tr><td colspan="8" class="empty-state">Unable to load contacts</td></tr>';
+                }
 
                 // Load enrollments
-                const enrollmentsRes = await fetch('/api/admin/enrollments');
-                const enrollmentsJson = await enrollmentsRes.json();
-                enrollmentsData = enrollmentsJson.enrollments;
-                renderEnrollments();
+                try {
+                    const enrollmentsRes = await fetch('/api/admin/enrollments');
+                    const enrollmentsJson = await enrollmentsRes.json();
+                    enrollmentsData = enrollmentsJson.enrollments || [];
+                    renderEnrollments();
+                } catch (e) {
+                    console.error('Enrollments error:', e);
+                    document.getElementById('enrollmentsTable').innerHTML = '<tr><td colspan="8" class="empty-state">Unable to load enrollments</td></tr>';
+                }
+
+                // Load workshops
+                try {
+                    const workshopsRes = await fetch('/api/admin/workshops');
+                    if (workshopsRes.ok) {
+                        const workshopsJson = await workshopsRes.json();
+                        workshopsData = workshopsJson.workshops || [];
+                        renderWorkshops();
+                    } else { throw new Error('Not found'); }
+                } catch (e) {
+                    console.error('Workshops error:', e);
+                    document.getElementById('workshopsListTable').innerHTML = '<tr><td colspan="5" class="empty-state">Unable to load workshops (Server restart may be required)</td></tr>';
+                }
+
+                // Load workshop registrations
+                try {
+                    const workshopRegsRes = await fetch('/api/admin/workshop/registrations');
+                    if (workshopRegsRes.ok) {
+                        const workshopRegsJson = await workshopRegsRes.json();
+                        workshopRegistrationsData = workshopRegsJson.registrations || [];
+                        renderWorkshopRegistrations();
+                    } else { throw new Error('Not found'); }
+                } catch (e) {
+                    console.error('Workshop regs error:', e);
+                    document.getElementById('workshopRegistrationsTable').innerHTML = '<tr><td colspan="10" class="empty-state">Unable to load registrations (Server restart may be required)</td></tr>';
+                }
 
                 // Load users
-                const usersRes = await fetch('/api/admin/users');
-                const usersJson = await usersRes.json();
-                usersData = usersJson.users;
-                renderUsers();
+                try {
+                    const usersRes = await fetch('/api/admin/users');
+                    const usersJson = await usersRes.json();
+                    usersData = usersJson.users || [];
+                    renderUsers();
+                } catch (e) { console.error('Users error:', e); }
 
                 // Load Settings
                 await loadSettings();
             } catch (error) {
-                console.error('Error loading dashboard:', error);
-                alert('Error loading data. Please try again.');
+                console.error('Global dashboard error:', error);
             }
         }
 
-        // Render contacts table
+        // Load dashboard on page load
+        if (user && user.full_name) {
+            document.getElementById('adminName').textContent = user.full_name;
+            const initials = user.full_name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+            document.querySelector('.user-profile div').textContent = initials;
+        }
+
+        // Render functions update with new button styles
         function renderContacts() {
             const tbody = document.getElementById('contactsTable');
             if (contactsData.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No contact submissions yet</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No contact submissions yet</td></tr>';
                 return;
             }
 
             tbody.innerHTML = contactsData.map(contact => `
                 <tr>
-                    <td>${contact.id}</td>
-                    <td>${contact.name || 'Anonymous'}</td>
+                    <td>#${contact.id}</td>
+                    <td><strong>${contact.name || 'Anonymous'}</strong></td>
                     <td>${contact.email || 'N/A'}</td>
-                    <td>${contact.phone || 'N/A'}</td>
                     <td>${contact.subject || 'No Subject'}</td>
-                    <td>${(contact.message || '').substring(0, 30)}...</td>
                     <td>${new Date(contact.submitted_at).toLocaleDateString()}</td>
                     <td>
-                        <div class="action-btns">
-                            <button class="action-btn edit-btn" onclick="openEditModal('contacts', ${contact.id})">Edit</button>
-                            <button class="action-btn delete-btn" onclick="deleteItem('contacts', ${contact.id})">Delete</button>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <div class="btn-icon btn-edit" title="Edit" onclick="openEditModal('contacts', ${contact.id})">✎</div>
+                            <div class="btn-icon btn-delete" title="Delete" onclick="deleteItem('contacts', ${contact.id})">🗑</div>
                         </div>
                     </td>
                 </tr>
             `).join('');
         }
 
-        // Render enrollments table
         function renderEnrollments() {
             const tbody = document.getElementById('enrollmentsTable');
             if (enrollmentsData.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No enrollments yet</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No enrollments yet</td></tr>';
                 return;
             }
 
             tbody.innerHTML = enrollmentsData.map(enrollment => `
                 <tr>
-                    <td>${enrollment.id}</td>
-                    <td>${enrollment.name || 'Student'}</td>
+                    <td>#${enrollment.id}</td>
+                    <td><strong>${enrollment.name || 'Student'}</strong></td>
                     <td>${enrollment.email || 'N/A'}</td>
-                    <td>${enrollment.phone || 'N/A'}</td>
-                    <td>${enrollment.course || 'Unknown'}</td>
-                    <td>${enrollment.message ? (enrollment.message.substring(0, 30) + '...') : 'N/A'}</td>
+                    <td><span class="badge badge-user">${enrollment.course || 'Unknown'}</span></td>
                     <td>${new Date(enrollment.submitted_at).toLocaleDateString()}</td>
                     <td>
-                        <div class="action-btns">
-                            <button class="action-btn edit-btn" onclick="openEditModal('enrollments', ${enrollment.id})">Edit</button>
-                            <button class="action-btn delete-btn" onclick="deleteItem('enrollments', ${enrollment.id})">Delete</button>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <div class="btn-icon btn-edit" title="Edit" onclick="openEditModal('enrollments', ${enrollment.id})">✎</div>
+                            <div class="btn-icon btn-delete" title="Delete" onclick="deleteItem('enrollments', ${enrollment.id})">🗑</div>
                         </div>
                     </td>
                 </tr>
@@ -858,17 +1055,89 @@
         }
 
         // Tab switching
-        function switchTab(tabName) {
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        function switchTab(tabName, element) {
+            // Update active states for nav items
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            if (element) {
+                element.classList.add('active');
+            } else {
+                // Fallback for direct calls
+                const items = document.querySelectorAll('.nav-item');
+                if (tabName === 'contacts') items[0].classList.add('active');
+                else if (tabName === 'enrollments') items[1].classList.add('active');
+                else if (tabName === 'workshops') items[2].classList.add('active');
+                else if (tabName === 'users') items[3].classList.add('active');
+                else if (tabName === 'settings') items[4].classList.add('active');
+            }
 
-            // Add active class to selected tab
-            event.target.classList.add('active');
+            // Update tab content visibility
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             document.getElementById(`${tabName}-tab`).classList.add('active');
+
+            // Update page title
+            const titles = {
+                'contacts': 'Contact Submissions',
+                'enrollments': 'Course Enrollments',
+                'workshops': 'Workshop Management',
+                'users': 'Registered Academy Users',
+                'settings': 'System Settings'
+            };
+            document.getElementById('pageTitle').textContent = titles[tabName] || 'Dashboard';
+
+            // Close sidebar on mobile after clicking
+            if (window.innerWidth < 992) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
         }
 
-        // Render users table
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+        }
+
+        // Render functions update with new button styles
+        function renderWorkshops() {
+            const tbody = document.getElementById('workshopsListTable');
+            if (workshopsData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No workshops conducted yet</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = workshopsData.map(ws => `
+                <tr>
+                    <td>#${ws.id}</td>
+                    <td><strong>${ws.title}</strong></td>
+                    <td>${ws.date}</td>
+                    <td>${ws.time}</td>
+                    <td>${ws.location}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderWorkshopRegistrations() {
+            const tbody = document.getElementById('workshopRegistrationsTable');
+            if (workshopRegistrationsData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No workshop registrations yet</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = workshopRegistrationsData.map(reg => `
+                <tr>
+                    <td>#${reg.id}</td>
+                    <td><span class="badge badge-admin">${reg.workshop_title}</span></td>
+                    <td><strong>${reg.name}</strong></td>
+                    <td>${reg.email || 'N/A'}</td>
+                    <td>${reg.phone || 'N/A'}</td>
+                    <td>${reg.status}</td>
+                    <td>${new Date(reg.registered_at).toLocaleDateString()}</td>
+                    <td>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <div class="btn-icon btn-delete" title="Delete" onclick="deleteItem('workshop_registrations', ${reg.id})">🗑</div>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
         function renderUsers() {
             const tbody = document.getElementById('usersTable');
             if (usersData.length === 0) {
@@ -878,13 +1147,27 @@
 
             tbody.innerHTML = usersData.map(user => `
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.full_name}</td>
+                    <td>#${user.id}</td>
+                    <td><strong>${user.full_name}</strong></td>
                     <td>${user.email}</td>
-                    <td>${user.is_admin ? '<span class="badge badge-user">Admin</span>' : 'No'}</td>
+                    <td>${user.is_admin ? '<span class="badge badge-admin">Admin</span>' : '<span class="badge badge-user">Student</span>'}</td>
                     <td>${new Date(user.created_at).toLocaleDateString()}</td>
                 </tr>
             `).join('');
+        }
+
+        // Table filtering (Search)
+        function filterTable(tableId, query) {
+            const tbody = document.getElementById(tableId);
+            const rows = tbody.getElementsByTagName('tr');
+            const lowerQuery = query.toLowerCase();
+
+            for (let row of rows) {
+                if (row.classList.contains('empty-state')) continue;
+
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(lowerQuery) ? '' : 'none';
+            }
         }
 
         // Export to CSV
@@ -893,13 +1176,19 @@
 
             if (type === 'contacts') {
                 data = contactsData;
-                headers = ['ID', 'Name', 'Email', 'Phone', 'Subject', 'Message', 'Date'];
+                headers = ['Id', 'Name', 'Email', 'Phone', 'Subject', 'Message', 'Date'];
             } else if (type === 'enrollments') {
                 data = enrollmentsData;
-                headers = ['ID', 'Name', 'Email', 'Phone', 'Course', 'Message', 'Date'];
+                headers = ['Id', 'Name', 'Email', 'Phone', 'Course', 'Message', 'Date'];
             } else if (type === 'users') {
                 data = usersData;
-                headers = ['ID', 'Name', 'Email', 'Is Admin', 'Joined Date'];
+                headers = ['Id', 'Name', 'Email', 'Is Admin', 'Joined Date'];
+            } else if (type === 'workshop_registrations') {
+                data = workshopRegistrationsData;
+                headers = ['Id', 'Workshop', 'Name', 'Email', 'Phone', 'Status', 'Registered Date'];
+            } else if (type === 'workshops') {
+                data = workshopsData;
+                headers = ['Id', 'Title', 'Date', 'Time', 'Location'];
             }
 
             if (!data || data.length === 0) {
@@ -907,7 +1196,8 @@
                 return;
             }
 
-            const csvContent = [
+            // UTF-8 BOM for Excel compatibility (\uFEFF)
+            const csvContent = '\uFEFF' + [
                 headers.join(','),
                 ...data.map(row => {
                     let fields;
@@ -917,12 +1207,16 @@
                         fields = [row.id, row.name, row.email, row.phone, row.course, row.message || '', row.submitted_at];
                     } else if (type === 'users') {
                         fields = [row.id, row.full_name, row.email, row.is_admin ? 'Yes' : 'No', row.created_at];
+                    } else if (type === 'workshop_registrations') {
+                        fields = [row.id, row.workshop_title, row.workshop_date || 'N/A', row.name, row.email, row.phone || '', row.status, row.registered_at];
+                    } else if (type === 'workshops') {
+                        fields = [row.id, row.title, row.date, row.time, row.location];
                     }
                     return fields.map(field => `"${String(field).replace(/"/g, '""')}"`).join(',');
                 })
             ].join('\n');
 
-            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
@@ -1092,12 +1386,22 @@
         };
 
         async function deleteItem(type, id) {
-            if (!confirm(`Are you sure you want to delete this ${type === 'contacts' ? 'submission' : 'enrollment'}?`)) {
+            let label = 'item';
+            if (type === 'contacts') label = 'submission';
+            else if (type === 'enrollments') label = 'enrollment';
+            else if (type === 'workshop_registrations') label = 'workshop registration';
+
+            if (!confirm(`Are you sure you want to delete this ${label}?`)) {
                 return;
             }
 
             try {
-                const response = await fetch(`/api/admin/${type}/${id}`, {
+                // Adjust endpoint for workshop registrations
+                const endpoint = type === 'workshop_registrations'
+                    ? `/api/admin/workshop/registrations/${id}`
+                    : `/api/admin/${type}/${id}`;
+
+                const response = await fetch(endpoint, {
                     method: 'DELETE'
                 });
 

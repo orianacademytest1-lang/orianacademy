@@ -192,6 +192,7 @@ async def get_enrollments():
 async def get_admin_stats():
     try:
         from auth import get_all_users
+        from database import get_stats
         stats = get_stats()
         users = get_all_users()
         stats["total_users"] = len(users)
@@ -235,6 +236,67 @@ async def admin_update_enrollment(id: int, enrollment: EnrollmentSubmission):
     if not success:
         raise HTTPException(status_code=404, detail="Enrollment not found")
     return {"message": "Enrollment updated successfully"}
+
+# Workshop Endpoints
+class WorkshopRegistration(BaseModel):
+    workshop_id: int
+    name: str
+    email: str
+    phone: str = ""
+    status: str
+
+@app.post("/api/workshop/register")
+async def register_workshop(registration: WorkshopRegistration):
+    from database import save_workshop_registration
+    
+    reg_id = save_workshop_registration(
+        registration.workshop_id,
+        registration.name,
+        registration.email,
+        registration.phone,
+        registration.status
+    )
+    
+    # Optional: Send email notification
+    try:
+        from database import get_all_workshops
+        workshops = get_all_workshops()
+        workshop_title = next((w['title'] for w in workshops if w['id'] == registration.workshop_id), "Workshop")
+        
+        from email_utils import send_notification_email
+        send_notification_email(
+            subject=f"New Workshop Registration: {workshop_title}",
+            data={
+                "name": registration.name,
+                "email": registration.email,
+                "phone": registration.phone,
+                "workshop": workshop_title,
+                "status": registration.status
+            },
+            type='enrollment' # Reusing enrollment template
+        )
+    except Exception as e:
+        print(f"⚠️ Workshop email notification error: {e}")
+
+    return {"message": "Workshop registration successful", "id": reg_id}
+
+@app.get("/api/admin/workshops")
+async def get_admin_workshops():
+    from database import get_all_workshops
+    return {"workshops": get_all_workshops()}
+
+@app.get("/api/admin/workshop/registrations")
+async def get_admin_workshop_registrations():
+    from database import get_all_workshop_registrations
+    return {"registrations": get_all_workshop_registrations()}
+
+@app.delete("/api/admin/workshop/registrations/{id}")
+async def delete_workshop_reg(id: int):
+    from database import delete_workshop_registration
+    success = delete_workshop_registration(id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Registration not found")
+    return {"message": "Workshop registration deleted successfully"}
 
 @app.get("/api/admin/users")
 async def get_admin_users():

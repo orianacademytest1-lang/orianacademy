@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops & Webinars | Oriana Academy</title>
+    <meta name="description"
+        content="Join our upcoming tech masterclasses and workshops. Learn from industry experts and stay ahead in the tech world.">
+    <link rel="stylesheet" href="css/main.css?v=54.0">
+    <link rel="stylesheet" href="css/chatbot.css">
+    <style>
+        /* Workshop-specific UI Refinements */
+        .hero-tags-top {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tag {
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .tag-blue {
+            background: #EEF2FF;
+            color: #4F46E5;
+        }
+
+        .tag-green {
+            background: #ECFDF5;
+            color: #10B981;
+        }
+
+        .badge-item {
+            background: white;
+            padding: 1.2rem;
+            border-radius: var(--radius-xl);
+            text-align: center;
+            border: 1px solid var(--gray-100);
+            transition: var(--transition);
+        }
+
+        .badge-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .badge-color {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-title {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .badge-value {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+
+        @media (max-width: 992px) {
+            .hero-card {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+                gap: 3rem;
+            }
+
+            .hero-badges {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .workshop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            justify-content: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .workshop-card {
+            background: var(--white);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--gray-100);
+        }
+
+        .workshop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .workshop-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .workshop-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .workshop-status {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: #10B981;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .workshop-status.live::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(0.95);
+                opacity: 1;
+            }
+        }
+
+        .workshop-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .workshop-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--gray-900);
+            line-height: 1.3;
+        }
+
+        .workshop-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-500);
+        }
+
+        .workshop-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .workshop-footer {
+            margin-top: auto;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-100);
+        }
+
+        .workshop-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: var(--radius-lg);
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .workshop-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+            color: white;
+        }
+
+        .workshop-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Women's Day Theme */
+        .womens-day-card {
+            border: 2px solid #FFEDFA !important;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFF5FB 100%) !important;
+            position: relative;
+        }
+
+        .womens-day-card .workshop-status {
+            background: linear-gradient(135deg, #EC4899 0%, #D946EF 100%) !important;
+        }
+
+        .womens-day-card .workshop-btn {
+            background: linear-gradient(135deg, #EC4899 0%, #D946EF 100%) !important;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .womens-day-card .workshop-btn:hover {
+            background: linear-gradient(135deg, #BE185D 0%, #A21CAF 100%) !important;
+            box-shadow: 0 10px 15px -3px rgba(236, 72, 153, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .womens-day-card .workshop-title {
+            color: #9D174D !important;
+        }
+
+        .womens-day-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #EC4899;
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            z-index: 2;
+        }
+
+        .faq-section {
+            padding: 6rem 0;
+            background: var(--gray-50);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: var(--radius-lg);
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-item h4 {
+            margin-bottom: 0.5rem;
+            color: var(--gray-900);
+        }
+
+        .faq-item p {
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/oriana-logo-cropped.webp" alt="Oriana Academy" class="logo-img">
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Programs</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+                            <li><a href="courses/data-science.html">Data Science</a></li>
+                            <li><a href="courses/generative-ai.html">Generative AI</a></li>
+                            <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+                            <li><a href="courses/java.html">Full Stack Java Development</a></li>
+                            <li><a href="courses/python.html">Full Stack Python Development</a></li>
+                            <li><a href="courses/hr-training.html">HR Training</a></li>
+                            <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="pet-program.html">PET</a></li>
+                    <li><a href="career-guidance.html">Career Guidance</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="login.html" class="login-link">Sign In</a>
+                <a href="contact.html" class="cta-btn">Enroll Now</a>
+            </div>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <!-- PREMIUM HERO SECTION -->
+    <section class="hero">
+        <div class="hero-blob-3"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tags-top reveal delay-1">
+                    <span class="hero-tag tag-blue">#1 - Masterclasses</span>
+                    <span class="hero-tag tag-green">Oriana Academy</span>
+                </div>
+                <h1 class="reveal delay-1">Oriana's Masterclasses to Transform Your <br><span>Tech Career</span></h1>
+                <p class="description reveal delay-2">
+                    Join our exclusive live webinars designed to help you transform from a beginner into a high-impact
+                    tech professional. Master real-world scenarios and practical workflows used in top companies.
+                    <br><strong>No theory overload. No boring slides. Just practical implementation.</strong>
+                </p>
+
+                <div class="hero-info-grid reveal delay-2">
+                    <div class="hero-info-item">
+                        <span class="info-label">Live Learning:</span>
+                        <div class="program-mini-tags">
+                            <span>Interactive</span>
+                            <span>Expert Led</span>
+                            <span>Q&A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-actions reveal delay-2">
+                    <a href="#upcoming" class="btn-compact primary">View Upcoming Workshops ↓</a>
+                </div>
+            </div>
+            <div class="hero-visual reveal delay-3">
+                <div class="hero-image-wrapper">
+                    <img src="assets/images/about-hero-3d.webp" alt="Learning Community" class="main-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW STATS BAR -->
+    <section class="section achievement-tabs reveal"
+        style="padding: 2rem 0; background: var(--white); border-bottom: 1px solid var(--gray-100);">
+        <div class="container">
+            <div class="hero-badges" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+                <div class="badge-item">
+                    <span class="badge-color" style="background: #ef4444;"></span>
+                    <span class="badge-title">LIVE</span>
+                    <span class="badge-value">Online Classes</span>
+                </div>
+                <div class="badge-item">
+                    <span class="badge-color" style="background: #10b981;"></span>
+                    <span class="badge-title">EXPERT</span>
+                    <span class="badge-value">Industry Mentors</span>
+                </div>
+                <div class="badge-item">
+                    <span class="badge-color" style="background: #3b82f6;"></span>
+                    <span class="badge-title">WEBINAR</span>
+                    <span class="badge-value">100% FREE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKSHOPS GRID -->
+    <section class="section" id="upcoming">
+        <div class="container">
+            <div class="workshop-grid">
+                <!-- Workshop 1 -->
+                <div class="workshop-card">
+                    <div class="workshop-img">
+                        <img src="assets/images/coding-training-3d.webp" alt="AI Masterclass">
+                        <div class="workshop-status live">Live Streaming</div>
+                    </div>
+                    <div class="workshop-body">
+                        <h3 class="workshop-title">AI Master Class for QA Professionals - Master AI Agents</h3>
+                        <div class="workshop-meta">
+                            <div class="workshop-meta-item">📅 Date: 28 Feb 2026</div>
+                            <div class="workshop-meta-item">⏱️ Duration: 90 mins</div>
+                            <div class="workshop-meta-item">👤 Mentor: Babu Manickam</div>
+                            <div class="workshop-meta-item">💬 Language: English</div>
+                        </div>
+                        <div class="workshop-footer">
+                            <a href="contact.html?subject=AI Master Class Registration" class="workshop-btn">Register
+                                Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workshop 2: Women's Day Special -->
+                <div class="workshop-card womens-day-card">
+                    <div class="womens-day-badge">🌸 Women's Day Special</div>
+                    <div class="workshop-img">
+                        <img src="assets/images/workshop-women.webp" alt="Women in Tech Special">
+                        <div class="workshop-status">Upcoming</div>
+                    </div>
+                    <div class="workshop-body">
+                        <h3 class="workshop-title">Women in Tech: Free Playwright Masterclass Special</h3>
+                        <div class="workshop-meta">
+                            <div class="workshop-meta-item">📅 Date: 08 March 2026</div>
+                            <div class="workshop-meta-item">⏱️ Duration: 90 mins</div>
+                            <div class="workshop-meta-item">👤 Mentor: Babu Manickam</div>
+                            <div class="workshop-meta-item">💬 Language: English</div>
+                        </div>
+                        <div class="workshop-footer">
+                            <a href="womens.html" class="workshop-btn">Register Now</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Do I need to pay to attend these webinars?</h4>
+                    <p>No, many of our masterclasses are completely free to help learners understand industry trends.
+                        Some advanced workshops might have a nominal fee.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How will I receive the webinar joining link?</h4>
+                    <p>Once you register, you will receive a confirmation email with the joining link and calendar
+                        invite.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Can I attend from mobile?</h4>
+                    <p>Yes, you can attend using Zoom or Google Meet on your mobile device, but we recommend a laptop
+                        for the best practical experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="assets/images/oriana-logo-cropped.webp" alt="Oriana Academy" class="logo-img">
+                    </a>
+                    <p>Oriana Academy is India's leading IT training institute offering cutting-edge courses in Data
+                        Science, Generative AI, Digital Marketing, and more. Join us to unlock your potential.</p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/people/Oriana-Academy/61574273076388/" class="social-icon"
+                            target="_blank" rel="noopener noreferrer">f</a>
+                        <a href="https://www.youtube.com/@Orianacademy" class="social-icon" target="_blank"
+                            rel="noopener noreferrer">▶</a>
+                        <a href="https://www.instagram.com/oriana_tech/?hl=en" class="social-icon" target="_blank"
+                            rel="noopener noreferrer">i</a>
+                        <a href="https://www.linkedin.com/company/112104914/" class="social-icon" target="_blank"
+                            rel="noopener noreferrer">in</a>
+                        <a href="https://x.com/Orianacademy" class="social-icon" target="_blank"
+                            rel="noopener noreferrer">X</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="courses/machine-learning.html">Machine Learning</a></li>
+                        <li><a href="courses/data-science.html">Data Science</a></li>
+                        <li><a href="courses/generative-ai.html">Generative AI</a></li>
+                        <li><a href="courses/data-analytics.html">Data Analyst</a></li>
+                        <li><a href="courses/java.html">Full Stack Java</a></li>
+                        <li><a href="courses/python.html">Full Stack Python</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="workshops.html">Workshops</a></li>
+                        <li><a href="career-guidance.html">Career Guidance</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Glossary</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="pet-program.html">PET Program</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2026 Oriana Academy. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                        Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/chatbot.js"></script>
+</body>
+
+</html>
