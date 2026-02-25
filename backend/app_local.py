@@ -56,11 +56,17 @@ llm = genai.GenerativeModel('models/gemini-3-flash-preview')
 # Mount static files (serve the frontend)
 # This allows viewing the site at http://localhost:5000
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Ensure necessary directories exist before mounting
+uploads_dir = os.path.join(project_root, "uploads")
+os.makedirs(uploads_dir, exist_ok=True)
+os.makedirs(os.path.join(uploads_dir, "resumes"), exist_ok=True)
+
 app.mount("/courses", StaticFiles(directory=os.path.join(project_root, "courses")), name="courses")
 app.mount("/css", StaticFiles(directory=os.path.join(project_root, "css")), name="css")
 app.mount("/js", StaticFiles(directory=os.path.join(project_root, "js")), name="js")
 app.mount("/assets", StaticFiles(directory=os.path.join(project_root, "assets")), name="assets")
-app.mount("/uploads", StaticFiles(directory=os.path.join(project_root, "uploads")), name="uploads")
+app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
 # Serve root HTML files
 @app.get("/{filename}.html")
