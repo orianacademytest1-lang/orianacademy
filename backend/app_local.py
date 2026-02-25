@@ -11,6 +11,7 @@ import google.generativeai as genai
 import os
 import numpy as np
 from dotenv import load_dotenv
+from datetime import datetime
 import mimetypes
 mimetypes.add_type('image/webp', '.webp')
 
@@ -27,7 +28,8 @@ from database import (
     save_enrollment, get_all_enrollments, get_stats,
     delete_contact_submission, update_contact_submission,
     delete_enrollment, update_enrollment,
-    save_smtp_settings, get_smtp_settings
+    save_smtp_settings, get_smtp_settings,
+    save_career_application, get_all_career_applications, delete_career_application
 )
 from email_utils import send_notification_email
 
@@ -58,6 +60,7 @@ app.mount("/courses", StaticFiles(directory=os.path.join(project_root, "courses"
 app.mount("/css", StaticFiles(directory=os.path.join(project_root, "css")), name="css")
 app.mount("/js", StaticFiles(directory=os.path.join(project_root, "js")), name="js")
 app.mount("/assets", StaticFiles(directory=os.path.join(project_root, "assets")), name="assets")
+app.mount("/uploads", StaticFiles(directory=os.path.join(project_root, "uploads")), name="uploads")
 
 # Serve root HTML files
 @app.get("/{filename}.html")
@@ -279,6 +282,75 @@ async def register_workshop(registration: WorkshopRegistration):
         print(f"⚠️ Workshop email notification error: {e}")
 
     return {"message": "Workshop registration successful", "id": reg_id}
+
+# Career Application Endpoints
+from fastapi import UploadFile, File, Form
+import shutil
+
+@app.post("/api/career/submit")
+async def submit_career_application(
+    name: str = Form(...),
+    email: str = Form(...),
+    phone: str = Form(...),
+    location: str = Form(...),
+    role: str = Form(...),
+    experience: int = Form(...),
+    linkedin: str = Form(""),
+    why_join: str = Form(""),
+    resume: UploadFile = File(...)
+):
+    print(f"DEBUG: Received career application from {name}")
+    
+    # Save resume
+    upload_dir = os.path.join(project_root, "uploads", "resumes")
+    os.makedirs(upload_dir, exist_ok=True)
+    
+    file_extension = os.path.splitext(resume.filename)[1]
+    safe_filename = f"{name.replace(' ', '_')}_{datetime.now().strftime('%Y%m%d_%H%M%S')}{file_extension}"
+    file_path = os.path.join(upload_dir, safe_filename)
+    
+    with open(file_path, "wb") as buffer:
+        shutil.copyfileobj(resume.file, buffer)
+    
+    # Relative path for storage
+    relative_resume_path = os.path.join("uploads", "resumes", safe_filename)
+    
+    app_id = save_career_application(
+        name, email, phone, location, role,
+        experience, linkedin, why_join, relative_resume_path
+    )
+    
+    # Send Notification Email
+    try:
+        from email_utils import send_notification_email
+        send_notification_email(
+            subject=f"New Career Application: {role}",
+            data={
+                "name": name,
+                "email": email,
+                "phone": phone,
+                "role": role,
+                "location": location,
+                "experience": experience,
+                "message": why_join
+            },
+            type='enrollment' # Reusing enrollment template
+        )
+    except Exception as e:
+        print(f"⚠️ Career application email error: {e}")
+
+    return {"message": "Application submitted successfully", "id": app_id}
+
+@app.get("/api/admin/career-applications")
+async def get_career_apps():
+    return {"applications": get_all_career_applications()}
+
+@app.delete("/api/admin/career-applications/{id}")
+async def delete_career_app(id: int):
+    success = delete_career_application(id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Application not found")
+    return {"message": "Application deleted successfully"}
 
 @app.get("/api/admin/workshops")
 async def get_admin_workshops():

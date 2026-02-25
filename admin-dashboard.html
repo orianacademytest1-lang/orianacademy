@@ -580,6 +580,9 @@
             <div class="nav-item" onclick="switchTab('workshops', this)">
                 <span>🗓️</span> Workshops
             </div>
+            <div class="nav-item" onclick="switchTab('careers', this)">
+                <span>💼</span> Career Applications
+            </div>
             <div class="nav-item" id="usersTabBtn" onclick="switchTab('users', this)">
                 <span>👤</span> Registered Users
             </div>
@@ -638,11 +641,11 @@
                 </div>
                 <div class="stat-card">
                     <div class="stat-header">
-                        <div class="stat-icon">👤</div>
+                        <div class="stat-icon">💼</div>
                     </div>
                     <div class="stat-info">
-                        <div class="value" id="totalUsers">0</div>
-                        <div class="label">Active Users</div>
+                        <div class="value" id="totalCareerApps">0</div>
+                        <div class="label">Applications</div>
                     </div>
                 </div>
             </div>
@@ -791,6 +794,43 @@
                 </div>
             </div>
 
+            <!-- Career Applications Tab -->
+            <div class="tab-content" id="careers-tab">
+                <div class="table-container">
+                    <div class="table-header-row">
+                        <h3 class="table-title">Career Submissions</h3>
+                        <div style="display: flex; gap: 1rem; align-items: center;">
+                            <div class="search-box">
+                                <span
+                                    style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--admin-text-muted);">🔍</span>
+                                <input type="text" id="careerSearch" placeholder="Search applications..."
+                                    onkeyup="filterTable('careersTable', this.value)">
+                            </div>
+                            <button class="export-btn" onclick="exportCSV('careers')" style="margin-bottom: 0;">Download
+                                Data</button>
+                        </div>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Exp</th>
+                                <th>Resume</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="careersTable">
+                            <tr>
+                                <td colspan="7" class="empty-state">Loading...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             <!-- Registered Users Tab -->
             <div class="tab-content" id="users-tab">
                 <div class="table-container">
@@ -918,9 +958,10 @@
 
         let contactsData = [];
         let enrollmentsData = [];
-        let usersData = [];
         let workshopsData = [];
         let workshopRegistrationsData = [];
+        let usersData = [];
+        let careersData = [];
 
         // Load dashboard data
         async function loadDashboard() {
@@ -933,24 +974,22 @@
                     document.getElementById('totalEnrollments').textContent = stats.total_enrollments || 0;
                     document.getElementById('totalUsers').textContent = stats.total_users || 0;
                     document.getElementById('totalWorkshopRegs').textContent = stats.total_workshop_registrations || 0;
+                    document.getElementById('totalCareerApps').textContent = stats.total_career_apps || 0;
                 } catch (e) { console.error('Stats error:', e); }
 
-                // Load contacts
+                // Load individual table data
                 try {
                     const contactsRes = await fetch('/api/admin/contacts');
-                    const contactsJson = await contactsRes.json();
-                    contactsData = contactsJson.contacts || [];
+                    contactsData = (await contactsRes.json()).contacts || [];
                     renderContacts();
                 } catch (e) {
                     console.error('Contacts error:', e);
                     document.getElementById('contactsTable').innerHTML = '<tr><td colspan="8" class="empty-state">Unable to load contacts</td></tr>';
                 }
 
-                // Load enrollments
                 try {
                     const enrollmentsRes = await fetch('/api/admin/enrollments');
-                    const enrollmentsJson = await enrollmentsRes.json();
-                    enrollmentsData = enrollmentsJson.enrollments || [];
+                    enrollmentsData = (await enrollmentsRes.json()).enrollments || [];
                     renderEnrollments();
                 } catch (e) {
                     console.error('Enrollments error:', e);
@@ -1066,8 +1105,9 @@
                 if (tabName === 'contacts') items[0].classList.add('active');
                 else if (tabName === 'enrollments') items[1].classList.add('active');
                 else if (tabName === 'workshops') items[2].classList.add('active');
-                else if (tabName === 'users') items[3].classList.add('active');
-                else if (tabName === 'settings') items[4].classList.add('active');
+                else if (tabName === 'careers') items[3].classList.add('active');
+                else if (tabName === 'users') items[4].classList.add('active');
+                else if (tabName === 'settings') items[5].classList.add('active');
             }
 
             // Update tab content visibility
@@ -1079,6 +1119,7 @@
                 'contacts': 'Contact Submissions',
                 'enrollments': 'Course Enrollments',
                 'workshops': 'Workshop Management',
+                'careers': 'Career Applications',
                 'users': 'Registered Academy Users',
                 'settings': 'System Settings'
             };
@@ -1156,6 +1197,30 @@
             `).join('');
         }
 
+        function renderCareers() {
+            const tbody = document.getElementById('careersTable');
+            if (careersData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No career applications found</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = careersData.map(app => `
+                <tr>
+                    <td>#${app.id}</td>
+                    <td><strong>${app.name}</strong></td>
+                    <td><span class="badge badge-user">${app.role}</span></td>
+                    <td>${app.experience} yrs</td>
+                    <td><a href="${app.resume_path}" target="_blank" style="color: var(--admin-accent); font-weight: 600;">View Resume 📄</a></td>
+                    <td>${new Date(app.submitted_at).toLocaleDateString()}</td>
+                    <td>
+                        <div class="btn-icon-group">
+                            <div class="btn-icon btn-delete" title="Delete" onclick="deleteItem('career-applications', ${app.id})">🗑</div>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
         // Table filtering (Search)
         function filterTable(tableId, query) {
             const tbody = document.getElementById(tableId);
@@ -1189,6 +1254,9 @@
             } else if (type === 'workshops') {
                 data = workshopsData;
                 headers = ['Id', 'Title', 'Date', 'Time', 'Location'];
+            } else if (type === 'careers') {
+                data = careersData;
+                headers = ['Id', 'Name', 'Email', 'Phone', 'Location', 'Role', 'Experience', 'LinkedIn', 'Date'];
             }
 
             if (!data || data.length === 0) {
@@ -1211,6 +1279,8 @@
                         fields = [row.id, row.workshop_title, row.workshop_date || 'N/A', row.name, row.email, row.phone || '', row.status, row.registered_at];
                     } else if (type === 'workshops') {
                         fields = [row.id, row.title, row.date, row.time, row.location];
+                    } else if (type === 'careers') {
+                        fields = [row.id, row.name, row.email, row.phone || '', row.location || '', row.role, row.experience, row.linkedin || '', row.submitted_at];
                     }
                     return fields.map(field => `"${String(field).replace(/"/g, '""')}"`).join(',');
                 })
@@ -1390,6 +1460,7 @@
             if (type === 'contacts') label = 'submission';
             else if (type === 'enrollments') label = 'enrollment';
             else if (type === 'workshop_registrations') label = 'workshop registration';
+            else if (type === 'career-applications') label = 'career application';
 
             if (!confirm(`Are you sure you want to delete this ${label}?`)) {
                 return;

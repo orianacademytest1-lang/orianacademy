@@ -80,6 +80,23 @@ def init_data_db():
             )
         ''')
 
+        # Career applications table
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS career_applications (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                name TEXT NOT NULL,
+                email TEXT NOT NULL,
+                phone TEXT,
+                location TEXT,
+                role TEXT NOT NULL,
+                experience INTEGER,
+                linkedin TEXT,
+                why_join TEXT,
+                resume_path TEXT,
+                submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+
         # Seed initial workshop if not exists
         cursor.execute("SELECT COUNT(*) FROM workshops WHERE title = ?", ("Women's Day Special Workshop",))
         if cursor.fetchone()[0] == 0:
@@ -303,12 +320,57 @@ def get_workshop_stats() -> Dict:
     cursor.execute('SELECT COUNT(*) as count FROM workshop_registrations')
     total_registrations = cursor.fetchone()['count']
     
+    cursor.execute('SELECT COUNT(*) as count FROM career_applications')
+    total_career_apps = cursor.fetchone()['count']
+    
     conn.close()
     
     return {
         "total_workshops": total_workshops,
-        "total_registrations": total_registrations
+        "total_registrations": total_registrations,
+        "total_career_apps": total_career_apps
     }
+
+# Career application functions
+def save_career_application(name: str, email: str, phone: str, location: str, 
+                         role: str, experience: int, linkedin: str, 
+                         why_join: str, resume_path: str = None) -> int:
+    """Save a career application"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        INSERT INTO career_applications (name, email, phone, location, role, experience, linkedin, why_join, resume_path)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (name, email, phone, location, role, experience, linkedin, why_join, resume_path))
+    
+    conn.commit()
+    app_id = cursor.lastrowid
+    conn.close()
+    
+    return app_id
+
+def get_all_career_applications() -> List[Dict]:
+    """Get all career applications"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('SELECT * FROM career_applications ORDER BY submitted_at DESC')
+    
+    rows = cursor.fetchall()
+    conn.close()
+    
+    return [dict(row) for row in rows]
+
+def delete_career_application(app_id: int) -> bool:
+    """Delete a career application"""
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM career_applications WHERE id = ?', (app_id,))
+    conn.commit()
+    deleted = cursor.rowcount > 0
+    conn.close()
+    return deleted
 
 # Settings functions
 def save_smtp_settings(email: str, password: str, receiver: str, **kwargs):

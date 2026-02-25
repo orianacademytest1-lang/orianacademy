@@ -711,21 +711,22 @@ input:focus {
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-    gap: 4rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: 3rem;
     margin-bottom: 4rem;
 }
 
 .footer-brand .logo-img {
-    height: 45px;
+    height: 50px;
     margin-bottom: 1.5rem;
 }
 
 .footer-brand p {
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-    max-width: 300px;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    max-width: 320px;
 }
 
 .footer-social {
@@ -753,10 +754,12 @@ input:focus {
 }
 
 .footer-section h4 {
+    font-size: 0.875rem;
+    font-weight: 700;
     color: var(--white);
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
 }
 
 .footer-section ul {
@@ -764,18 +767,18 @@ input:focus {
 }
 
 .footer-section ul li {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .footer-section ul li a {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
-    transition: var(--transition);
-    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    font-size: 0.9375rem;
 }
 
 .footer-section ul li a:hover {
-    color: var(--primary);
+    color: var(--white);
     padding-left: 5px;
 }
 
@@ -785,6 +788,25 @@ input:focus {
     display: flex;
     gap: 1rem;
     line-height: 1.5;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.footer-contact .contact-icon {
+    width: 32px !important;
+    height: 32px !important;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.footer-contact .contact-icon img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
 }
 
 .footer-newsletter {
@@ -835,6 +857,19 @@ input:focus {
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
     margin: 0 0.5rem;
+}
+
+/* Footer Responsive Overrides */
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Modal Popup Styles */

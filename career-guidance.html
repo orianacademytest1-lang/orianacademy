@@ -103,7 +103,7 @@
                             <li><a href="courses/data-analytics.html">Data Analyst</a></li>
                             <li><a href="courses/java.html">Full Stack Java Development</a></li>
                             <li><a href="courses/python.html">Full Stack Python Development</a></li>
-                            <li><a href="courses/hr-training.html">HR Training</a></li>
+                            <li><a href="courses/software-testing.html">Software Testing</a></li>
                             <li><a href="courses/digital-marketing.html">Digital Marketing</a></li>
                         </ul>
                     </li>
@@ -143,13 +143,11 @@
                     <a href="contact.html?type=expert" class="btn btn-outline btn-lg"
                         style="margin-left: 1rem; border-color: var(--primary); color: var(--primary);">Talk to HR</a>
                 </div>
+            </div <div class="hero-visual reveal delay-3">
+            <div class="hero-image-wrapper">
+                <img src="assets/images/career-support.webp" alt="Career Support Oriana Academy" class="main-img">
             </div>
-
-            <div class="hero-visual reveal delay-3">
-                <div class="hero-image-wrapper">
-                    <img src="assets/images/career-support.webp" alt="Career Support Oriana Academy" class="main-img">
-                </div>
-            </div>
+        </div>
         </div>
     </section>
 
@@ -327,33 +325,33 @@
             </div>
 
             <div class="application-form reveal">
-                <form>
+                <form id="careerForm">
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" placeholder="John Doe" required>
+                            <input type="text" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" placeholder="john@example.com" required>
+                            <input type="email" name="email" placeholder="john@example.com" required>
                         </div>
                     </div>
 
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Phone Number</label>
-                            <input type="tel" placeholder="+91 98765 43210" required>
+                            <input type="tel" name="phone" placeholder="+91 98765 43210" required>
                         </div>
                         <div class="form-group">
                             <label>Location</label>
-                            <input type="text" placeholder="City, State" required>
+                            <input type="text" name="location" placeholder="City, State" required>
                         </div>
                     </div>
 
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Role Applying For</label>
-                            <select id="roleSelect" required>
+                            <select id="roleSelect" name="role" required>
                                 <option value="">Select a role</option>
                                 <option value="mentor">Mentor</option>
                                 <option value="counselor">Career Counselor</option>
@@ -361,13 +359,13 @@
                         </div>
                         <div class="form-group">
                             <label>Years of Experience</label>
-                            <input type="number" placeholder="5" required>
+                            <input type="number" name="experience" placeholder="5" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>LinkedIn Profile (Optional)</label>
-                        <input type="url" placeholder="https://linkedin.com/in/username">
+                        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/username">
                     </div>
 
                     <!-- Mentor Specific Fields -->
@@ -375,11 +373,11 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Subject / Course Expertise</label>
-                                <input type="text" placeholder="e.g. Python, Data Science">
+                                <input type="text" name="expertise" placeholder="e.g. Python, Data Science">
                             </div>
                             <div class="form-group">
                                 <label>Portfolio / Sample Work URL</label>
-                                <input type="url" placeholder="https://github.com/username">
+                                <input type="url" name="portfolio" placeholder="https://github.com/username">
                             </div>
                         </div>
                     </div>
@@ -389,23 +387,24 @@
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Counseling Experience (Years)</label>
-                                <input type="number" placeholder="3">
+                                <input type="number" name="counseling_exp" placeholder="3">
                             </div>
                             <div class="form-group">
                                 <label>Career Guidance Expertise</label>
-                                <input type="text" placeholder="e.g. IT, Management">
+                                <input type="text" name="guidance_expertise" placeholder="e.g. IT, Management">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Why Do You Want to Join Oriana Academy?</label>
-                        <textarea rows="4" placeholder="Tell us about your passion for education..."></textarea>
+                        <textarea name="why_join" rows="4"
+                            placeholder="Tell us about your passion for education..."></textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Resume Upload (PDF / DOC)</label>
-                        <input type="file" accept=".pdf,.doc,.docx" required>
+                        <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-block btn-lg" style="margin-top: 1rem;">Submit
@@ -580,6 +579,43 @@
             } else {
                 mentorFields.style.display = 'none';
                 counselorFields.style.display = 'none';
+            }
+        });
+
+        // Form Submission Logic
+        const careerForm = document.getElementById('careerForm');
+        careerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = careerForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Submitting...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(careerForm);
+
+            try {
+                const response = await fetch('/api/career/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert('Application submitted successfully! Our team will contact you soon.');
+                    careerForm.reset();
+                    mentorFields.style.display = 'none';
+                    counselorFields.style.display = 'none';
+                } else {
+                    alert(`Error (${response.status}): ` + (result.detail || 'Failed to submit application.'));
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert('Connection error. Please check your internet and try again.');
+            } finally {
+                submitBtn.innerText = originalText;
+                submitBtn.disabled = false;
             }
         });
     </script>
