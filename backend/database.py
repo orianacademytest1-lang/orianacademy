@@ -107,14 +107,14 @@ def init_data_db():
         
         conn.commit()
         conn.close()
-        print("✅ Data tables initialized successfully")
+        print("Data tables initialized successfully")
     except sqlite3.OperationalError as e:
         if "locked" in str(e).lower():
-            print("ℹ️ Database locked during initialization, skipping as it's likely being handled by another worker.")
+            print("Database locked during initialization, skipping as it's likely being handled by another worker.")
         else:
-            print(f"❌ Database initialization error: {e}")
+            print(f"Database initialization error: {e}")
     except Exception as e:
-        print(f"❌ Unexpected database error: {e}")
+        print(f"Unexpected database error: {e}")
 
 # Contact submission functions
 def save_contact_submission(name: str, email: str, phone: str, subject: str, message: str) -> int:

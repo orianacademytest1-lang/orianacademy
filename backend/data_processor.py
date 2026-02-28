@@ -14,7 +14,7 @@ class DataProcessor:
     def __init__(self):
         """Initialize data processor with local embedding model"""
         from sentence_transformers import SentenceTransformer
-        print("📥 Loading local embedding model (all-MiniLM-L6-v2)...")
+        print("Loading local embedding model (all-MiniLM-L6-v2)...")
         self.model = SentenceTransformer('all-MiniLM-L6-v2')
     
     def extract_course_content(self, html_path: str) -> Dict[str, str]:
@@ -161,18 +161,18 @@ class DataProcessor:
         
         # Get all HTML files in courses directory
         if not os.path.exists(courses_dir):
-            print(f"❌ Courses directory not found: {courses_dir}")
+            print(f"Courses directory not found: {courses_dir}")
             return documents, embeddings, metadatas, ids
             
         course_files = [f for f in os.listdir(courses_dir) if f.endswith('.html')]
         
-        print(f"📚 Found {len(course_files)} course files in {courses_dir}")
+        print(f"Found {len(course_files)} course files in {courses_dir}")
         
         for idx, filename in enumerate(course_files):
             course_name = filename.replace('.html', '')
             file_path = os.path.join(courses_dir, filename)
             
-            print(f"\n🔄 Processing: {course_name}")
+            print(f"\nProcessing: {course_name}")
             
             try:
                 # Extract content
@@ -197,7 +197,7 @@ class DataProcessor:
                     
                     print(f"   ✓ Chunk {chunk_idx + 1}/{len(chunks)}: {chunk['metadata']['section']}")
             except Exception as e:
-                print(f"   ⚠️  Error processing {filename}: {str(e)}")
+                print(f"   Error processing {filename}: {str(e)}")
                 continue
         
         return documents, embeddings, metadatas, ids

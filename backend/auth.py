@@ -38,9 +38,9 @@ def init_db():
             VALUES (?, ?, ?, 1)
         ''', ("orianaservicces2026@gmail.com", admin_password, "Admin User"))
         conn.commit()
-        print("✅ Admin user created successfully")
+        print("Admin user created successfully")
     except sqlite3.IntegrityError:
-        print("ℹ️  Admin user already exists")
+        print("Admin user already exists")
     
     conn.close()
 

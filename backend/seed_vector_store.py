@@ -11,7 +11,7 @@ from vector_store import get_vector_store
 from data_processor import DataProcessor
 
 def seed_data():
-    print("🚀 Starting vector store seeding...")
+    print("Starting vector store seeding...")
     
     # Initialize components
     vs = get_vector_store()
@@ -21,16 +21,16 @@ def seed_data():
     documents, embeddings, metadatas, ids = dp.process_all_courses()
     
     if not documents:
-        print("❌ No documents found to index.")
+        print("No documents found to index.")
         return
     
-    print(f"📊 Adding {len(documents)} document chunks to vector store...")
+    print(f"Adding {len(documents)} document chunks to vector store...")
     
     # Add to vector store
     vs.add_documents(documents, embeddings, metadatas, ids)
     
-    print("\n✨ Seeding complete!")
-    print(f"📈 Total documents in collection: {vs.get_collection_count()}")
+    print("\nSeeding complete!")
+    print(f"Total documents in collection: {vs.get_collection_count()}")
 
 if __name__ == "__main__":
     seed_data()

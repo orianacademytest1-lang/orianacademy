@@ -15,6 +15,9 @@ from datetime import datetime
 import mimetypes
 mimetypes.add_type('image/webp', '.webp')
 
+# Project Root Setup
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # NumPy 2.0 Compatibility Patch
 if not hasattr(np, "float_"):
     np.float_ = np.float64
@@ -49,13 +52,31 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Root-level HTML serving (HIGH PRIORITY)
+@app.get("/")
+@app.get("/index.html")
+async def read_index():
+    path = os.path.join(project_root, "index.html")
+    if os.path.exists(path):
+        from fastapi.responses import FileResponse
+        return FileResponse(path)
+    return {"error": "index.html not found", "path": path}
+
+@app.get("/{filename}.html")
+async def read_html(filename: str):
+    file_path = os.path.join(project_root, f"{filename}.html")
+    if os.path.exists(file_path):
+        from fastapi.responses import FileResponse
+        return FileResponse(file_path)
+    raise HTTPException(status_code=404)
+
 # Initialize Gemini API (for text generation only)
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
 llm = genai.GenerativeModel('models/gemini-3-flash-preview')
 
 # Mount static files (serve the frontend)
 # This allows viewing the site at http://localhost:5000
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# project_root moved to top
 
 # Ensure necessary directories exist before mounting
 uploads_dir = os.path.join(project_root, "uploads")
@@ -68,14 +89,7 @@ app.mount("/js", StaticFiles(directory=os.path.join(project_root, "js")), name="
 app.mount("/assets", StaticFiles(directory=os.path.join(project_root, "assets")), name="assets")
 app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
-# Serve root HTML files
-@app.get("/{filename}.html")
-async def serve_html(filename: str):
-    file_path = os.path.join(project_root, f"{filename}.html")
-    if os.path.exists(file_path):
-        from fastapi.responses import FileResponse
-        return FileResponse(file_path)
-    raise HTTPException(status_code=404)
+# Serving of individual HTML files moved to end of script for correct precedence
 
 # Authentication Endpoints
 @app.post("/api/auth/signup")
@@ -436,11 +450,7 @@ async def test_email_endpoint():
     except Exception as e:
         return {"message": "System error", "error": str(e)}
 
-@app.get("/index.html")
-@app.get("/")
-async def serve_index():
-    from fastapi.responses import FileResponse
-    return FileResponse(os.path.join(project_root, "index.html"))
+# Root serving moved to end of script for correct precedence
 
 # Initialize components
 vector_store = None # Lazy load this!
@@ -451,18 +461,18 @@ def ensure_vector_store():
         try:
             vector_store = get_vector_store()
         except Exception as e:
-            print(f"⚠️ RAG Init Error: {e}")
+            print(f"RAG Init Error: {e}")
             return None
     return vector_store
 
 # Load local embedding model
-print("🤖 Loading local embedding model...")
+print("Loading local embedding model...")
 try:
     embedding_model = SentenceTransformer('all-MiniLM-L6-v2')
-    print("✅ Model loaded!")
+    print("Model loaded!")
 except Exception as e:
-    print(f"⚠️ Warning: Could not load embedding model: {e}")
-    print("ℹ️ Chat RAG features will be disabled.")
+    print(f"Warning: Could not load embedding model: {e}")
+    print("Chat RAG features will be disabled.")
     embedding_model = None
 
 # RAG System Prompt Template
@@ -523,27 +533,27 @@ async def chat(request: ChatRequest):
              raise HTTPException(status_code=503, detail="RAG System not initialized (Model downloading or vector store unavailable?)")
 
         print(f"\n{'='*60}")
-        print(f"📥 Received question: {request.question}")
+        print(f"Received question: {request.question}")
         
         # Step 1: Generate query embedding locally (no API call!)
-        print("🔄 Generating query embedding...")
+        print("Generating query embedding...")
         query_embedding = embedding_model.encode(request.question).tolist()
-        print(f"✅ Embedding generated: {len(query_embedding)} dimensions")
+        print(f"Embedding generated: {len(query_embedding)} dimensions")
         
         # Step 2: Search vector database - Increased depth for better accuracy
-        print("🔍 Searching vector database (Depth: 7)...")
+        print("Searching vector database (Depth: 7)...")
         search_results = vs.search(query_embedding, n_results=7)
-        print(f"✅ Found {len(search_results.get('documents', [[]])[0])} results")
+        print(f"Found {len(search_results.get('documents', [[]])[0])} results")
         
         # Step 3: Extract documents and metadata
         retrieved_docs = search_results['documents'][0] if search_results['documents'] else []
         retrieved_metadata = search_results['metadatas'][0] if search_results['metadatas'] else []
         
-        print(f"📄 Retrieved {len(retrieved_docs)} document chunks")
+        print(f"Retrieved {len(retrieved_docs)} document chunks")
         
         # Build context
         context = "\n\n---\n\n".join(retrieved_docs) if retrieved_docs else "No relevant information found."
-        print(f"📝 Context length: {len(context)} characters")
+        print(f"Context length: {len(context)} characters")
         
         # Step 4: Construct RAG prompt
         prompt = RAG_PROMPT_TEMPLATE.format(
@@ -552,13 +562,13 @@ async def chat(request: ChatRequest):
         )
         
         # Step 5: Generate response using Gemini
-        print("🤖 Calling Gemini API...")
+        print("Calling Gemini API...")
         try:
             response = llm.generate_content(prompt)
             answer = response.text
-            print(f"✅ Gemini response received: {len(answer)} characters")
+            print(f"Gemini response received: {len(answer)} characters")
         except Exception as gemini_error:
-            print(f"❌ Gemini API error: {gemini_error}")
+            print(f"Gemini API error: {gemini_error}")
             # Return a graceful fallback
             answer = f"I found relevant information about: {', '.join([m.get('course', 'unknown') for m in retrieved_metadata[:3]])}. However, I'm currently experiencing issues generating a detailed response. Please try again or contact us at info@orianaacademy.com"
         
@@ -571,13 +581,13 @@ async def chat(request: ChatRequest):
             for meta in retrieved_metadata
         ]
         
-        print(f"✅ Returning response with {len(sources)} sources")
+        print(f"Returning response with {len(sources)} sources")
         print(f"{'='*60}\n")
         
         return ChatResponse(answer=answer, sources=sources)
     
     except Exception as e:
-        print(f"\n❌ ERROR in chat endpoint: {str(e)}")
+        print(f"\nERROR in chat endpoint: {str(e)}")
         import traceback
         traceback.print_exc()
         print(f"{'='*60}\n")
@@ -596,7 +606,7 @@ async def chat_stream(request: ChatRequest):
              return JSONResponse(status_code=503, content={"error": "System initializing..."})
 
         print(f"\n{'='*60}")
-        print(f"📥 Received streaming request: {request.question}")
+        print(f"Received streaming request: {request.question}")
         
         # Step 1: Generate query embedding locally
         query_embedding = embedding_model.encode(request.question).tolist()
@@ -617,7 +627,7 @@ async def chat_stream(request: ChatRequest):
         async def generate():
             try:
                 # Step 4: Generate streaming response using Gemini
-                print("🤖 Starting Gemini stream...")
+                print("Starting Gemini stream...")
                 response = llm.generate_content(prompt, stream=True)
                 
                 for chunk in response:
@@ -628,17 +638,17 @@ async def chat_stream(request: ChatRequest):
                 
                 # Send completion signal
                 yield "data: [DONE]\n\n"
-                print("✅ Stream completed successfully")
+                print("Stream completed successfully")
                 
             except Exception as stream_err:
-                print(f"❌ Stream error: {stream_err}")
+                print(f"Stream error: {stream_err}")
                 import json
                 yield f"data: {json.dumps({'error': str(stream_err)})}\n\n"
 
         return StreamingResponse(generate(), media_type="text/event-stream")
 
     except Exception as e:
-        print(f"\n❌ ERROR in chat_stream endpoint: {str(e)}")
+        print(f"\nERROR in chat_stream endpoint: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 # Initialize databases
@@ -651,25 +661,27 @@ def auto_seed():
         from vector_store import get_vector_store
         vs = get_vector_store()
         if vs.get_collection_count() == 0:
-            print("🚀 Vector store is empty. Starting automatic seeding...")
+            print("Vector store is empty. Starting automatic seeding...")
             from seed_vector_store import seed_data
             seed_data()
         else:
-            print(f"📊 Vector store indexed with {vs.get_collection_count()} documents.")
+            print(f"Vector store indexed with {vs.get_collection_count()} documents.")
     except Exception as e:
-        print(f"⚠️ Auto-seeding failed: {e}")
+        print(f"Auto-seeding failed: {e}")
 
 # Run in background to not block startup
 import threading
 threading.Thread(target=auto_seed, daemon=True).start()
 
+# Root static serving moved to top
+
 if __name__ == "__main__":
     import uvicorn
     port = int(os.getenv('PORT', 5000))
     print(f"\n{'='*60}")
-    print(f"🚀 Starting RAG API on http://localhost:{port}")
-    # print(f"📊 Vector store: {vector_store.get_collection_count()} documents")
-    print(f"🤖 Embedding: all-MiniLM-L6-v2 (lazy loaded)")
+    print(f"Starting RAG API on http://localhost:{port}")
+    # print(f"Vector store: {vector_store.get_collection_count()} documents")
+    print(f"Embedding: all-MiniLM-L6-v2 (lazy loaded)")
     print(f"{'='*60}\n")
     uvicorn.run(app, host="0.0.0.0", port=port)
 

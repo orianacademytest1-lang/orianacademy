@@ -25,7 +25,7 @@ def send_notification_email(subject, data, type='contact'):
         # METHOD 1: RESEND (Best for Railway)
         if resend_api_key:
             try:
-                print("📧 Attempting to send via Resend API...")
+                print("Attempting to send via Resend API...")
                 resend.api_key = resend_api_key
                 
                 params = {
@@ -40,10 +40,10 @@ def send_notification_email(subject, data, type='contact'):
                     params["from"] = sender_email
 
                 resend.Emails.send(params)
-                print(f"✅ Email notification sent via Resend to {receiver_email}")
+                print(f"Email notification sent via Resend to {receiver_email}")
                 return True, "Email sent via Resend"
             except Exception as re_err:
-                print(f"⚠️ Resend failed: {re_err}. Trying SMTP fallback...")
+                print(f"Resend failed: {re_err}. Trying SMTP fallback...")
 
         # METHOD 2: SMTP FALLBACK
         if all([sender_email, smtp_password, receiver_email]):
@@ -54,22 +54,22 @@ def send_notification_email(subject, data, type='contact'):
             msg.attach(MIMEText(body_text, 'plain'))
 
             try:
-                print(f"📧 Attempting SMTP fallback (Port 587)...")
+                print(f"Attempting SMTP fallback (Port 587)...")
                 server = smtplib.SMTP('smtp.gmail.com', 587, timeout=10)
                 server.starttls()
                 server.login(sender_email, smtp_password)
                 server.send_message(msg)
                 server.quit()
-                print(f"✅ Email notification sent via SMTP to {receiver_email}")
+                print(f"Email notification sent via SMTP to {receiver_email}")
                 return True, "Email sent via SMTP"
             except Exception as e587:
                 try:
-                    print(f"⚠️ SMTP 587 failed, trying Port 465...")
+                    print(f"SMTP 587 failed, trying Port 465...")
                     server = smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10)
                     server.login(sender_email, smtp_password)
                     server.send_message(msg)
                     server.quit()
-                    print(f"✅ Email notification sent via SMTP SSL to {receiver_email}")
+                    print(f"Email notification sent via SMTP SSL to {receiver_email}")
                     return True, "Email sent via SMTP SSL"
                 except Exception as e465:
                     return False, f"Both Resend and SMTP failed. SMTP Error: {e465}"

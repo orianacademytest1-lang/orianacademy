@@ -38,7 +38,7 @@ class VectorStore:
             metadatas=metadatas,
             ids=ids
         )
-        print(f"✅ Added {len(documents)} documents to vector store")
+        print(f"Added {len(documents)} documents to vector store")
     
     def search(self, query_embedding: List[float], n_results: int = 3) -> Dict[str, Any]:
         """Search for similar documents using vector similarity"""
@@ -56,12 +56,12 @@ class VectorStore:
     def reset(self):
         """Clear all data from collection (use with caution!)"""
         self.client.reset()
-        print("⚠️  Vector store reset complete")
+        print("Vector store reset complete")
     
     def delete_collection(self):
         """Delete the entire collection"""
         self.client.delete_collection(name="oriana_courses")
-        print("🗑️  Collection deleted")
+        print("Collection deleted")
 
 # Singleton instance
 _vector_store = None
