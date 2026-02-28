@@ -1102,13 +1102,13 @@ img {
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--gray-100);
   z-index: 1000;
-  padding: 0.5rem 0;
+  padding: 0.6rem 0;
   transition: all var(--transition-normal);
   box-sizing: border-box;
 }
 
 .header.scrolled {
-  padding: 0.6rem 0;
+  padding: 0.4rem 0;
   box-shadow: var(--shadow-md);
 }
 
@@ -1192,8 +1192,8 @@ img {
 
 /* Logo Image */
 .logo-img {
-  height: 75px !important;
-  max-height: 75px !important;
+  height: 55px !important;
+  max-height: 55px !important;
   width: auto !important;
   max-width: 250px !important;
   object-fit: contain;
