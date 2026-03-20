@@ -5,23 +5,20 @@
 /* Chatbot Toggle Button */
 .chat-toggle {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #8b5cf6, #6366f1, #3b82f6);
+    bottom: 50px;
+    right: 32px;
+    width: 95px;
+    height: 95px;
+    background: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow:
-        0 8px 24px rgba(139, 92, 246, 0.4),
-        0 0 0 4px rgba(139, 92, 246, 0.2),
-        0 0 40px rgba(139, 92, 246, 0.3);
+    box-shadow: none;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 100000;
-    padding: 4px;
+    padding: 0;
     overflow: hidden;
     animation: float 3s ease-in-out infinite;
 }
@@ -40,10 +37,7 @@
 
 .chat-toggle:hover {
     transform: scale(1.1) translateY(-5px);
-    box-shadow:
-        0 12px 32px rgba(139, 92, 246, 0.5),
-        0 0 0 6px rgba(139, 92, 246, 0.3),
-        0 0 60px rgba(139, 92, 246, 0.5);
+    box-shadow: none;
 }
 
 .chat-toggle.hidden {
@@ -53,12 +47,12 @@
 }
 
 .chat-toggle-image {
-    width: calc(100% - 8px);
-    height: calc(100% - 8px);
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     border-radius: 50%;
-    background: white;
-    padding: 2px;
+    background: transparent;
+    padding: 0;
 }
 
 .chat-toggle svg {
